@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SampleOverviewController">
+   <children>
+      <ListView fx:id="sampleList1" layoutX="35.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
+      <ListView fx:id="sampleList2" layoutX="235.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
+      <ListView fx:id="sampleList3" layoutX="435.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
+      <ListView fx:id="sampleList4" layoutX="635.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
+      <Label fx:id="sampleLable1" layoutX="109.0" layoutY="26.0" text="Data Set 1" />
+      <Label fx:id="sampleLable2" layoutX="308.0" layoutY="26.0" text="Data Set 2" />
+      <Label fx:id="sampleLable3" layoutX="508.0" layoutY="26.0" text="Data Set 3" />
+      <Label fx:id="sampleLable4" layoutX="708.0" layoutY="26.0" text="Data Set 4" />
+      <HBox layoutX="72.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0" />
+      <HBox layoutX="235.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0">
+         <children>
+            <Label fx:id="numLabel2" text="N=">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <HBox layoutX="435.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0">
+         <children>
+            <Label fx:id="numLabel3" text="N=">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <HBox layoutX="640.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0">
+         <children>
+            <Label fx:id="numLabel4" text="N=">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <Label fx:id="numLabel1" layoutX="43.0" layoutY="53.0" text="N=">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="showData" layoutX="986.0" layoutY="152.0" mnemonicParsing="false" onAction="#showData" text="Test" />
+      <Button layoutX="109.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear1" text="Clear" />
+      <Button layoutX="314.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear2" text="Clear" />
+      <Button layoutX="514.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear3" text="Clear" />
+      <Button layoutX="714.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear4" text="Clear" />
+   </children>
+</AnchorPane>

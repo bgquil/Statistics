@@ -1,0 +1,17 @@
+
+.default-color0.chart-area-symbol { -fx-background-color: transparent, transparent;}
+.default-color1.chart-area-symbol { -fx-background-color: transparent, transparent;}
+
+.default-color0.chart-series-area-line { -fx-stroke: blue; }
+
+.default-color0.chart-series-area-fill { -fx-fill: transparent; }
+.default-color1.chart-series-area-fill { -fx-fill: red; }
+
+ .axis-label {
+ 	
+ 	-fx-font-size: 1.6em;
+ 	
+ }
+ .axis {
+ 	-fx-tick-label-font-size: 1.5em
+ }

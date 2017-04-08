@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ScatterplotDialogController">
+   <children>
+      <TextField fx:id="yLabel" layoutX="117.0" layoutY="72.0" />
+      <TextField layoutX="117.0" layoutY="36.0" fx:id="xLabel" />
+      <Label layoutX="26.0" layoutY="38.0" text="X Label">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="75.0" text="Y Label">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <VBox layoutX="152.0" layoutY="157.0" prefHeight="200.0" prefWidth="135.0">
+         <children>
+            <CheckBox mnemonicParsing="false" text="Data Set 1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Data Set 2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Data Set 3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Data Set 4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </VBox>
+      <Button layoutX="329.0" layoutY="220.0" mnemonicParsing="false" text="Graph">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
