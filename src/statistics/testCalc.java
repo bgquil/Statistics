@@ -28,7 +28,7 @@ public class testCalc {
 		ZTest z = new ZTest(2000,500,2150,100000);
 		System.out.println(z.getZScore());
 		
-	
+	//test change git
 		
 
 
