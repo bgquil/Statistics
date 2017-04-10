@@ -15,7 +15,7 @@
                <children>
                   <AnchorPane prefHeight="400.0" prefWidth="600.0">
                      <children>
-                        <Button layoutX="452.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleZTestGraph" text="Calculate" />
+                        <Button layoutX="452.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleStartTestSample" text="Calculate" />
                         <GridPane layoutX="26.0" layoutY="75.0" prefHeight="90.0" prefWidth="236.0">
                            <children>
                               <Label text="Population Mean">
@@ -147,6 +147,12 @@
                      </font>
                   </Label>
                   <Button layoutX="468.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleStartTestSummary" text="Calculate" />
+                  <ChoiceBox fx:id="summaryAlternativeChoiceBox" layoutX="383.0" layoutY="83.0" prefWidth="150.0" />
+                  <Label layoutX="364.0" layoutY="47.0" text="Alternative Hypothesis">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>

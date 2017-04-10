@@ -24,9 +24,6 @@ import statistics.ZTest;
 
 public class ZTestDialogController {
 	
-
-	
-	
 	private Stage dialogStage;
 	
 	public void setDialogStage(Stage dialogStage) {
@@ -42,11 +39,6 @@ public class ZTestDialogController {
 		
 		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1","Data Set 2","Data Set 3","Data Set 4");
 		ObservableList<String> alternativeList = FXCollections.observableArrayList(
-				"Two-Sided Test",
-				"less than",
-				"greater than"
-				);
-		ObservableList<String> alternativeListSummary = FXCollections.observableArrayList(
 				"Not Equal",
 				"Less Than",
 				"Greater Than"
@@ -54,7 +46,7 @@ public class ZTestDialogController {
 		
 		sampleChoiceBox.setItems(samples);
 		alternativeChoiceBox.setItems(alternativeList);
-		//summaryAlternativeChoiceBox.setItems(alternativeList);
+		summaryAlternativeChoiceBox.setItems(alternativeList);
 	}
 	
 	
@@ -104,7 +96,7 @@ public class ZTestDialogController {
 	 * 	Calculate and show the ZTest Graph.
 	 */
 	@FXML
-	private void handleZTestGraph() {
+	private void handleStartTestSample() {
 
 		int selection = sampleChoiceBox.getSelectionModel().getSelectedIndex();
 		switch (selection) {
@@ -134,10 +126,11 @@ public class ZTestDialogController {
 			double popMean = (double) Double.parseDouble(popMeanTextBox.getText());
 			double stdDev = (double) Double.parseDouble(popStdDeviationTextBox.getText());
 			
-			ZTest z = new ZTest(s, popMean, stdDev);
-			resultZScore.setText(Double.toString(z.getZScore()));
-			resultPValue.setText(Double.toString(z.getPValue()));
-			showZTestGraph(z);
+			ZTest zSample = new ZTest(s, popMean, stdDev);
+			resultZScore.setText(Double.toString(zSample.getZScore()));
+			resultPValue.setText(Double.toString(zSample.getPValue()));
+			
+			setupZTest(zSample);
 
 		} catch (Exception e) {
 			e.getMessage();
@@ -148,26 +141,44 @@ public class ZTestDialogController {
 		
 	}
 	
-	
 	@FXML
 	private void handleStartTestSummary(){
-		System.out.println("ts");
-		//int selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedIndex();
+		
 		double popMean = (double) Double.parseDouble(nullHypMean.getText());
 		double stdDev = (double) Double.parseDouble(popStdDev.getText());
 		double sMean = (double) Double.parseDouble(sampleMeanTextField.getText());
 		double sNum = (double) Double.parseDouble(sampleNumTextField.getText());
 		
-		ZTest z = new ZTest(popMean, stdDev, sMean, sNum );
-		summaryZScore.setText(Double.toString(z.getZScore()));
-		summaryPValue.setText(Double.toString(z.getPValue()));
-
+		ZTest zSummary = new ZTest(popMean, stdDev, sMean, sNum );
+		summaryZScore.setText(Double.toString(zSummary.getZScore()));
+		summaryPValue.setText(Double.toString(zSummary.getPValue()));
+		
+		setupZTest(zSummary);
+	}
+	
+	private void setupZTest(ZTest z){
+		
+		String selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedItem();
+		
+		switch (selection){
+		case "Not Equal":
+			showZTestGraph(z,0,4);/////////////////////////////////////////////////////////
+			resultPValue.setText(Double.toString(z.getPValue()*2d));
+			break;
+		case "Less Than":
+			showZTestGraph(z,-4,z.getZScore());
+			resultPValue.setText(Double.toString(z.getPValue()));
+			break;
+		case "Greater Than":
+			showZTestGraph(z,z.getZScore(),4);
+			resultPValue.setText(Double.toString(1-z.getPValue()));
+			break;
+		}
+		
 	}
 	
 	
-	private void showZTestGraph(ZTest z){
-		
-		
+	private void showZTestGraph(ZTest z, double start, double end){
 		try {
 			
 			Stage graphStage = new Stage();
@@ -185,7 +196,7 @@ public class ZTestDialogController {
 	                new AreaChart<Number,Number>(xAxis,yAxis);   
 	        areaChart.setTitle("Normal Distribution");
 	             
-	        areaChart.getData().addAll(generateNormalDistribution(), generateAreaUnderCurve(-4.0d, z.getZScore()));
+	        areaChart.getData().addAll(generateNormalDistribution(), generateAreaUnderCurve(start,end));
 	        
 	        Scene scene  = new Scene(areaChart,800,600);
 	        scene.getStylesheets().add(getClass().getResource("/view/ZTestChart.css").toExternalForm());

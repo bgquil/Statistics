@@ -21,7 +21,7 @@ public class ZTest {
 	public ZTest(double popMean, double popStdDev, double sampleMean, double sampleN){
 		this.popMean = popMean;
 		this.popStdDev = popStdDev;
-		this.zScore = calculateZScore(sampleMean);
+		this.zScore = calculateZScore(sampleMean,sampleN);
 		this.pValue = calculateProbability(zScore);
 		this.q = 1 - pValue;
 		
@@ -31,8 +31,8 @@ public class ZTest {
 	/*
 	 * For a user-entered summary statistics
 	 */
-	private double calculateZScore(double sampleMean){
-		return ((sampleMean - popMean)/popStdDev)*10d; 
+	private double calculateZScore(double sampleMean, double sampleN){
+		return ((sampleMean - popMean)/(popStdDev/Math.sqrt(sampleN))); 
 	}
 	
 	

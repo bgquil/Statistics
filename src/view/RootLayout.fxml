@@ -31,6 +31,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleShowZTestDialog" text="Z Test" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" text="Chi-Squared Test" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowRegressionDialog" text="Linear Regression" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">

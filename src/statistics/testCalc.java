@@ -25,7 +25,7 @@ public class testCalc {
 //		System.out.println("r: "+lr.getR());
 //		System.out.println("r2: "+lr.getR2());
 //		
-		ZTest z = new ZTest(2000,500,2150,100000);
+		ZTest z = new ZTest(100,15,140,30);
 		System.out.println(z.getZScore());
 		
 	//test change git
