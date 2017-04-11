@@ -10,15 +10,15 @@
    <children>
       <Button layoutX="450.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleSelectSample" text="Graph" />
       <ChoiceBox fx:id="indSampleChoiceBox" layoutX="127.0" layoutY="71.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="depSampleChoiceBox" layoutX="127.0" layoutY="188.0" prefWidth="150.0" />
-      <TextField fx:id="yLabel" layoutX="128.0" layoutY="240.0" />
+      <ChoiceBox fx:id="depSampleChoiceBox" layoutX="127.0" layoutY="208.0" prefWidth="150.0" />
+      <TextField fx:id="yLabel" layoutX="128.0" layoutY="260.0" />
       <TextField layoutX="128.0" layoutY="121.0" fx:id="xLabel" />
       <Label layoutX="26.0" layoutY="38.0" text="Independent Variable">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="26.0" layoutY="158.0" text="Dependent Variable">
+      <Label layoutX="26.0" layoutY="178.0" text="Dependent Variable">
          <font>
             <Font size="15.0" />
          </font>
@@ -28,7 +28,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="244.0" text="Label">
+      <Label layoutX="46.0" layoutY="264.0" text="Label">
          <font>
             <Font size="15.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="r1" layoutX="450.0" layoutY="167.0" text="r2">
+      <Label fx:id="r2" layoutX="450.0" layoutY="167.0" text="r2">
          <font>
             <Font size="15.0" />
          </font>

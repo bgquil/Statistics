@@ -20,7 +20,9 @@ import view.ImportDialogController;
 import view.RegressionDialogController;
 import view.RootLayoutController;
 import view.SampleOverviewController;
+import view.SampleOverviewTableController;
 import view.ScatterplotDialogController;
+import view.TTestDialogController;
 import view.ZTestDialogController;
 
 public class MainApp extends Application {
@@ -142,6 +144,26 @@ public class MainApp extends Application {
 		
 	}
 	
+	public void showSamplesTable(){
+		
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/view/SampleOverviewTable.fxml"));
+			AnchorPane samplesTableOverview = (AnchorPane) loader.load();
+			
+			rootLayout.setCenter(samplesTableOverview);
+			
+			SampleOverviewTableController controller = loader.getController();
+			controller.setMainApp(this);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void showZTestDialog(){
 		
 		try {
@@ -160,6 +182,36 @@ public class MainApp extends Application {
 		
 			
 			ZTestDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			
+			dialogStage.showAndWait();
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void showTTestDialog(){
+		
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/view/TTestDialog.fxml"));
+			TabPane tTestDialog = (TabPane) loader.load();
+			
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("T Test");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(tTestDialog);
+			dialogStage.setScene(scene);
+			
+		
+			
+			TTestDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			
 			dialogStage.showAndWait();

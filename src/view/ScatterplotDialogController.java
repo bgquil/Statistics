@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +11,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -29,76 +32,131 @@ public class ScatterplotDialogController {
 		this.dialogStage = dialogStage;
 	}
 	@FXML
-	private ChoiceBox<String> indSampleChoiceBox;
+	private ChoiceBox<String> xData;
 	@FXML
-	private ChoiceBox<String> depSampleChoiceBox;
+	private ChoiceBox<String> yData;
+	
 	@FXML
 	private TextField xLabel;
 	@FXML 
 	private TextField yLabel;
-	@FXML
-	private Label line;
-	@FXML
-	private Label r;
-	@FXML
-	private Label r2;
-	
+
 	
 	/*
 	 * 
 	 */
 	@FXML
 	private void initialize() {
+		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1",
+				"Data Set 2",
+				"Data Set 3",
+				"Data Set 4"
+				);
+	xData.setItems(samples);
+	yData.setItems(samples);
 
 
 	}
 	
+	/*
+	 * 	Handle selection of sample from the choicebox.
+	 */
+	@FXML
+	private void handleSelectSample() {
+		
+
+		int xChoice = xData.getSelectionModel().getSelectedIndex();
+		int yChoice = yData.getSelectionModel().getSelectedIndex();
+
+		
+		Sample x = null;
+		Sample y = null;
+		
+		
+		switch (xChoice) {
+		
+		case 0:
+			x = SampleOverviewController.getSample1();
+			break;
+		case 1:
+			x = SampleOverviewController.getSample2();
+			break;
+		case 2:
+			x = SampleOverviewController.getSample3();
+			break;
+		case 3:
+			x = SampleOverviewController.getSample4();;
+			break;
+		
+			
+		}
+		
+		switch (yChoice) {
+		
+		case 0:
+			y = SampleOverviewController.getSample1();
+			break;
+		case 1:
+			y = SampleOverviewController.getSample2();
+			break;
+		case 2:
+			y = SampleOverviewController.getSample3();
+			break;
+		case 3:
+			y = SampleOverviewController.getSample4();;
+			break;
+		
+			
+		}
+		if (xLabel.getText().equals(""))
+			x.setName("X-Axis");
+		else
+			x.setName(xLabel.getText());
+		
+		if (yLabel.getText().equals(""))
+			y.setName("Y-Axis");
+		else
+			y.setName(yLabel.getText());
+		
+		showScatterplot(x, y);
+	}
 	
 	
-public void showRegressionGraph(Sample ind, Sample dep){
+	
+public void showScatterplot(Sample x, Sample y){
 		
 		try {
 			
 			Stage graphStage = new Stage();
-			graphStage.setTitle("Statistics - Linear Regression");
+			graphStage.setTitle("Scatterplot");
 			graphStage.initModality(Modality.WINDOW_MODAL);
 			graphStage.initOwner(dialogStage);
-			
-
-			
-			
-			
+		
 	        final NumberAxis xAxis = new NumberAxis();
 	        final NumberAxis yAxis = new NumberAxis();
-	        xAxis.setLabel(ind.getName());
-	        yAxis.setLabel(dep.getName());
+	        xAxis.setLabel(x.getName());
+	        yAxis.setLabel(y.getName());
 
 	        final ScatterChart<Number,Number> scatterGraph = 
 	                new ScatterChart<Number,Number>(xAxis,yAxis);   
-	        scatterGraph.setTitle("Linear Regression");
+	        scatterGraph.setTitle("Scatterplot");
 
 	        XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
 	               
 
 			
-			for (int i = 0; i < ind.getSampleSize(); i++){
-				series.getData().add(new Data<Number, Number>(ind.get(i),dep.get(i)));
+			for (int i = 0; i < x.getSampleSize(); i++){
+				series.getData().add(new Data<Number, Number>(x.get(i),y.get(i)));
 			}
 	        
-	        XYChart.Series<Number, Number> lineSeries = new XYChart.Series<Number, Number>();
-	        
-	        
-
-	        
-
-
 
 	        scatterGraph.setAnimated(false);
 	        //regressionGraph.setCreateSymbols(true);
-	        scatterGraph.getData().addAll(series,lineSeries);
+	        scatterGraph.getData().add(series);
 
-
-
+	        xAxis.setStyle("-fx-tick-label-font: 18 system");
+	        yAxis.setStyle("-fx-tick-label-font: 18 system");
+	        
 	        Scene scene  = new Scene(scatterGraph,800,600);
 	        //scene.getStylesheets().add(getClass().getResource("/view/RegressionChart.css").toExternalForm());
 	        graphStage.setScene(scene);

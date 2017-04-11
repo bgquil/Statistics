@@ -15,9 +15,10 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="View">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#handleShowSample" text="List View" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowSampleTable" text="Table View" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Statistics">
@@ -32,6 +33,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" text="Chi-Squared Test" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowRegressionDialog" text="Linear Regression" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowTTestDialog" text="T Test" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">

@@ -6,6 +6,8 @@
 
 package statistics;
 
+import java.util.ArrayList;
+
 public class testCalc {
 	
 	public static void main(String[] args) {
@@ -27,11 +29,25 @@ public class testCalc {
 //		
 		ZTest z = new ZTest(100,15,140,30);
 		System.out.println(z.getZScore());
-		
+		ArrayList<Double> a = new ArrayList<Double>();
 	//test change git
+		try {
+			a.add(Double.parseDouble("3"));
+		} catch (Exception e) {
+			
+		}
 		
-
-
+		try {
+			a.add(Double.parseDouble("20.2"));
+		} catch (Exception e) {
+			
+		}
+		
+		System.out.println(a.size());
+		
+		DataEntry d = new DataEntry();
+		d.setC1("Apple");
+		System.out.println(d.getC1());
 
 
 		

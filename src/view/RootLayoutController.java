@@ -41,6 +41,15 @@ public class RootLayoutController {
 		
 	}
 	
+	/*
+	 * 	Open the Samples table page.
+	 */
+	@FXML
+	private void handleShowSampleTable() {
+		mainApp.showSamplesTable();
+		
+	}
+	
 	
 	/*
 	 * 	Open the Regression Dialog.
@@ -57,6 +66,15 @@ public class RootLayoutController {
 	@FXML
 	private void handleShowZTestDialog() {
 		mainApp.showZTestDialog();
+		
+	}
+	
+	/*
+	 * 	Open the TTestDialog.
+	 */
+	@FXML
+	private void handleShowTTestDialog() {
+		mainApp.showTTestDialog();
 		
 	}
 	

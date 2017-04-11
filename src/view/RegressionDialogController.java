@@ -58,6 +58,9 @@ public class RegressionDialogController {
 				);
 	indSampleChoiceBox.setItems(samples);
 	depSampleChoiceBox.setItems(samples);
+	line.setVisible(false);
+	r.setVisible(false);
+	r2.setVisible(false);
 
 	}
 	
@@ -167,8 +170,10 @@ public class RegressionDialogController {
 	        
 	        line.setText(lr.toString());
 	        r.setText(Double.toString(lr.getR()));
-	       // r2.setText(Double.toString(lr.getR2()));
-
+	        r2.setText(Double.toString(lr.getR2()));
+	        line.setVisible(true);
+	        r.setVisible(true);
+	        r2.setVisible(true);
 
 	        regressionGraph.setAnimated(false);
 	        regressionGraph.setCreateSymbols(true);
@@ -177,7 +182,7 @@ public class RegressionDialogController {
 
 
 	        Scene scene  = new Scene(regressionGraph,800,600);
-	        //scene.getStylesheets().add(getClass().getResource("/view/RegressionChart.css").toExternalForm());
+	        scene.getStylesheets().add(getClass().getResource("/view/RegressionChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
 			
