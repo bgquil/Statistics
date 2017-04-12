@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import statistics.DataEntry;
 import statistics.MainApp;
+import statistics.Sample;
 
 public class SampleOverviewTableController {
 	
@@ -79,14 +81,32 @@ public class SampleOverviewTableController {
 		
 	}
 	
-	private void test(TableColumn<DataEntry,String> c){
+	private double[] generateDouble(TableColumn<DataEntry,String> c){
+		
+		ObservableList<Double> l = FXCollections.observableArrayList();  
 		int size = table.getItems().size();
 		for (int i = 0; i < size; i++){
-			Double.parseDouble(c.getCellData(i));	
+			try {
+				l.add(Double.parseDouble(c.getCellData(i)));	
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+				
 		}
+		
+		double d[] = new double[l.size()];
+		for(int i = 0; i < l.size(); i++){
+			d[i] = l.get(i);
+		}
+		return d;
 		
 	}
 	
+//	public static Sample getSample(){
+//		Sample s = 
+//		return s1;
+//	}
+//	
 	
 	
 	@FXML
@@ -114,24 +134,44 @@ public class SampleOverviewTableController {
 
             while ((line = br.readLine()) != null) {
             	
+            	String entry[] = new String[13];
+            	 String[] splitEntry = line.split(cvsSplitBy);
+            	 for (int i = 0; i < splitEntry.length; i++){
+            		entry[i] = splitEntry[i];
+            	 }
+            	 System.out.println(entry.length);
+            
             	
-
                 // use comma as separator
-                String[] entry = line.split(cvsSplitBy);
+               
                 d = new DataEntry();
-                d.setC1(entry[0]);
-                d.setC2(entry[1]);
-                d.setC3(entry[2]);
-                d.setC4(entry[3]);
-                d.setC5(entry[4]);
-                d.setC6(entry[5]);
-                d.setC7(entry[6]);
-                d.setC8(entry[7]);
-                d.setC9(entry[8]);
-                d.setC10(entry[9]);
-                d.setC11(entry[10]);
-                d.setC12(entry[11]);
-                //d.setC13(entry[12]);
+                if (entry[0] != null)
+                	d.setC1(entry[0]);
+                if (entry[1] != null)
+                	d.setC2(entry[1]);
+                if (entry[2] != null)
+                	d.setC3(entry[2]);
+                if (entry[3] != null)
+	                d.setC4(entry[3]);
+                if (entry[4] != null)
+	                d.setC5(entry[4]);
+                if (entry[5] != null)
+	                d.setC6(entry[5]);
+                if (entry[6] != null)
+	                d.setC7(entry[6]);
+                if (entry[7] != null)
+	                d.setC8(entry[7]);
+                if (entry[8] != null)
+	                d.setC9(entry[8]);
+                if (entry[9] != null)
+	                d.setC10(entry[9]);
+                if (entry[10] != null)
+	                d.setC11(entry[10]);
+                if (entry[11] != null)
+	                d.setC12(entry[11]);
+                if (entry[12] != null)
+	                d.setC13(entry[12]);
+	  
                
                 o.add(d);
             }

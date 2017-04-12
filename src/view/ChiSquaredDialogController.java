@@ -191,11 +191,11 @@ private Stage dialogStage;
 		ChiStatisticTextField.setText(Double.toString(c.getChiStatistic()));
 		pValueTexField.setText(Double.toString(c.getpValue()));
 		
-		showChiSquaredGraph(DOF);
+		showChiSquaredGraph(DOF, c.getChiStatistic());
 
 	}
 		
-	private void showChiSquaredGraph(double DOF){
+	private void showChiSquaredGraph(double DOF, double x2){
 		
 
 		
@@ -218,6 +218,7 @@ private Stage dialogStage;
 	             
 	        //areaChart.getData().addAll(generateChiSquaredDistribution(3.0), generateAreaUnderCurve(-4.0d, z.getZScore()));
 	        areaChart.getData().add(generateChiSquaredDistribution(DOF));
+	        areaChart.getData().add(generateAreaUnderCurve(x2,DOF));
 	        Scene scene  = new Scene(areaChart,800,600);
 	        scene.getStylesheets().add(getClass().getResource("/view/ZTestChart.css").toExternalForm());
 	        graphStage.setScene(scene);
@@ -251,6 +252,31 @@ private Stage dialogStage;
         	chiSquaredCurve.getData().add(new Data<Number, Number>(x, y));		
         }
 		return chiSquaredCurve;
+	}
+	
+	
+	/*
+	 * Generates the data points for the curve under a normal distribution curve
+	 */
+	private XYChart.Series<Number, Number> generateAreaUnderCurve(double start, double n){
+		
+        XYChart.Series<Number, Number> area = new XYChart.Series<Number, Number>();
+
+        /*
+         * Curve of a Chi-Squared Distribution
+         * 
+         */
+        for (double x = start; x < 16d; x = x +.01d){
+        	
+        	double numerator = Math.pow(x, ((n/2d)-1d)) * Math.exp(-x/2d);
+        	double denominator = Math.pow(2, (n/2d)) * gamma(n/2d);
+        	
+        	double y = numerator/denominator;
+        	
+        	area.getData().add(new Data<Number, Number>(x, y));		
+        }
+		return area;
+		
 	}
 	
 	/*	Helper function to draw the curve of a chisquared distribution

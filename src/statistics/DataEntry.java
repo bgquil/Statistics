@@ -5,19 +5,21 @@ import javafx.beans.property.StringProperty;
 
 public class DataEntry {
 	
-	private StringProperty c1 = new SimpleStringProperty();
-	private StringProperty c2 = new SimpleStringProperty();
-	private StringProperty c3 = new SimpleStringProperty();
-	private StringProperty c4 = new SimpleStringProperty();
-	private StringProperty c5 = new SimpleStringProperty();
-	private StringProperty c6 = new SimpleStringProperty();
-	private StringProperty c7 = new SimpleStringProperty();
-	private StringProperty c8 = new SimpleStringProperty();
-	private StringProperty c9 = new SimpleStringProperty();
-	private StringProperty c10 = new SimpleStringProperty();
-	private StringProperty c11 = new SimpleStringProperty();
-	private StringProperty c12 = new SimpleStringProperty();
-	private StringProperty c13 = new SimpleStringProperty();
+	public StringProperty c1 = new SimpleStringProperty();
+	public StringProperty c2 = new SimpleStringProperty();
+	public StringProperty c3 = new SimpleStringProperty();
+	public StringProperty c4 = new SimpleStringProperty();
+	public StringProperty c5 = new SimpleStringProperty();
+	public StringProperty c6 = new SimpleStringProperty();
+	public StringProperty c7 = new SimpleStringProperty();
+	public StringProperty c8 = new SimpleStringProperty();
+	public StringProperty c9 = new SimpleStringProperty();
+	public StringProperty c10 = new SimpleStringProperty();
+	public StringProperty c11 = new SimpleStringProperty();
+	public StringProperty c12 = new SimpleStringProperty();
+	public StringProperty c13 = new SimpleStringProperty();
+	
+	private StringProperty[] list = {c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13};
 	
 	public DataEntry(){
 		
@@ -179,5 +181,8 @@ public class DataEntry {
 		this.c13Property().set(c13);
 	}
 	
+	public StringProperty[] getList(){
+		return this.list;
+	}
 	
 }

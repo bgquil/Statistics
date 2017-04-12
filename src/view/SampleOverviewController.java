@@ -221,22 +221,26 @@ public class SampleOverviewController{
 	private void handleClear1(){
 		l1.clear();
 		l1.add("");
-		
+		sampleList1.setItems(l1);
 	}
 	@FXML
 	private void handleClear2(){
+		
 		l2.clear();
 		l2.add("");
+		sampleList2.setItems(l2);
 	}
 	@FXML
 	private void handleClear3(){
 		l3.clear();
 		l3.add("");
+		sampleList3.setItems(l3);
 	}
 	@FXML
 	private void handleClear4(){
 		l4.clear();
 		l4.add("");
+		sampleList4.setItems(l4);
 	}
 
 	

@@ -162,15 +162,15 @@ public class ZTestDialogController {
 		
 		switch (selection){
 		case "Not Equal":
-			showZTestGraph(z,0,4);/////////////////////////////////////////////////////////
+			showZTestGraph(z,-4d,z.getZScore(), selection);
 			resultPValue.setText(Double.toString(z.getPValue()*2d));
 			break;
 		case "Less Than":
-			showZTestGraph(z,-4,z.getZScore());
+			showZTestGraph(z,-4,z.getZScore(), selection);
 			resultPValue.setText(Double.toString(z.getPValue()));
 			break;
 		case "Greater Than":
-			showZTestGraph(z,z.getZScore(),4);
+			showZTestGraph(z,z.getZScore(),4, selection);
 			resultPValue.setText(Double.toString(1-z.getPValue()));
 			break;
 		}
@@ -178,7 +178,7 @@ public class ZTestDialogController {
 	}
 	
 	
-	private void showZTestGraph(ZTest z, double start, double end){
+	private void showZTestGraph(ZTest z, double start, double end, String selection){
 		try {
 			
 			Stage graphStage = new Stage();
@@ -196,7 +196,22 @@ public class ZTestDialogController {
 	                new AreaChart<Number,Number>(xAxis,yAxis);   
 	        areaChart.setTitle("Normal Distribution");
 	             
-	        areaChart.getData().addAll(generateNormalDistribution(), generateAreaUnderCurve(start,end));
+	        if (selection.equals("Not Equal")){
+	        	if(z.getPValue() > .5){
+	        		areaChart.getData().add(generateNormalDistribution());
+	        		areaChart.getData().add(generateAreaUnderCurve(-4.0d, -end ));
+	        		areaChart.getData().add(generateAreaUnderCurve(end, 4.0d ));
+	        	}
+	        	else{
+	        		areaChart.getData().add(generateNormalDistribution());
+	        		areaChart.getData().add(generateAreaUnderCurve(-4.0d, end ));
+	        		areaChart.getData().add(generateAreaUnderCurve(-end, 4.0d ));
+	        		
+	        	}
+	        	
+	        }
+	        else
+	        	areaChart.getData().addAll(generateNormalDistribution(), generateAreaUnderCurve(start,end));
 	        
 	        Scene scene  = new Scene(areaChart,800,600);
 	        scene.getStylesheets().add(getClass().getResource("/view/ZTestChart.css").toExternalForm());

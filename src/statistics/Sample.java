@@ -178,16 +178,7 @@ public class Sample {
 		return this.sampleRange;
 	}
 	
-	public void calculateFrequency(){
-		
-		int count[] = new int[sampleSize];
-		
-		
-		for (double d : this.sortedSampleData){
-			
-		}
-		
-	}
+
 	
 	public void calculate(){
 		this.setSampleMean();

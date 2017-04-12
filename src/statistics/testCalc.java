@@ -48,7 +48,9 @@ public class testCalc {
 		DataEntry d = new DataEntry();
 		d.setC1("Apple");
 		System.out.println(d.getC1());
-
+		
+		d.c13.setValue("10");
+		System.out.println(d.getC13());
 
 		
 
