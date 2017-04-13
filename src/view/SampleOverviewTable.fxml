@@ -25,6 +25,8 @@
             <TableColumn fx:id="c13" prefWidth="75.0" text="C13" />
         </columns>
       </TableView>
-      <Button layoutX="1167.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleImport" text="Button" />
+      <Button layoutX="1157.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleImport" text="Import CSV" />
+      <Button layoutX="1176.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleTest" text="Button" />
+      <CheckBox fx:id="titles" layoutX="1102.0" layoutY="95.0" mnemonicParsing="false" text="Use First Row as Header" />
    </children>
 </AnchorPane>

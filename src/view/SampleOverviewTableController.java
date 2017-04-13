@@ -9,6 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
@@ -30,6 +31,8 @@ public class SampleOverviewTableController {
 	
 	public SampleOverviewTableController() {
 	}
+	
+
 	
 	@FXML
 	private TableView<DataEntry> table;
@@ -81,7 +84,7 @@ public class SampleOverviewTableController {
 		
 	}
 	
-	private double[] generateDouble(TableColumn<DataEntry,String> c){
+	private Sample generateDouble(TableColumn<DataEntry,String> c){
 		
 		ObservableList<Double> l = FXCollections.observableArrayList();  
 		int size = table.getItems().size();
@@ -98,14 +101,21 @@ public class SampleOverviewTableController {
 		for(int i = 0; i < l.size(); i++){
 			d[i] = l.get(i);
 		}
-		return d;
+		Sample s = new Sample(d);
+		return s;
 		
 	}
 	
-//	public static Sample getSample(){
-//		Sample s = 
-//		return s1;
-//	}
+	@FXML
+	private void handleTest(){
+		Sample s = generateDouble(c2);
+		double d = s.getSampleMedian();
+		System.out.println(d);
+	}
+	
+	
+	
+
 //	
 	
 	
@@ -121,18 +131,26 @@ public class SampleOverviewTableController {
 		}
 		
 	}
-	
-	
+	@FXML
+	private CheckBox titles; 
 	
 	private void readFile(String filePath){
-		
+		boolean done = false;
         String line = "";
         String cvsSplitBy = ",";
         ObservableList<DataEntry> o  = FXCollections.observableArrayList();
         DataEntry d = null;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 
-            while ((line = br.readLine()) != null) {
+           
+        	if (titles.isSelected()){
+        		
+        	}
+        	
+        	while ((line = br.readLine()) != null) {
+            	
+             
+      
             	
             	String entry[] = new String[13];
             	 String[] splitEntry = line.split(cvsSplitBy);
@@ -140,6 +158,26 @@ public class SampleOverviewTableController {
             		entry[i] = splitEntry[i];
             	 }
             	 System.out.println(entry.length);
+            	 
+            	 
+            	 if (titles.isSelected() && !done){
+              		
+              		c1.setText(entry[0]);
+              		c2.setText(entry[1]);
+              		c3.setText(entry[2]);
+              		c4.setText(entry[3]);
+              		c5.setText(entry[4]);
+              		c6.setText(entry[5]);
+              		c7.setText(entry[6]);
+              		c8.setText(entry[7]);
+              		c9.setText(entry[8]);
+              		c10.setText(entry[9]);
+              		c11.setText(entry[10]);
+              		c12.setText(entry[11]);
+              		c13.setText(entry[12]);
+              		done = true;
+              		
+             	}
             
             	
                 // use comma as separator

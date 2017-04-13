@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import statistics.ChiSquared;
+import statistics.MathFunctions;
 
 public class ChiSquaredDialogController {
 	
@@ -269,7 +270,7 @@ private Stage dialogStage;
         for (double x = start; x < 16d; x = x +.01d){
         	
         	double numerator = Math.pow(x, ((n/2d)-1d)) * Math.exp(-x/2d);
-        	double denominator = Math.pow(2, (n/2d)) * gamma(n/2d);
+        	double denominator = Math.pow(2, (n/2d)) * MathFunctions.gamma(n/2d);
         	
         	double y = numerator/denominator;
         	

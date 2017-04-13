@@ -52,9 +52,11 @@ public class testCalc {
 		d.c13.setValue("10");
 		System.out.println(d.getC13());
 
-		
-
+		double t = MathFunctions.stDist(3, 2.1);
+		System.out.println(t);
 	}
+	
+
 	
 
 

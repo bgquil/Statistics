@@ -30,6 +30,7 @@ public class RegressionDialogController {
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
+	
 	@FXML
 	private ChoiceBox<String> indSampleChoiceBox;
 	@FXML
