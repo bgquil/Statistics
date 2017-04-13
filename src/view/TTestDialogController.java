@@ -19,7 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import statistics.MainApp;
+import statistics.MathFunctions;
 import statistics.Sample;
+import statistics.TTest;
 import statistics.ZTest;
 
 public class TTestDialogController {
@@ -64,7 +66,7 @@ public class TTestDialogController {
 	@FXML
 	private ChoiceBox<String> alternativeChoiceBox;
 	@FXML
-	private TextField resultZScore;
+	private TextField resultTScore;
 	@FXML
 	private TextField resultPValue;
 	
@@ -74,7 +76,7 @@ public class TTestDialogController {
 	@FXML
 	private TextField nullHypMean;
 	@FXML
-	private TextField popStdDev;
+	private TextField sampleStdDev;
 	@FXML
 	private TextField sampleMeanTextField;
 	@FXML
@@ -82,18 +84,19 @@ public class TTestDialogController {
 	@FXML
 	private ChoiceBox<String> summaryAlternativeChoiceBox;
 	@FXML
-	private TextField summaryZScore;
+	private TextField summaryTScore;
 	@FXML
 	private TextField summaryPValue;
 	
 
-	
+	final double LEFT = -8d;
+	final double RIGHT = 8d;
 
 	
 	
 
 	/*
-	 * 	Calculate and show the ZTest Graph.
+	 * 	Calculate and show the TTest Graph.
 	 */
 	@FXML
 	private void handleStartTestSample() {
@@ -102,16 +105,16 @@ public class TTestDialogController {
 		switch (selection) {
 		
 		case 0:
-			setupZTest(SampleOverviewController.getSample1());
+			setupTTest(SampleOverviewController.getSample1());
 			break;
 		case 1:
-			setupZTest(SampleOverviewController.getSample2());
+			setupTTest(SampleOverviewController.getSample2());
 			break;
 		case 2:
-			setupZTest(SampleOverviewController.getSample3());
+			setupTTest(SampleOverviewController.getSample3());
 			break;
 		case 3:
-			setupZTest(SampleOverviewController.getSample4());
+			setupTTest(SampleOverviewController.getSample4());
 			break;
 		
 			
@@ -119,18 +122,16 @@ public class TTestDialogController {
 		
 		
 	}
-	
-	private void setupZTest(Sample s){
+	//From Sample
+	private void setupTTest(Sample s){
 		
 		try {
 			double popMean = (double) Double.parseDouble(popMeanTextBox.getText());
-			double stdDev = (double) Double.parseDouble(popStdDeviationTextBox.getText());
+			//double stdDev = (double) Double.parseDouble(popStdDeviationTextBox.getText());
 			
-			ZTest zSample = new ZTest(s, popMean, stdDev);
-			resultZScore.setText(Double.toString(zSample.getZScore()));
-			resultPValue.setText(Double.toString(zSample.getPValue()));
-			
-			setupZTest(zSample);
+			TTest tTest = new TTest(s, popMean);
+			resultTScore.setText(Double.toString(tTest.getTStatistic()));
+			setupTTest(tTest);
 
 		} catch (Exception e) {
 			e.getMessage();
@@ -141,49 +142,52 @@ public class TTestDialogController {
 		
 	}
 	
+	//From Summary
 	@FXML
 	private void handleStartTestSummary(){
 		
 		double popMean = (double) Double.parseDouble(nullHypMean.getText());
-		double stdDev = (double) Double.parseDouble(popStdDev.getText());
+		double stdDev = (double) Double.parseDouble(sampleStdDev.getText());
 		double sMean = (double) Double.parseDouble(sampleMeanTextField.getText());
-		double sNum = (double) Double.parseDouble(sampleNumTextField.getText());
+		int sNum = (int) Double.parseDouble(sampleNumTextField.getText());
 		
-		ZTest zSummary = new ZTest(popMean, stdDev, sMean, sNum );
-		summaryZScore.setText(Double.toString(zSummary.getZScore()));
-		summaryPValue.setText(Double.toString(zSummary.getPValue()));
+		TTest tSummary = new TTest(sMean,sNum,stdDev, popMean);
+		summaryTScore.setText(Double.toString(tSummary.getTStatistic()));
 		
-		setupZTest(zSummary);
+		setupTTest(tSummary);
 	}
 	
-	private void setupZTest(ZTest z){
+	private void setupTTest(TTest t){
 		
 		String selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedItem();
-		
-//		switch (selection){
-//		case "Not Equal":
-//			showZTestGraph(z,0,4);/////////////////////////////////////////////////////////
-//			resultPValue.setText(Double.toString(z.getPValue()*2d));
-//			break;
-//		case "Less Than":
-//			showZTestGraph(z,-4,z.getZScore());
-//			resultPValue.setText(Double.toString(z.getPValue()));
-//			break;
-//		case "Greater Than":
-//			showZTestGraph(z,z.getZScore(),4);
-//			resultPValue.setText(Double.toString(1-z.getPValue()));
-//			break;
-//		}
+			
+		switch (selection){
+		case "Not Equal":
+			showTTestGraph(t,LEFT,t.getTStatistic(), selection);
+			resultPValue.setText(Double.toString(t.getPValue()*2d));
+			break;
+		case "Less Than":
+			showTTestGraph(t,LEFT,t.getTStatistic(), selection);
+			resultPValue.setText(Double.toString(t.getPValue()));
+			System.out.println(t.getPValue());
+			break;
+		case "Greater Than":
+			showTTestGraph(t,t.getTStatistic(),RIGHT, selection);
+			resultPValue.setText(Double.toString(1d-t.getPValue()));
+			summaryPValue.setText(Double.toString(1d-t.getPValue()));
+			break;
+		}
 		
 	}
 	
-	@FXML
-	private void showTTestGraph(){
+	
+	private void showTTestGraph(TTest t, double start, double end, String selection){
+
 		try {
 			double DOF = 1;
 			Stage graphStage = new Stage();
 			graphStage.setTitle("Statistics - T Distribution");
-			graphStage.initModality(Modality.WINDOW_MODAL);
+			graphStage.initModality(Modality.NONE);
 			graphStage.initOwner(dialogStage);
 			
 			
@@ -194,33 +198,32 @@ public class TTestDialogController {
 
 	        final AreaChart<Number,Number> areaChart = 
 	                new AreaChart<Number,Number>(xAxis,yAxis);   
-	        areaChart.setTitle("Normal Distribution");
+	        areaChart.setTitle("t-Distribution");
+	       
+	        if (selection.equals("Not Equal")){
+	        	if(t.getPValue() > .5){
+	        		areaChart.getData().add(generateTDistribution(DOF));
+	        		areaChart.getData().add(generateAreaUnderCurve(LEFT, -end, DOF ));
+	        		areaChart.getData().add(generateAreaUnderCurve(end, RIGHT, DOF ));
+	        	}
+	        	else{
+	        		areaChart.getData().add(generateTDistribution(DOF));
+	        		areaChart.getData().add(generateAreaUnderCurve(LEFT, end, DOF ));
+	        		areaChart.getData().add(generateAreaUnderCurve(-end, RIGHT, DOF ));
+	        		
+	        	}
+	        	
+	        }
+	        else
+	        	areaChart.getData().addAll(generateTDistribution(DOF), generateAreaUnderCurve(start,end, DOF));
 	             
-	        //areaChart.getData().addAll(generateTDistribution(DOF), generateAreaUnderCurve(start,end));
-	        areaChart.getData().addAll(generateTDistribution(DOF), generateTDistribution(3));
 	        
 	        Scene scene  = new Scene(areaChart,800,600);
 	        scene.getStylesheets().add(getClass().getResource("/view/TTestChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
 			
-			
-	        //FXML file scene
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(MainApp.class.getResource("/view/ZTestGraph.fxml"));
-//			AnchorPane zTestGraph = (AnchorPane) loader.load();
-//			Scene scene = new Scene(zTestGraph);
-//			graphStage.setScene(scene);
-//			
-//		
-//			
-//			ZTestDialogController controller = loader.getController();
-//			controller.setDialogStage(graphStage);
-//			
-//			graphStage.showAndWait();
-			
-			
-			
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -238,9 +241,9 @@ public class TTestDialogController {
          */
         double mu = 0; //mean = 0
         
-        for (double x = -4.0d; x < 4.0d; x = x +.1d){
-        	double A = Math.exp(Math.log(gamma((DOF+1d)/2d)));
-        	double B = Math.exp(Math.log(gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
+        for (double x = LEFT; x < RIGHT; x = x +.1d){
+        	double A = Math.exp(Math.log(MathFunctions.gamma((DOF+1d)/2d)));
+        	double B = Math.exp(Math.log(MathFunctions.gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
         	double C = Math.pow((1+x*x/DOF),(-(DOF+1)/2d));
         	
         	double y = A*C/B;
@@ -250,24 +253,26 @@ public class TTestDialogController {
 	}
 	
 	/*
-	 * Generates the data points for the curve under a t distribution curve
+	 * Generates the data points for the area under a t distribution curve
 	 */
-	private XYChart.Series<Number, Number> generateAreaUnderCurve(double start, double end){
+	private XYChart.Series<Number, Number> generateAreaUnderCurve(double start, double end, double DOF){
 		
-        XYChart.Series<Number, Number> area = new XYChart.Series<Number, Number>();
-
-        /*
-         *  Area under normal curve generation
+		XYChart.Series<Number, Number> tDistributionCurve = new XYChart.Series<Number, Number>();
+		/*
+         * area under Curve of a t Distribution
+         * 
          */
         double mu = 0; //mean = 0
-        double sigma = 1; //variance = 1
-        for (double x = start; x < end; x = x +.01d){
-        	double A = 1.0d/(sigma*Math.sqrt(2*Math.PI));
-        	double B = Math.exp(-(x-mu)*(x-mu) / (2.0d * sigma * sigma));
-        	double y = A*B;
-        	area.getData().add(new Data<Number, Number>(x, y));	
+        
+        for (double x = start; x < end; x = x +.1d){
+        	double A = Math.exp(Math.log(MathFunctions.gamma((DOF+1d)/2d)));
+        	double B = Math.exp(Math.log(MathFunctions.gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
+        	double C = Math.pow((1+x*x/DOF),(-(DOF+1)/2d));
+        	
+        	double y = A*C/B;
+        	tDistributionCurve.getData().add(new Data<Number, Number>(x, y));		
         }
-        return area;
+		return tDistributionCurve;
 		
 	}
 	

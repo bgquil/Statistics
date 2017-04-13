@@ -15,7 +15,7 @@
                <children>
                   <AnchorPane prefHeight="400.0" prefWidth="600.0">
                      <children>
-                        <Button layoutX="452.0" layoutY="312.0" mnemonicParsing="false" onAction="#showTTestGraph" text="Calculate" />
+                        <Button layoutX="452.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleStartTestSample" text="Calculate" />
                         <GridPane layoutX="26.0" layoutY="75.0" prefHeight="90.0" prefWidth="236.0">
                            <children>
                               <Label text="Population Mean">
@@ -42,24 +42,24 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <ChoiceBox fx:id="sampleChoiceBox" layoutX="421.0" layoutY="89.0" prefWidth="150.0" />
-                        <Label layoutX="421.0" layoutY="42.0" text="Select Sample">
+                        <ChoiceBox fx:id="sampleChoiceBox" layoutX="26.0" layoutY="209.0" prefWidth="150.0" />
+                        <Label layoutX="26.0" layoutY="162.0" text="Select Sample">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="alternativeChoiceBox" layoutX="26.0" layoutY="200.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="alternativeChoiceBox" layoutX="408.0" layoutY="78.0" prefWidth="150.0" />
                         <Label layoutX="26.0" layoutY="42.0" text="Null Hypothesis">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutX="26.0" layoutY="169.0" text="Alternative Hypothesis">
+                        <Label layoutX="408.0" layoutY="47.0" text="Alternative Hypothesis">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <Label layoutX="35.0" layoutY="304.0" text="Z-Score">
+                        <Label layoutX="35.0" layoutY="304.0" text="T-Statistic">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -69,7 +69,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="resultZScore" editable="false" layoutX="121.0" layoutY="305.0" prefHeight="25.0" prefWidth="105.0" />
+                        <TextField fx:id="resultTScore" editable="false" layoutX="121.0" layoutY="305.0" prefHeight="25.0" prefWidth="105.0" />
                         <TextField fx:id="resultPValue" editable="false" layoutX="121.0" layoutY="338.0" prefHeight="25.0" prefWidth="105.0" />
                         <Label layoutX="26.0" layoutY="266.0" text="Results">
                            <font>
@@ -94,18 +94,17 @@
                   <GridPane layoutX="42.0" layoutY="75.0" prefHeight="111.0" prefWidth="250.0" vgap="5.0">
                      <children>
                         <TextField fx:id="nullHypMean" GridPane.columnIndex="1" />
-                        <Label text="Standard Deviation" GridPane.rowIndex="1">
+                        <Label text="Standard Deviation" GridPane.rowIndex="2">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="popStdDev" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Population Mean">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Sample Mean" GridPane.rowIndex="2">
+                        <Label text="Sample Mean" GridPane.rowIndex="1">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -115,7 +114,8 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="sampleMeanTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="sampleMeanTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="sampleStdDev" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="sampleNumTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                      <columnConstraints>
@@ -135,13 +135,13 @@
                      </font>
                   </Label>
                   <TextField fx:id="summaryPValue" editable="false" layoutX="122.0" layoutY="305.0" prefHeight="25.0" prefWidth="105.0" />
-                  <TextField fx:id="summaryZScore" editable="false" layoutX="122.0" layoutY="276.0" prefHeight="25.0" prefWidth="105.0" />
-                  <Label layoutX="41.0" layoutY="304.0" text="P Value">
+                  <TextField fx:id="summaryTScore" editable="false" layoutX="122.0" layoutY="276.0" prefHeight="25.0" prefWidth="105.0" />
+                  <Label layoutX="32.0" layoutY="304.0" text="P Value">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="39.0" layoutY="275.0" text="Z-Score">
+                  <Label layoutX="32.0" layoutY="275.0" text="T-Statistic">
                      <font>
                         <Font size="18.0" />
                      </font>

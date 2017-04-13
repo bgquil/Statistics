@@ -25,15 +25,15 @@
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" text="Descriptive Statistics" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowScatterplot" text="Scatterplot" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Tests">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowZTestDialog" text="Z Test" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowZTestDialog" text="1-Sample Z-Test" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" text="Chi-Squared Test" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowRegressionDialog" text="Linear Regression" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowTTestDialog" text="T Test" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowTTestDialog" text="1-Sample T-Test" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">

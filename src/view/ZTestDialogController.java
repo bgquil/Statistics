@@ -183,7 +183,7 @@ public class ZTestDialogController {
 			
 			Stage graphStage = new Stage();
 			graphStage.setTitle("Statistics - Normal Distribution");
-			graphStage.initModality(Modality.WINDOW_MODAL);
+			graphStage.initModality(Modality.NONE);
 			graphStage.initOwner(dialogStage);
 			
 			

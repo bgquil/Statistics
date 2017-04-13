@@ -129,7 +129,7 @@ public void showScatterplot(Sample x, Sample y){
 			
 			Stage graphStage = new Stage();
 			graphStage.setTitle("Scatterplot");
-			graphStage.initModality(Modality.WINDOW_MODAL);
+			graphStage.initModality(Modality.NONE);
 			graphStage.initOwner(dialogStage);
 		
 	        final NumberAxis xAxis = new NumberAxis();

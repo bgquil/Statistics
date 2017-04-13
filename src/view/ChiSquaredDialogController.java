@@ -204,7 +204,7 @@ private Stage dialogStage;
 			
 			Stage graphStage = new Stage();
 			graphStage.setTitle("Statistics - Chi-Squared Distribution");
-			graphStage.initModality(Modality.WINDOW_MODAL);
+			graphStage.initModality(Modality.NONE);
 			graphStage.initOwner(dialogStage);
 			
 			

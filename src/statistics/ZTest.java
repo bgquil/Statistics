@@ -9,7 +9,12 @@ public class ZTest {
 	private double pValue;
 	private double q;
 	
-	// For a Sample
+	/**
+	 * For a z-Test with a supplied data set
+	 * @param s
+	 * @param popMean
+	 * @param popStdDev
+	 */
 	public ZTest(Sample s, double popMean, double popStdDev){
 		this.popMean = popMean;
 		this.popStdDev = popStdDev;
@@ -17,7 +22,13 @@ public class ZTest {
 		this.pValue = calculateProbability(zScore);
 		this.q = 1 - pValue;
 	}
-	// For a summary
+	/**
+	 * For a summary calculation
+	 * @param popMean
+	 * @param popStdDev
+	 * @param sampleMean
+	 * @param sampleN
+	 */
 	public ZTest(double popMean, double popStdDev, double sampleMean, double sampleN){
 		this.popMean = popMean;
 		this.popStdDev = popStdDev;

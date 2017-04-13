@@ -132,7 +132,7 @@ public class RegressionDialogController {
 			
 			Stage graphStage = new Stage();
 			graphStage.setTitle("Statistics - Linear Regression");
-			graphStage.initModality(Modality.WINDOW_MODAL);
+			graphStage.initModality(Modality.NONE);
 			graphStage.initOwner(dialogStage);
 			
 
