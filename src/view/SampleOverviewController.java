@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -193,21 +194,27 @@ public class SampleOverviewController{
 	@FXML
 	private void showData(){
 		
-		ObservableList<String> z1 = FXCollections.observableArrayList();
-		ObservableList<String> z2 = FXCollections.observableArrayList();
-		for (int i = 0; i < 100; i++){
-			String z = Double.toString((Math.random()+1)*100);
-			z1.add(z);
-			z2.add(Double.toString(Math.PI*Math.random()));
-			
+//		sampleList1.getItems().clear();
+//		sampleList2.getItems().clear();
+		sampleList1.getItems().set(0,Double.toString(randomRange(2.7, 4.0)) );
+		sampleList2.getItems().set(0,Double.toString(randomRange(60, 99)) );
+		for (int i = 1; i < 100; i++){
+
+			sampleList1.getItems().add(Double.toString(randomRange(2.7, 4.0)));
+			sampleList2.getItems().add(Double.toString(randomRange(60, 99)));
 			
 		}
-		sampleList1.setItems(z1);
-		sampleList2.setItems(z2);
+		
 		
 		
 		
 	}
+	
+	private double randomRange(double min, double max){
+		double range = max-min;
+		return (Math.random() * range)+min;
+	}
+	
 	
 	@FXML
 	private void handleClear1(){
