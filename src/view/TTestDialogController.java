@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.MainApp;
 import statistics.MathFunctions;
 import statistics.Sample;
@@ -105,16 +106,16 @@ public class TTestDialogController {
 		switch (selection) {
 		
 		case 0:
-			setupTTest(SampleOverviewController.getSample1());
+			setupTTest(Context.getInstance().getS1());
 			break;
 		case 1:
-			setupTTest(SampleOverviewController.getSample2());
+			setupTTest(Context.getInstance().getS2());
 			break;
 		case 2:
-			setupTTest(SampleOverviewController.getSample3());
+			setupTTest(Context.getInstance().getS3());
 			break;
 		case 3:
-			setupTTest(SampleOverviewController.getSample4());
+			setupTTest(Context.getInstance().getS4());
 			break;
 		
 			

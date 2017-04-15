@@ -25,6 +25,7 @@ import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.MainApp;
 import statistics.Sample;
 
@@ -42,12 +43,8 @@ public class SampleOverviewController{
 	public SampleOverviewController() {
 	}
 	
-	//containing all Sample objects
-	private static Sample s1,s2,s3,s4;
 
-	
 
-	
 
 	@FXML
 	private Label message;
@@ -140,50 +137,59 @@ public class SampleOverviewController{
 	
 
 	
-//	private static void generateSample(ObservableList<String> list, int sampleNum){
-//
-//		double d[] = new double[list.size()-1];
-//		for (int i = 0; i < list.size(); i++){
-//			try {
-//				 d[i] = (double) Double.parseDouble(list.get(i));
-//				 //System.out.println(d[i]);
-//			} catch (Exception e) {
-//				
-//				// TODO: handle exception
-//			}
-//		}
-//		Sample s = new Sample(d);
-//		
-//		switch (sampleNum) {
-//		
-//		case 1:
-//			s1 = s;
-//		case 2:
-//			s2 = s;
-//		case 3:
-//			s3 = s;
-//		case 4:
-//			s4 = s;
-//		}
-//		
-//	}
-//	
-//	public static Sample getSample1(){
-//		generateSample(l1 , 1);
-//		return s1;
-//	}
-//	public static Sample getSample2(){
-//		generateSample(l2 , 2);
-//		return s2;
-//	}
-//	public static Sample getSample3(){
-//		generateSample(l3 , 3);
-//		return s3;
-//	}
-//	public static Sample getSample4(){
-//		generateSample(l4 , 4);
-//		return s4;
-//	}
+	private void generateSample(ListView<String> view, int sampleNum){
+		
+		Sample s = null;
+		ObservableList<String> list = view.getItems();
+		if (list.size() > 5){
+		
+			double d[] = new double[list.size()-1];
+			for (int i = 0; i < list.size(); i++){
+				try {
+					 d[i] = (double) Double.parseDouble(list.get(i));
+					 //System.out.println(d[i]);
+				} catch (Exception e) {
+					
+					// TODO: handle exception
+				}
+			}
+			
+			s = new Sample(d);
+		}
+		else{
+			double d[] = {1,2,3,4,5};
+			s = new Sample(d);
+			s.setName("DEFAULT SAMPLE");
+		}
+			
+		switch (sampleNum) {
+		
+		case 1:
+			Context.getInstance().setS1(s);
+			break;
+		case 2:
+			Context.getInstance().setS2(s);
+			break;
+		case 3:
+			Context.getInstance().setS3(s);
+			break;
+		case 4:
+			Context.getInstance().setS4(s);
+			break;
+		}
+		
+			
+		
+	}
+	
+	
+	@FXML
+	private void set(){
+		generateSample(sampleList1, 1);
+		generateSample(sampleList2, 2);
+		generateSample(sampleList3, 3);
+		generateSample(sampleList4, 4);
+	}
 
 	
 	private void showMessage(String m){

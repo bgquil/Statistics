@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import statistics.Boxplot;
+import statistics.Context;
 import statistics.MainApp;
 import statistics.Sample;
 
@@ -44,13 +45,13 @@ public class BoxplotDialogController {
 public void handleShowBoxPlots(){
 	LinkedList<Sample> bpToShow = new LinkedList<Sample>();
 	if (s1Box.isSelected())
-		bpToShow.add(SampleOverviewController.getSample1());
+		bpToShow.add(Context.getInstance().getS1());
 	if (s2Box.isSelected())
-		bpToShow.add(SampleOverviewController.getSample2());
+		bpToShow.add(Context.getInstance().getS2());
 	if (s3Box.isSelected())
-		bpToShow.add(SampleOverviewController.getSample3());
+		bpToShow.add(Context.getInstance().getS3());
 	if (s4Box.isSelected())
-		bpToShow.add(SampleOverviewController.getSample4());
+		bpToShow.add(Context.getInstance().getS4());
 	
 	
 	if (bpToShow.isEmpty()){

@@ -45,6 +45,20 @@ public class Sample {
 		this.calculate();
 	}
 	
+	public Sample() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void setData(double[] data){
+		this.name = "DEFAULT";
+		this.sampleData = data;
+		this.sampleSize = data.length;
+		sortedSampleData = Arrays.copyOf(data, data.length);
+		Arrays.sort(this.sortedSampleData);
+		this.calculate();
+		
+	}
+
 	public String getName(){
 		return this.name;
 	}

@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.MainApp;
 import statistics.Sample;
 import statistics.ZTest;
@@ -102,16 +103,16 @@ public class ZTestDialogController {
 		switch (selection) {
 		
 		case 0:
-			setupZTest(SampleOverviewController.getSample1());
+			setupZTest(Context.getInstance().getS1());
 			break;
 		case 1:
-			setupZTest(SampleOverviewController.getSample2());
+			setupZTest(Context.getInstance().getS2());
 			break;
 		case 2:
-			setupZTest(SampleOverviewController.getSample3());
+			setupZTest(Context.getInstance().getS3());
 			break;
 		case 3:
-			setupZTest(SampleOverviewController.getSample4());
+			setupZTest(Context.getInstance().getS4());
 			break;
 		
 			

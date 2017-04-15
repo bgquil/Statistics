@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.FrequencyTable;
 import statistics.FrequencyTableEntry;
 import statistics.Sample;
@@ -87,16 +88,16 @@ public class DescriptiveStatisticsController {
 		switch (selection) {
 		
 		case 0:
-			showStats(SampleOverviewController.getSample1());
+			showStats(Context.getInstance().getS1());
 			break;
 		case 1:
-			showStats(SampleOverviewController.getSample2());
+			showStats(Context.getInstance().getS2());
 			break;
 		case 2:
-			showStats(SampleOverviewController.getSample3());
+			showStats(Context.getInstance().getS3());
 			break;
 		case 3:
-			showStats(SampleOverviewController.getSample4());
+			showStats(Context.getInstance().getS4());
 			break;
 		
 			

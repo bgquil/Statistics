@@ -51,5 +51,6 @@
       <Button layoutX="314.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear2" text="Clear" />
       <Button layoutX="514.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear3" text="Clear" />
       <Button layoutX="714.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear4" text="Clear" />
+      <Button layoutX="979.0" layoutY="312.0" mnemonicParsing="false" onAction="#set" text="set" />
    </children>
 </AnchorPane>
