@@ -8,30 +8,14 @@
 
 <AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SampleOverviewController">
    <children>
-      <Label fx:id="sampleLable1" layoutX="109.0" layoutY="26.0" text="Data Set 1" />
-      <Label fx:id="sampleLable2" layoutX="308.0" layoutY="26.0" text="Data Set 2" />
-      <Label fx:id="sampleLable3" layoutX="508.0" layoutY="26.0" text="Data Set 3" />
-      <Label fx:id="sampleLable4" layoutX="708.0" layoutY="26.0" text="Data Set 4" />
+      <Label fx:id="sampleLable1" layoutX="82.0" layoutY="26.0" text="Data Set 1" />
+      <Label fx:id="sampleLable2" layoutX="238.0" layoutY="26.0" text="Data Set 2" />
+      <Label fx:id="sampleLable3" layoutX="386.0" layoutY="26.0" text="Data Set 3" />
+      <Label fx:id="sampleLable4" layoutX="542.0" layoutY="26.0" text="Data Set 4" />
       <HBox layoutX="72.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0" />
       <HBox layoutX="235.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0">
          <children>
             <Label fx:id="numLabel2" text="N=">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-         </children>
-      </HBox>
-      <HBox layoutX="435.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0">
-         <children>
-            <Label fx:id="numLabel3" text="N=">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-         </children>
-      </HBox>
-      <HBox layoutX="640.0" layoutY="53.0" prefHeight="17.0" prefWidth="92.0">
-         <children>
-            <Label fx:id="numLabel4" text="N=">
                <font>
                   <Font size="15.0" />
                </font></Label>
@@ -42,20 +26,46 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="showData" layoutX="986.0" layoutY="152.0" mnemonicParsing="false" onAction="#showData" text="Test" />
-      <Button layoutX="109.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear1" text="Clear" />
-      <Button layoutX="314.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear2" text="Clear" />
-      <Button layoutX="514.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear3" text="Clear" />
-      <Button layoutX="714.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear4" text="Clear" />
-      <Button layoutX="979.0" layoutY="312.0" mnemonicParsing="false" onAction="#set" text="set" />
+      <Button fx:id="showData" layoutX="1142.0" layoutY="251.0" mnemonicParsing="false" onAction="#showData" text="Test" />
+      <Button layoutX="88.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear1" text="Clear" />
+      <Button layoutX="238.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear2" text="Clear" />
+      <Button layoutX="392.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear3" text="Clear" />
+      <Button layoutX="542.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear4" text="Clear" />
+      <Button layoutX="1145.0" layoutY="366.0" mnemonicParsing="false" onAction="#set" text="set" />
       <Button layoutX="1161.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleImport" text="Import" />
-      <HBox layoutX="37.0" layoutY="74.0" prefHeight="571.0" prefWidth="946.0">
+      <HBox layoutX="37.0" layoutY="74.0" prefHeight="571.0" prefWidth="978.0">
          <children>
-            <ListView fx:id="sampleList1" prefHeight="219.0" prefWidth="200.0" />
-            <ListView fx:id="sampleList2" prefHeight="558.0" prefWidth="200.0" />
-            <ListView fx:id="sampleList3" prefHeight="558.0" prefWidth="200.0" />
-            <ListView fx:id="sampleList4" prefHeight="558.0" prefWidth="200.0" />
+            <ListView fx:id="sampleList1" prefHeight="571.0" prefWidth="150.0" />
+            <ListView fx:id="sampleList2" prefHeight="558.0" prefWidth="150.0" />
+            <ListView fx:id="sampleList3" prefHeight="558.0" prefWidth="150.0" />
+            <ListView fx:id="sampleList4" prefHeight="558.0" prefWidth="150.0" />
+            <ListView fx:id="sampleList5" prefHeight="558.0" prefWidth="150.0" />
+            <ListView fx:id="sampleList6" prefHeight="558.0" prefWidth="150.0" />
          </children>
       </HBox>
+      <Button layoutX="693.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear5" text="Clear" />
+      <Button layoutX="848.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear6" text="Clear" />
+      <Label fx:id="numLabel3" layoutX="350.0" layoutY="51.0" text="N=">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="numLabel4" layoutX="499.0" layoutY="53.0" text="N=">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="sampleLable5" layoutX="687.0" layoutY="26.0" text="Data Set 5" />
+      <Label fx:id="sampleLable6" layoutX="836.0" layoutY="26.0" text="Data Set 6" />
+      <Label fx:id="numLabel5" layoutX="652.0" layoutY="51.0" text="N=">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="numLabel6" layoutX="795.0" layoutY="51.0" text="N=">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -64,6 +64,10 @@ public class SampleOverviewController{
 	private ListView<String> sampleList3;
 	@FXML
 	private ListView<String> sampleList4;
+	@FXML
+	private ListView<String> sampleList5;
+	@FXML
+	private ListView<String> sampleList6;
 	
 	@FXML
 	private Label sampleLabel1;
@@ -73,6 +77,10 @@ public class SampleOverviewController{
 	private Label sampleLabel3;
 	@FXML
 	private Label sampleLabel4;
+	@FXML
+	private Label sampleLabel5;
+	@FXML
+	private Label sampleLabel6;
 
 	@FXML
 	private Label numLabel1;
@@ -82,7 +90,10 @@ public class SampleOverviewController{
 	private Label numLabel3;
 	@FXML
 	private Label numLabel4;
-
+	@FXML
+	private Label numLabel5;
+	@FXML
+	private Label numLabel6;
 	
 	@FXML
 	private void initialize() {
@@ -92,12 +103,16 @@ public class SampleOverviewController{
 		setupList(sampleList2);
 		setupList(sampleList3);
 		setupList(sampleList4);	
+		setupList(sampleList5);
+		setupList(sampleList6);
 		
 		// Bind numLabels to list Size
 		numLabel1.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList1.getItems()).subtract(1).asString()));
 		numLabel2.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList2.getItems()).subtract(1).asString()));
 		numLabel3.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList3.getItems()).subtract(1).asString()));
 		numLabel4.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList4.getItems()).subtract(1).asString()));
+		numLabel5.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList5.getItems()).subtract(1).asString()));
+		numLabel6.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList6.getItems()).subtract(1).asString()));
 		
 		
 	}
@@ -187,6 +202,12 @@ public class SampleOverviewController{
 		case 4:
 			Context.getInstance().setS4(s);
 			break;
+		case 5:
+			Context.getInstance().setS5(s);
+			break;
+		case 6:
+			Context.getInstance().setS5(s);
+			break;
 		}
 		
 			
@@ -194,7 +215,7 @@ public class SampleOverviewController{
 	}
 	
 	private boolean parseHelper(String input){
-		if (input.equals(null)){
+		if (input.equals(null) || input.equals("")){
 			return false;
 		}
 		return true;
@@ -207,6 +228,8 @@ public class SampleOverviewController{
 		generateSample(sampleList2, 2);
 		generateSample(sampleList3, 3);
 		generateSample(sampleList4, 4);
+		generateSample(sampleList5, 5);
+		generateSample(sampleList6, 6);
 	}
 
 	
@@ -262,9 +285,18 @@ public class SampleOverviewController{
 	@FXML
 	private void handleClear4(){
 		sampleList4.getItems().clear();
-		sampleList4.getItems().add("");
+		sampleList4.getItems().add("");	
+	}
+	@FXML
+	private void handleClear5(){
+		sampleList5.getItems().clear();
+		sampleList5.getItems().add("");	
+	}
+	@FXML
+	private void handleClear6(){
+		sampleList6.getItems().clear();
+		sampleList6.getItems().add("");
 
-		
 	}
 	
 	
@@ -301,7 +333,9 @@ public class SampleOverviewController{
         		sampleList2.getItems().add(index, splitEntry[1]);
         		sampleList3.getItems().add(index, splitEntry[2]);
         		sampleList4.getItems().add(index, splitEntry[3]);
-
+        		sampleList5.getItems().add(index, splitEntry[4]);
+        		sampleList6.getItems().add(index, splitEntry[5]);
+        		
         		index++;
             }
 

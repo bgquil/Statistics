@@ -9,6 +9,8 @@ public class Context {
 	private Sample s2 = new Sample();
 	private Sample s3 = new Sample();
 	private Sample s4 = new Sample();
+	private Sample s5 = new Sample();
+	private Sample s6 = new Sample();
 	
 	public static Context getInstance(){
 		return instance;
@@ -37,6 +39,34 @@ public class Context {
 	}
 	public void setS4(Sample s4) {
 		this.s4 = s4;
+	}
+
+	/**
+	 * @return the s5
+	 */
+	public Sample getS5() {
+		return s5;
+	}
+
+	/**
+	 * @param s5 the s5 to set
+	 */
+	public void setS5(Sample s5) {
+		this.s5 = s5;
+	}
+
+	/**
+	 * @return the s6
+	 */
+	public Sample getS6() {
+		return s6;
+	}
+
+	/**
+	 * @param s6 the s6 to set
+	 */
+	public void setS6(Sample s6) {
+		this.s6 = s6;
 	}
 
 
