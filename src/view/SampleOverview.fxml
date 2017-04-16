@@ -8,10 +8,6 @@
 
 <AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SampleOverviewController">
    <children>
-      <ListView fx:id="sampleList1" layoutX="35.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
-      <ListView fx:id="sampleList2" layoutX="235.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
-      <ListView fx:id="sampleList3" layoutX="435.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
-      <ListView fx:id="sampleList4" layoutX="635.0" layoutY="88.0" prefHeight="558.0" prefWidth="200.0" />
       <Label fx:id="sampleLable1" layoutX="109.0" layoutY="26.0" text="Data Set 1" />
       <Label fx:id="sampleLable2" layoutX="308.0" layoutY="26.0" text="Data Set 2" />
       <Label fx:id="sampleLable3" layoutX="508.0" layoutY="26.0" text="Data Set 3" />
@@ -52,5 +48,14 @@
       <Button layoutX="514.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear3" text="Clear" />
       <Button layoutX="714.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClear4" text="Clear" />
       <Button layoutX="979.0" layoutY="312.0" mnemonicParsing="false" onAction="#set" text="set" />
+      <Button layoutX="1161.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleImport" text="Import" />
+      <HBox layoutX="37.0" layoutY="74.0" prefHeight="571.0" prefWidth="946.0">
+         <children>
+            <ListView fx:id="sampleList1" prefHeight="219.0" prefWidth="200.0" />
+            <ListView fx:id="sampleList2" prefHeight="558.0" prefWidth="200.0" />
+            <ListView fx:id="sampleList3" prefHeight="558.0" prefWidth="200.0" />
+            <ListView fx:id="sampleList4" prefHeight="558.0" prefWidth="200.0" />
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

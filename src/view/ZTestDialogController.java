@@ -88,11 +88,6 @@ public class ZTestDialogController {
 	private TextField summaryPValue;
 	
 
-	
-
-	
-	
-
 	/*
 	 * 	Calculate and show the ZTest Graph.
 	 */
@@ -117,29 +112,6 @@ public class ZTestDialogController {
 		
 			
 		}
-		
-		
-	}
-	
-	private void setupZTest(Sample s){
-		
-		try {
-			double popMean = (double) Double.parseDouble(popMeanTextBox.getText());
-			double stdDev = (double) Double.parseDouble(popStdDeviationTextBox.getText());
-			
-			ZTest zSample = new ZTest(s, popMean, stdDev);
-			resultZScore.setText(Double.toString(zSample.getZScore()));
-			resultPValue.setText(Double.toString(zSample.getPValue()));
-			
-			setupZTest(zSample);
-
-		} catch (Exception e) {
-			e.getMessage();
-			message.setText("Error");
-		}
-		
-		
-		
 	}
 	
 	@FXML
@@ -149,17 +121,36 @@ public class ZTestDialogController {
 		double stdDev = (double) Double.parseDouble(popStdDev.getText());
 		double sMean = (double) Double.parseDouble(sampleMeanTextField.getText());
 		double sNum = (double) Double.parseDouble(sampleNumTextField.getText());
-		
+		String selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedItem();
 		ZTest zSummary = new ZTest(popMean, stdDev, sMean, sNum );
 		summaryZScore.setText(Double.toString(zSummary.getZScore()));
 		summaryPValue.setText(Double.toString(zSummary.getPValue()));
 		
-		setupZTest(zSummary);
+		setupZTest(zSummary, selection);
 	}
 	
-	private void setupZTest(ZTest z){
-		
-		String selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedItem();
+	private void setupZTest(Sample s){
+		String selection = alternativeChoiceBox.getSelectionModel().getSelectedItem();
+		try {
+			double popMean = (double) Double.parseDouble(popMeanTextBox.getText());
+			double stdDev = (double) Double.parseDouble(popStdDeviationTextBox.getText());
+			
+			ZTest zSample = new ZTest(s, popMean, stdDev);
+			resultZScore.setText(Double.toString(zSample.getZScore()));
+			resultPValue.setText(Double.toString(zSample.getPValue()));
+			
+			setupZTest(zSample, selection);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+			message.setText("Error");
+		}
+	}
+	
+
+	
+	private void setupZTest(ZTest z, String selection){
 		
 		switch (selection){
 		case "Not Equal":

@@ -163,8 +163,8 @@ public class RegressionDialogController {
 	        LinearRegression lr = new LinearRegression(ind,dep);
 	        double lr_b0 = lr.getB0();
 	        double lr_b1 = lr.getB1();
-	        double stddev = ind.getSampleStdDev();
-	        for ( double x = 0; x < ind.getSampleMax()+stddev; x++){
+	        double min = ind.getSampleMin();
+	        for ( double x = min; x < ind.getSampleMax(); x++){
 	        	
 	        	double y = lr_b0 + lr_b1*x ;
 	        	lineSeries.getData().add(new XYChart.Data<>(x, y));

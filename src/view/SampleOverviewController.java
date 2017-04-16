@@ -1,5 +1,9 @@
 package view;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -16,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -24,15 +29,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import statistics.Context;
+import statistics.DataEntry;
 import statistics.MainApp;
 import statistics.Sample;
 
 public class SampleOverviewController{
 	
 	
-	
+	private Stage fStage;
 	private MainApp mainApp;
 	
 	public void setMainApp(MainApp mainApp){
@@ -146,7 +153,11 @@ public class SampleOverviewController{
 			double d[] = new double[list.size()-1];
 			for (int i = 0; i < list.size(); i++){
 				try {
-					 d[i] = (double) Double.parseDouble(list.get(i));
+					System.out.println(list.get(i));
+					if (parseHelper(list.get(i))){
+						d[i] = (double) Double.parseDouble(list.get(i));	
+					}
+					
 					 //System.out.println(d[i]);
 				} catch (Exception e) {
 					
@@ -182,6 +193,13 @@ public class SampleOverviewController{
 		
 	}
 	
+	private boolean parseHelper(String input){
+		if (input.equals(null)){
+			return false;
+		}
+		return true;
+	}
+	
 	
 	@FXML
 	private void set(){
@@ -200,19 +218,21 @@ public class SampleOverviewController{
 	@FXML
 	private void showData(){
 		
-//		sampleList1.getItems().clear();
-//		sampleList2.getItems().clear();
-		sampleList1.getItems().set(0,Double.toString(randomRange(2.7, 4.0)) );
-		sampleList2.getItems().set(0,Double.toString(randomRange(60, 99)) );
-		for (int i = 1; i < 100; i++){
 
-			sampleList1.getItems().add(Double.toString(randomRange(2.7, 4.0)));
-			sampleList2.getItems().add(Double.toString(randomRange(60, 99)));
+		for (int i = 0; i < 100; i++){
+
+			sampleList1.getItems().add(i,Double.toString(randomRange(2.7, 4.0)));
+			sampleList2.getItems().add(i,Double.toString(randomRange(60, 99)));
 			
 		}
 		
+
 		
 		
+		
+	}
+	
+	private void addData(ListView<String> l, double[] array ){
 		
 	}
 	
@@ -246,7 +266,51 @@ public class SampleOverviewController{
 
 		
 	}
+	
+	
+	/*
+	 * Imports
+	 */
 
+	
+	@FXML
+	private void handleImport(){
+		FileChooser f = new FileChooser();
+		f.setTitle("Open File");
+		
+		File file = f.showOpenDialog(fStage);
+		if (file != null){
+			//fileName.setText(file.getAbsolutePath());	
+			readFile(file.getAbsolutePath());
+		}
+		
+	}
+
+
+	private void readFile(String filePath){
+		boolean done = false;
+        String line = "";
+        String cvsSplitBy = ",";
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        	int index = 0;
+        	while ((line = br.readLine()) != null) {
+        		
+        		String[] splitEntry = line.split(cvsSplitBy);
+        		sampleList1.getItems().add(index, splitEntry[0]);
+        		sampleList2.getItems().add(index, splitEntry[1]);
+        		sampleList3.getItems().add(index, splitEntry[2]);
+        		sampleList4.getItems().add(index, splitEntry[3]);
+
+        		index++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+		
+	}
 	
 	
 	

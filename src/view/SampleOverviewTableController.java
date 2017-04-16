@@ -80,6 +80,11 @@ public class SampleOverviewTableController {
 		c11.setCellValueFactory(cellData -> cellData.getValue().c11Property());
 		c12.setCellValueFactory(cellData -> cellData.getValue().c12Property());
 		c13.setCellValueFactory(cellData -> cellData.getValue().c13Property());
+		c1.setEditable(true);
+		c2.setEditable(true);
+		c3.setEditable(true);
+		c4.setEditable(true);
+		table.setEditable(true);
 		
 		
 	}
@@ -140,9 +145,9 @@ public class SampleOverviewTableController {
         String cvsSplitBy = ",";
         ObservableList<DataEntry> o  = FXCollections.observableArrayList();
         DataEntry d = null;
+        
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-
-           
+       
         	if (titles.isSelected()){
         		
         	}
@@ -161,7 +166,6 @@ public class SampleOverviewTableController {
             	 
             	 
             	 if (titles.isSelected() && !done){
-              		
               		c1.setText(entry[0]);
               		c2.setText(entry[1]);
               		c3.setText(entry[2]);
@@ -176,12 +180,11 @@ public class SampleOverviewTableController {
               		c12.setText(entry[11]);
               		c13.setText(entry[12]);
               		done = true;
-              		
              	}
             
             	
                 // use comma as separator
-               
+     
                 d = new DataEntry();
                 if (entry[0] != null)
                 	d.setC1(entry[0]);
@@ -210,7 +213,7 @@ public class SampleOverviewTableController {
                 if (entry[12] != null)
 	                d.setC13(entry[12]);
 	  
-               
+              
                 o.add(d);
             }
 
