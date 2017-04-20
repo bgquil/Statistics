@@ -52,15 +52,6 @@ public class RootLayoutController {
 	
 	
 	/*
-	 * 	Open the Regression Dialog.
-	 */
-	@FXML
-	private void handleShowImportDialog() {
-		mainApp.showImportDialog();
-		
-	}
-	
-	/*
 	 * 	Open the ZTestDialog.
 	 */
 	@FXML
