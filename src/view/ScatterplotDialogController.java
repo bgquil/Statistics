@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.LinearRegression;
 import statistics.Sample;
 
@@ -76,16 +77,16 @@ public class ScatterplotDialogController {
 		switch (xChoice) {
 		
 		case 0:
-			x = SampleOverviewController.getSample1();
+			x = Context.getInstance().getS1();
 			break;
 		case 1:
-			x = SampleOverviewController.getSample2();
+			x = Context.getInstance().getS2();
 			break;
 		case 2:
-			x = SampleOverviewController.getSample3();
+			x = Context.getInstance().getS3();
 			break;
 		case 3:
-			x = SampleOverviewController.getSample4();;
+			x = Context.getInstance().getS4();
 			break;
 		
 			
@@ -94,16 +95,16 @@ public class ScatterplotDialogController {
 		switch (yChoice) {
 		
 		case 0:
-			y = SampleOverviewController.getSample1();
+			y = Context.getInstance().getS1();
 			break;
 		case 1:
-			y = SampleOverviewController.getSample2();
+			y = Context.getInstance().getS2();
 			break;
 		case 2:
-			y = SampleOverviewController.getSample3();
+			y = Context.getInstance().getS3();
 			break;
 		case 3:
-			y = SampleOverviewController.getSample4();;
+			y = Context.getInstance().getS4();
 			break;
 		
 			

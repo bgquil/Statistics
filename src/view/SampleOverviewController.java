@@ -1,9 +1,14 @@
 package view;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -15,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -23,14 +29,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import statistics.Context;
+import statistics.DataEntry;
 import statistics.MainApp;
 import statistics.Sample;
 
 public class SampleOverviewController{
 	
 	
-	
+	private Stage fStage;
 	private MainApp mainApp;
 	
 	public void setMainApp(MainApp mainApp){
@@ -41,12 +50,8 @@ public class SampleOverviewController{
 	public SampleOverviewController() {
 	}
 	
-	//containing all Sample objects
-	private static Sample s1,s2,s3,s4;
-	final static ObservableList<Sample> samples = FXCollections.observableArrayList(s1,s2,s3,s4);
-	
 
-	
+
 
 	@FXML
 	private Label message;
@@ -59,6 +64,10 @@ public class SampleOverviewController{
 	private ListView<String> sampleList3;
 	@FXML
 	private ListView<String> sampleList4;
+	@FXML
+	private ListView<String> sampleList5;
+	@FXML
+	private ListView<String> sampleList6;
 	
 	@FXML
 	private Label sampleLabel1;
@@ -68,6 +77,10 @@ public class SampleOverviewController{
 	private Label sampleLabel3;
 	@FXML
 	private Label sampleLabel4;
+	@FXML
+	private Label sampleLabel5;
+	@FXML
+	private Label sampleLabel6;
 
 	@FXML
 	private Label numLabel1;
@@ -77,30 +90,29 @@ public class SampleOverviewController{
 	private Label numLabel3;
 	@FXML
 	private Label numLabel4;
-	
-
-	
-	// ObservableList contains the elements of each ListView
-	private static ObservableList<String> l1 = FXCollections.observableArrayList("");
-	private static ObservableList<String> l2 = FXCollections.observableArrayList("");
-	private static ObservableList<String> l3 = FXCollections.observableArrayList("");
-	private static ObservableList<String> l4 = FXCollections.observableArrayList("");
-	private final int NUM_OF_LISTS = 4;
+	@FXML
+	private Label numLabel5;
+	@FXML
+	private Label numLabel6;
 	
 	@FXML
 	private void initialize() {
 		
 		// Setup ListView keyboard/editing operations
-		setupList(sampleList1, l1);
-		setupList(sampleList2, l2);
-		setupList(sampleList3, l3);
-		setupList(sampleList4, l4);	
+		setupList(sampleList1);
+		setupList(sampleList2);
+		setupList(sampleList3);
+		setupList(sampleList4);	
+		setupList(sampleList5);
+		setupList(sampleList6);
 		
 		// Bind numLabels to list Size
-		numLabel1.textProperty().bind(Bindings.concat("N= ",Bindings.size(l1).subtract(1).asString()));
-		numLabel2.textProperty().bind(Bindings.concat("N= ",Bindings.size(l2).subtract(1).asString()));
-		numLabel3.textProperty().bind(Bindings.concat("N= ",Bindings.size(l3).subtract(1).asString()));
-		numLabel4.textProperty().bind(Bindings.concat("N= ",Bindings.size(l4).subtract(1).asString()));
+		numLabel1.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList1.getItems()).subtract(1).asString()));
+		numLabel2.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList2.getItems()).subtract(1).asString()));
+		numLabel3.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList3.getItems()).subtract(1).asString()));
+		numLabel4.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList4.getItems()).subtract(1).asString()));
+		numLabel5.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList5.getItems()).subtract(1).asString()));
+		numLabel6.textProperty().bind(Bindings.concat("N= ",Bindings.size(sampleList6.getItems()).subtract(1).asString()));
 		
 		
 	}
@@ -108,9 +120,9 @@ public class SampleOverviewController{
 	/*
 	 * Initializes the ListView data sets and ObservableLists
 	 */
-	private void setupList(ListView<String> v, ObservableList<String> l){
-		for (int i = 0; i < NUM_OF_LISTS; i++){
-			v.setItems(l);
+	private void setupList(ListView<String> v){
+
+			v.getItems().add("");
 			v.setEditable(true);
 			v.setCellFactory(TextFieldListCell.forListView());
 			v.setOnEditCommit(new EventHandler<ListView.EditEvent<String>>(){
@@ -118,8 +130,8 @@ public class SampleOverviewController{
 				public void handle(ListView.EditEvent<String> t) {
 					if (!t.getNewValue().equals("")){
 						v.getItems().set(t.getIndex(), t.getNewValue());
-						if (t.getIndex() == l.size()-1){
-							l.add("");
+						if (t.getIndex() == v.getItems().size()-1){
+							v.getItems().add("");
 							v.getSelectionModel().select(t.getIndex()+1);
 						}
 					}
@@ -132,63 +144,92 @@ public class SampleOverviewController{
 			v.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			
 				public void handle( final KeyEvent ke){
-						if (ke.getCode().equals(KeyCode.DELETE) && l.size() > 1){
-							v.getItems().remove(v.getSelectionModel().getSelectedIndex());
-							v.getSelectionModel().select(v.getSelectionModel().getSelectedIndex()-10);
+						if (ke.getCode().equals(KeyCode.DELETE) && v.getItems().size() > 1){
+							int currentIndex = v.getSelectionModel().getSelectedIndex();
+							
+							v.getItems().remove(currentIndex);
+							v.getSelectionModel().select(currentIndex-1);
 						}
 						else if (!(ke.getCode().equals(KeyCode.ENTER))){
 							v.edit(v.getSelectionModel().getSelectedIndex());
 						}
 					}
 			});
-		}
 	}
 	
 
 	
-	private static void generateSample(ObservableList<String> list, int sampleNum){
-
-		double d[] = new double[list.size()-1];
-		for (int i = 0; i < list.size(); i++){
-			try {
-				 d[i] = (double) Double.parseDouble(list.get(i));
-				 //System.out.println(d[i]);
-			} catch (Exception e) {
-				
-				// TODO: handle exception
-			}
-		}
-		Sample s = new Sample(d);
+	private void generateSample(ListView<String> view, int sampleNum){
 		
+		Sample s = null;
+		ObservableList<String> list = view.getItems();
+		if (list.size() > 5){
+		
+			double d[] = new double[list.size()-1];
+			for (int i = 0; i < list.size(); i++){
+				try {
+					System.out.println(list.get(i));
+					if (parseHelper(list.get(i))){
+						d[i] = (double) Double.parseDouble(list.get(i));	
+					}
+					
+					 //System.out.println(d[i]);
+				} catch (Exception e) {
+					
+					// TODO: handle exception
+				}
+			}
+			
+			s = new Sample(d);
+		}
+		else{
+			double d[] = {1,2,3,4,5};
+			s = new Sample(d);
+			s.setName("DEFAULT SAMPLE");
+		}
+			
 		switch (sampleNum) {
 		
 		case 1:
-			s1 = s;
+			Context.getInstance().setS1(s);
+			break;
 		case 2:
-			s2 = s;
+			Context.getInstance().setS2(s);
+			break;
 		case 3:
-			s3 = s;
+			Context.getInstance().setS3(s);
+			break;
 		case 4:
-			s4 = s;
+			Context.getInstance().setS4(s);
+			break;
+		case 5:
+			Context.getInstance().setS5(s);
+			break;
+		case 6:
+			Context.getInstance().setS5(s);
+			break;
 		}
+		
+			
 		
 	}
 	
-	public static Sample getSample1(){
-		generateSample(l1 , 1);
-		return s1;
+	private boolean parseHelper(String input){
+		if (input.equals(null) || input.equals("")){
+			return false;
+		}
+		return true;
 	}
-	public static Sample getSample2(){
-		generateSample(l2 , 2);
-		return s2;
-	}
-	public static Sample getSample3(){
-		generateSample(l3 , 3);
-		return s3;
-	}
-	public static Sample getSample4(){
-		generateSample(l4 , 4);
-		return s4;
+	
+	
+	@FXML
+	private void set(){
+		generateSample(sampleList1, 1);
+		generateSample(sampleList2, 2);
+		generateSample(sampleList3, 3);
+		generateSample(sampleList4, 4);
+		generateSample(sampleList5, 5);
+		generateSample(sampleList6, 6);
 	}
 
 	
@@ -200,49 +241,110 @@ public class SampleOverviewController{
 	@FXML
 	private void showData(){
 		
-		ObservableList<String> z1 = FXCollections.observableArrayList();
-		ObservableList<String> z2 = FXCollections.observableArrayList();
+
 		for (int i = 0; i < 100; i++){
-			String z = Double.toString((Math.random()+1)*100);
-			z1.add(z);
-			l1.add(z);
-			z2.add(Double.toString(Math.PI*Math.random()));
-			l2.add(Double.toString(Math.PI*Math.random()));
+
+			sampleList1.getItems().add(i,Double.toString(randomRange(2.7, 4.0)));
+			sampleList2.getItems().add(i,Double.toString(randomRange(60, 99)));
 			
 		}
-		sampleList1.setItems(z1);
-		sampleList2.setItems(z2);
+		
+
 		
 		
 		
 	}
 	
+	private void addData(ListView<String> l, double[] array ){
+		
+	}
+	
+	private double randomRange(double min, double max){
+		double range = max-min;
+		return (Math.random() * range)+min;
+	}
+	
+	
 	@FXML
 	private void handleClear1(){
-		l1.clear();
-		l1.add("");
-		sampleList1.setItems(l1);
+		sampleList1.getItems().clear();
+		
+		sampleList1.getItems().add("");
 	}
 	@FXML
 	private void handleClear2(){
-		
-		l2.clear();
-		l2.add("");
-		sampleList2.setItems(l2);
+		sampleList2.getItems().clear();		
+		sampleList2.getItems().add("");
+
 	}
 	@FXML
 	private void handleClear3(){
-		l3.clear();
-		l3.add("");
-		sampleList3.setItems(l3);
+		sampleList3.getItems().clear();
+		sampleList3.getItems().add("");
 	}
 	@FXML
 	private void handleClear4(){
-		l4.clear();
-		l4.add("");
-		sampleList4.setItems(l4);
+		sampleList4.getItems().clear();
+		sampleList4.getItems().add("");	
+	}
+	@FXML
+	private void handleClear5(){
+		sampleList5.getItems().clear();
+		sampleList5.getItems().add("");	
+	}
+	@FXML
+	private void handleClear6(){
+		sampleList6.getItems().clear();
+		sampleList6.getItems().add("");
+
+	}
+	
+	
+	/*
+	 * Imports
+	 */
+
+	
+	@FXML
+	private void handleImport(){
+		FileChooser f = new FileChooser();
+		f.setTitle("Open File");
+		
+		File file = f.showOpenDialog(fStage);
+		if (file != null){
+			//fileName.setText(file.getAbsolutePath());	
+			readFile(file.getAbsolutePath());
+		}
+		
 	}
 
+
+	private void readFile(String filePath){
+		boolean done = false;
+        String line = "";
+        String cvsSplitBy = ",";
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        	int index = 0;
+        	while ((line = br.readLine()) != null) {
+        		
+        		String[] splitEntry = line.split(cvsSplitBy);
+        		sampleList1.getItems().add(index, splitEntry[0]);
+        		sampleList2.getItems().add(index, splitEntry[1]);
+        		sampleList3.getItems().add(index, splitEntry[2]);
+        		sampleList4.getItems().add(index, splitEntry[3]);
+        		sampleList5.getItems().add(index, splitEntry[4]);
+        		sampleList6.getItems().add(index, splitEntry[5]);
+        		
+        		index++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+		
+	}
 	
 	
 	

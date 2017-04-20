@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.LinearRegression;
 import statistics.MainApp;
 import statistics.Sample;
@@ -81,16 +82,16 @@ public class RegressionDialogController {
 		switch (selectionInd) {
 		
 		case 0:
-			ind = SampleOverviewController.getSample1();
+			ind = Context.getInstance().getS1();
 			break;
 		case 1:
-			ind = SampleOverviewController.getSample2();
+			ind = Context.getInstance().getS2();
 			break;
 		case 2:
-			ind = SampleOverviewController.getSample3();
+			ind = Context.getInstance().getS3();
 			break;
 		case 3:
-			ind = SampleOverviewController.getSample4();;
+			ind = Context.getInstance().getS4();
 			break;
 		
 			
@@ -99,16 +100,16 @@ public class RegressionDialogController {
 		switch (selectionDep) {
 		
 		case 0:
-			dep = SampleOverviewController.getSample1();
+			dep = Context.getInstance().getS1();
 			break;
 		case 1:
-			dep = SampleOverviewController.getSample2();
+			dep = Context.getInstance().getS2();
 			break;
 		case 2:
-			dep = SampleOverviewController.getSample3();
+			dep = Context.getInstance().getS3();
 			break;
 		case 3:
-			dep = SampleOverviewController.getSample4();;
+			dep = Context.getInstance().getS4();
 			break;
 		
 			
@@ -162,8 +163,8 @@ public class RegressionDialogController {
 	        LinearRegression lr = new LinearRegression(ind,dep);
 	        double lr_b0 = lr.getB0();
 	        double lr_b1 = lr.getB1();
-	        double stddev = ind.getSampleStdDev();
-	        for ( double x = 0; x < ind.getSampleMax()+stddev; x++){
+	        double min = ind.getSampleMin();
+	        for ( double x = min; x < ind.getSampleMax(); x++){
 	        	
 	        	double y = lr_b0 + lr_b1*x ;
 	        	lineSeries.getData().add(new XYChart.Data<>(x, y));

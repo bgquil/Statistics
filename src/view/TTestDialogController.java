@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import statistics.Context;
 import statistics.MainApp;
 import statistics.MathFunctions;
 import statistics.Sample;
@@ -105,16 +106,16 @@ public class TTestDialogController {
 		switch (selection) {
 		
 		case 0:
-			setupTTest(SampleOverviewController.getSample1());
+			setupTTest(Context.getInstance().getS1());
 			break;
 		case 1:
-			setupTTest(SampleOverviewController.getSample2());
+			setupTTest(Context.getInstance().getS2());
 			break;
 		case 2:
-			setupTTest(SampleOverviewController.getSample3());
+			setupTTest(Context.getInstance().getS3());
 			break;
 		case 3:
-			setupTTest(SampleOverviewController.getSample4());
+			setupTTest(Context.getInstance().getS4());
 			break;
 		
 			
@@ -122,16 +123,31 @@ public class TTestDialogController {
 		
 		
 	}
+	//From Summary
+	@FXML
+	private void handleStartTestSummary(){
+		
+		double popMean = (double) Double.parseDouble(nullHypMean.getText());
+		double stdDev = (double) Double.parseDouble(sampleStdDev.getText());
+		double sMean = (double) Double.parseDouble(sampleMeanTextField.getText());
+		int sNum = (int) Double.parseDouble(sampleNumTextField.getText());
+		String selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedItem();
+		TTest tSummary = new TTest(sMean,sNum,stdDev, popMean);
+		summaryTScore.setText(Double.toString(tSummary.getTStatistic()));
+		
+		setupTTest(tSummary, selection);
+	}
+	
 	//From Sample
 	private void setupTTest(Sample s){
 		
 		try {
 			double popMean = (double) Double.parseDouble(popMeanTextBox.getText());
 			//double stdDev = (double) Double.parseDouble(popStdDeviationTextBox.getText());
-			
+			String selection = alternativeChoiceBox.getSelectionModel().getSelectedItem();
 			TTest tTest = new TTest(s, popMean);
 			resultTScore.setText(Double.toString(tTest.getTStatistic()));
-			setupTTest(tTest);
+			setupTTest(tTest, selection);
 
 		} catch (Exception e) {
 			e.getMessage();
@@ -142,24 +158,11 @@ public class TTestDialogController {
 		
 	}
 	
-	//From Summary
-	@FXML
-	private void handleStartTestSummary(){
-		
-		double popMean = (double) Double.parseDouble(nullHypMean.getText());
-		double stdDev = (double) Double.parseDouble(sampleStdDev.getText());
-		double sMean = (double) Double.parseDouble(sampleMeanTextField.getText());
-		int sNum = (int) Double.parseDouble(sampleNumTextField.getText());
-		
-		TTest tSummary = new TTest(sMean,sNum,stdDev, popMean);
-		summaryTScore.setText(Double.toString(tSummary.getTStatistic()));
-		
-		setupTTest(tSummary);
-	}
+
 	
-	private void setupTTest(TTest t){
+	private void setupTTest(TTest t, String selection){
 		
-		String selection = summaryAlternativeChoiceBox.getSelectionModel().getSelectedItem();
+		
 			
 		switch (selection){
 		case "Not Equal":
@@ -169,7 +172,6 @@ public class TTestDialogController {
 		case "Less Than":
 			showTTestGraph(t,LEFT,t.getTStatistic(), selection);
 			resultPValue.setText(Double.toString(t.getPValue()));
-			System.out.println(t.getPValue());
 			break;
 		case "Greater Than":
 			showTTestGraph(t,t.getTStatistic(),RIGHT, selection);
