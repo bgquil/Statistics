@@ -4,35 +4,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-
-import javafx.application.Application;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import statistics.Context;
-import statistics.DataEntry;
 import statistics.MainApp;
 import statistics.Sample;
 
@@ -168,7 +151,6 @@ public class SampleOverviewController{
 			double d[] = new double[list.size()-1];
 			for (int i = 0; i < list.size(); i++){
 				try {
-					System.out.println(list.get(i));
 					if (parseHelper(list.get(i))){
 						d[i] = (double) Double.parseDouble(list.get(i));	
 					}
@@ -345,6 +327,111 @@ public class SampleOverviewController{
 
 		
 	}
+	
+	/*
+	 * Open Test Buttons
+	 */
+	
+	
+	/*
+	 * 	Open the Samples page.
+	 */
+	@FXML
+	private void handleShowSample() {
+		mainApp.showSamples();
+		
+	}
+	
+	/*
+	 * 	Open the Samples table page.
+	 */
+	@FXML
+	private void handleShowSampleTable() {
+		mainApp.showSamplesTable();
+		
+	}
+	
+	
+	/*
+	 * 	Open the ZTestDialog.
+	 */
+	@FXML
+	private void handleShowZTestDialog() {
+		mainApp.showZTestDialog();
+		
+	}
+	
+	/*
+	 * 	Open the TTestDialog.
+	 */
+	@FXML
+	private void handleShowTTestDialog() {
+		set();
+		mainApp.showTTestDialog();
+		
+	}
+	
+	/*
+	 * 	Open the Regression Dialog.
+	 */
+	@FXML
+	private void handleShowRegressionDialog() {
+		set();
+		mainApp.showRegressionDialog();
+		
+	}
+	
+	/*
+	 * 	Open the ChiSquared Dialog.
+	 */
+	@FXML
+	private void handleShowChiSquaredDialog() {
+		set();
+		mainApp.showChiSquaredDialog();
+		
+	}
+	
+	/*
+	 * 	Open the Boxplot Dialog.
+	 */
+	@FXML
+	private void handleShowBoxplotDialog() {
+		set();
+		mainApp.showBoxplotDialog();
+		
+	}
+	
+	/*
+	 * 	Open the Sample Statistics Dialog.
+	 */
+	@FXML
+	private void handleShowDescriptiveStatistics() {
+		set();
+		mainApp.showDescriptiveStatistics();
+		
+	}
+	
+	/*
+	 * 	Open the Sample Statistics Dialog.
+	 */
+	@FXML
+	private void handleShowScatterplot() {
+		set();
+		mainApp.showScatterplot();
+	}
+	
+	
+	
+	/*
+	 * 	Close the Application
+	 */
+	@FXML
+	private void handleExit() {
+		System.exit(0);
+	}
+	
+	
+	
 	
 	
 	

@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import view.BoxplotDialogController;
 import view.ChiSquaredDialogController;
 import view.DescriptiveStatisticsController;
-import view.ImportDialogController;
 import view.RegressionDialogController;
 import view.RootLayoutController;
 import view.SampleOverviewController;
@@ -316,35 +315,7 @@ public class MainApp extends Application {
 		
 	}
 	
-	public void showImportDialog(){
-		
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/view/ImportDialog.fxml"));
-			AnchorPane importDialog = (AnchorPane) loader.load();
-			
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Import Dialog");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(importDialog);
-			dialogStage.setScene(scene);
-			
-		
-			
-			ImportDialogController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-			
-			dialogStage.showAndWait();
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+
 	
 
 
