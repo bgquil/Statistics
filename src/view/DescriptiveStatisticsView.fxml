@@ -8,122 +8,125 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.DescriptiveStatisticsController">
    <children>
-      <TableView fx:id="freqTable" layoutX="381.0" layoutY="41.0" prefHeight="518.0" prefWidth="221.0">
+      <TableView fx:id="freqTable" layoutX="465.0" layoutY="41.0" prefHeight="537.0" prefWidth="284.0">
         <columns>
-          <TableColumn fx:id="numCol" prefWidth="67.0" text="Number" />
-          <TableColumn fx:id="countCol" prefWidth="83.0" text="Count" />
-            <TableColumn fx:id="percentCol" prefWidth="75.0" text="Percent" />
+          <TableColumn fx:id="numCol" prefWidth="90.0" text="Number" />
+          <TableColumn fx:id="countCol" prefWidth="90.0" text="Count" />
+            <TableColumn fx:id="percentCol" prefWidth="103.0" text="Percent" />
         </columns>
       </TableView>
-      <VBox layoutX="21.0" layoutY="148.0" prefHeight="280.0" prefWidth="163.0">
+      <VBox layoutX="21.0" layoutY="148.0" prefHeight="350.0" prefWidth="231.0">
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="n">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Mean">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Standard Deviation">
+            <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="215.0" text="Standard Deviation">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Minimum">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Q1">
+            <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="176.0" text="Q1">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Median">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Q3">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Maximum">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="200.0" text="Range">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="251.0" layoutY="148.0" prefHeight="280.0" prefWidth="113.0">
+      <VBox layoutX="251.0" layoutY="148.0" prefHeight="350.0" prefWidth="182.0">
          <children>
-            <Label fx:id="num" prefHeight="17.0" prefWidth="150.0" text="n">
+            <Label fx:id="num" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="mean" prefHeight="17.0" prefWidth="150.0" text="Mean">
+            <Label fx:id="mean" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="deviation" prefHeight="17.0" prefWidth="150.0" text="dev">
+            <Label fx:id="deviation" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="min" prefHeight="17.0" prefWidth="150.0" text="Minimum">
+            <Label fx:id="min" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="q1" prefHeight="17.0" prefWidth="150.0" text="Q1">
+            <Label fx:id="q1" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="median" prefHeight="17.0" prefWidth="150.0" text="Median">
+            <Label fx:id="median" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="q3" prefHeight="17.0" prefWidth="150.0" text="Q3">
+            <Label fx:id="q3" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="max" prefHeight="17.0" prefWidth="150.0" text="Maximum">
+            <Label fx:id="max" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="range" prefHeight="17.0" prefWidth="150.0" text="Range">
+            <Label fx:id="range" prefHeight="17.0" prefWidth="150.0">
                <font>
-                  <Font size="19.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>
       </VBox>
       <ChoiceBox fx:id="sampleChoiceBox" layoutX="58.0" layoutY="61.0" prefWidth="150.0" />
-      <Button layoutX="251.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleSelectSample" onKeyTyped="#handleSelectSample" text="View Statistics" />
+      <Button layoutX="251.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleSelectSample" onKeyTyped="#handleSelectSample" text="View Statistics">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
    </children>
 </AnchorPane>

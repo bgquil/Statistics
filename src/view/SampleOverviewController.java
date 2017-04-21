@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -142,6 +145,8 @@ public class SampleOverviewController{
 	
 
 	
+
+	
 	private void generateSample(ListView<String> view, int sampleNum){
 		
 		Sample s = null;
@@ -248,6 +253,16 @@ public class SampleOverviewController{
 	
 	
 	@FXML
+	private void handleClearAll(){
+		handleClear1();
+		handleClear2();
+		handleClear3();
+		handleClear4();
+		handleClear5();
+		handleClear6();
+	}
+	
+	@FXML
 	private void handleClear1(){
 		sampleList1.getItems().clear();
 		
@@ -325,6 +340,11 @@ public class SampleOverviewController{
             e.printStackTrace();
         }
 
+		
+	}
+	
+	@FXML
+	private void handleExport(){
 		
 	}
 	

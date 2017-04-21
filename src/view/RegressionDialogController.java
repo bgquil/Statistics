@@ -144,7 +144,9 @@ public class RegressionDialogController {
 	        final NumberAxis yAxis = new NumberAxis();
 	        xAxis.setLabel(ind.getName());
 	        yAxis.setLabel(dep.getName());
-
+	        xAxis.setAutoRanging(true);
+	        yAxis.setAutoRanging(true);
+	        
 	        final LineChart<Number,Number> regressionGraph = 
 	                new LineChart<Number,Number>(xAxis,yAxis);   
 	        regressionGraph.setTitle("Linear Regression");
@@ -164,7 +166,9 @@ public class RegressionDialogController {
 	        double lr_b0 = lr.getB0();
 	        double lr_b1 = lr.getB1();
 	        double min = ind.getSampleMin();
-	        for ( double x = min; x < ind.getSampleMax(); x++){
+	        
+	        System.out.println(min);
+	        for ( double x = xAxis.getLowerBound(); x < ind.getSampleMax(); x = x + .5){
 	        	
 	        	double y = lr_b0 + lr_b1*x ;
 	        	lineSeries.getData().add(new XYChart.Data<>(x, y));
@@ -177,9 +181,17 @@ public class RegressionDialogController {
 	        r.setVisible(true);
 	        r2.setVisible(true);
 
-	        regressionGraph.setAnimated(false);
+	        regressionGraph.setAnimated(true);
 	        regressionGraph.setCreateSymbols(true);
 	        regressionGraph.getData().addAll(series,lineSeries);
+	        
+//	        xAxis.setLowerBound(ind.getSampleMin()-ind.getSampleStdDev());
+//	        xAxis.setUpperBound(ind.getSampleMax()+ind.getSampleStdDev());
+//	        
+//	        yAxis.setLowerBound(dep.getSampleMin()-dep.getSampleStdDev());
+//	        yAxis.setUpperBound(dep.getSampleMax()+dep.getSampleStdDev());
+	        
+	        xAxis.getUpperBound();
 
 
 

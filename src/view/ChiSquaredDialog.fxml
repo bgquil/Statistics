@@ -51,5 +51,6 @@
       <Label layoutX="169.0" layoutY="290.0" text="Chi-Statistic" />
       <Label layoutX="301.0" layoutY="291.0" text="P Value" />
       <TextField fx:id="pValueTexField" layoutX="274.0" layoutY="310.0" prefHeight="25.0" prefWidth="94.0" />
+      <Label layoutX="19.0" layoutY="348.0" text="Expected Values" />
    </children>
 </AnchorPane>

@@ -1,5 +1,7 @@
 package view;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -106,17 +108,24 @@ public class DescriptiveStatisticsController {
 		
 	}
 	
+	public double formatDouble(double val, int places){
+		
+		BigDecimal d = new BigDecimal(val);
+		d = d.setScale(places, RoundingMode.HALF_UP);
+		return d.doubleValue();
+	}
+	
 	private void showStats(Sample s){
 		
 		num.setText(Integer.toString(s.getSampleSize()));
-		mean.setText(Double.toString(s.getSampleMean()));
-		deviation.setText(Double.toString(s.getSampleStdDev()));
-		min.setText(Double.toString(s.getSampleMin()));
-		q1.setText(Double.toString(s.getSampleQ1()));
-		median.setText(Double.toString(s.getSampleMedian()));
-		q3.setText(Double.toString(s.getSampleQ3()));
-		max.setText(Double.toString(s.getSampleMax()));
-		range.setText(Double.toString(s.getSampleRange()));
+		mean.setText(Double.toString(formatDouble(s.getSampleMean(),3)));
+		deviation.setText(Double.toString(formatDouble(s.getSampleStdDev(),3)));
+		min.setText(Double.toString(formatDouble(s.getSampleMin(),3)));
+		q1.setText(Double.toString(formatDouble(s.getSampleQ1(),3)));
+		median.setText(Double.toString(formatDouble(s.getSampleMedian(),3)));
+		q3.setText(Double.toString(formatDouble(s.getSampleQ3(),3)));
+		max.setText(Double.toString(formatDouble(s.getSampleMax(),3)));
+		range.setText(Double.toString(formatDouble(s.getSampleRange(),3)));
 		
 		showFreqTable(s);
 		

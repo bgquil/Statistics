@@ -2,6 +2,9 @@ package view;
 
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -96,6 +99,13 @@ private Stage dialogStage;
 		
 	}
 	
+	public double formatDouble(double val, int places){
+		
+		BigDecimal d = new BigDecimal(val);
+		d = d.setScale(places, RoundingMode.HALF_UP);
+		return d.doubleValue();
+	}
+	
 	@FXML
 	private void handleGetMatrixData(){
 		
@@ -179,7 +189,7 @@ private Stage dialogStage;
 
 		for (int rowIndex = 0; rowIndex < rSize; rowIndex++){
 			for (int columnIndex = 0; columnIndex < cSize; columnIndex++){
-				TextField t0 = new TextField(Double.toString(dataExpected[rowIndex][columnIndex]));
+				TextField t0 = new TextField(Double.toString(formatDouble(dataExpected[rowIndex][columnIndex],3)));
 				t0.setStyle("-fx-font-size: 12pt;");
 				t0.setEditable(false);
 				gpHypothesis.add(t0, columnIndex, rowIndex );
@@ -189,8 +199,8 @@ private Stage dialogStage;
 		
 		double DOF = c.getDOF();
 		DOFTextField.setText(Integer.toString((int) DOF));
-		ChiStatisticTextField.setText(Double.toString(c.getChiStatistic()));
-		pValueTexField.setText(Double.toString(c.getpValue()));
+		ChiStatisticTextField.setText(Double.toString(formatDouble(c.getChiStatistic(),5)));
+		pValueTexField.setText(Double.toString(formatDouble(c.getpValue(),5)));
 		
 		showChiSquaredGraph(DOF, c.getChiStatistic());
 
@@ -215,13 +225,13 @@ private Stage dialogStage;
 
 	        final AreaChart<Number,Number> areaChart = 
 	                new AreaChart<Number,Number>(xAxis,yAxis);   
-	        areaChart.setTitle("Normal Distribution");
+	        areaChart.setTitle("Chi-Squared Distribution with DOF = "+(int)DOF);
 	             
 	        //areaChart.getData().addAll(generateChiSquaredDistribution(3.0), generateAreaUnderCurve(-4.0d, z.getZScore()));
 	        areaChart.getData().add(generateChiSquaredDistribution(DOF));
 	        areaChart.getData().add(generateAreaUnderCurve(x2,DOF));
 	        Scene scene  = new Scene(areaChart,800,600);
-	        scene.getStylesheets().add(getClass().getResource("/view/ZTestChart.css").toExternalForm());
+	        scene.getStylesheets().add(getClass().getResource("/view/ChiSquaredChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
 			

@@ -82,11 +82,13 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#handleShowZTestDialog" prefHeight="25.0" prefWidth="111.0" text="1-Sample Z Test" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="1-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="Simple LInear Regression" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handleShowTTestDialog" text="1-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#handleShowRegressionDialog" text="Simple LInear Regression" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" text="Descriptive Statistics" GridPane.columnIndex="1" />
          </children>
       </GridPane>
+      <Button layoutX="1074.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All" />
+      <Button layoutX="1161.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleExport" text="Export" />
    </children>
 </AnchorPane>
