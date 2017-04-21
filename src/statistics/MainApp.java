@@ -8,6 +8,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -129,7 +130,7 @@ public class MainApp extends Application {
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/view/SampleOverview.fxml"));
-			AnchorPane samplesOverview = (AnchorPane) loader.load();
+			ScrollPane samplesOverview = (ScrollPane) loader.load();
 			
 			rootLayout.setCenter(samplesOverview);
 			
@@ -294,7 +295,7 @@ public class MainApp extends Application {
 			AnchorPane chiSquaredDialog = (AnchorPane) loader.load();
 			
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("ChiSquared Test");
+			dialogStage.setTitle("Chi-Squared Test");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(chiSquaredDialog);

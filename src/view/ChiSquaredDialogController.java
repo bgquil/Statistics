@@ -222,6 +222,26 @@ private Stage dialogStage;
 	        final NumberAxis yAxis = new NumberAxis();
 	        xAxis.setLabel("x");
 	        yAxis.setLabel("P(x)");
+	        
+	        yAxis.setAutoRanging(false);
+	        
+	        yAxis.setUpperBound(.5);
+	        yAxis.setLowerBound(0);
+	        yAxis.setTickUnit(.1);
+	        
+	        xAxis.setAutoRanging(false);
+	        xAxis.setLowerBound(0);
+	        if (DOF < 3){
+		        
+		        xAxis.setUpperBound(8);
+		        xAxis.setTickUnit(1);
+	        }
+	        else{
+	        	xAxis.setUpperBound(12);
+		        xAxis.setTickUnit(1);
+	        	
+	        }
+	        
 
 	        final AreaChart<Number,Number> areaChart = 
 	                new AreaChart<Number,Number>(xAxis,yAxis);   
@@ -253,12 +273,13 @@ private Stage dialogStage;
          * Curve of a Chi-Squared Distribution
          * 
          */
-        for (double x = 0d; x < 16d; x = x +.01d){
+        for (double x = .001d; x < 16d; x = x +.01d){
         	
         	double numerator = Math.pow(x, ((n/2d)-1d)) * Math.exp(-x/2d);
         	double denominator = Math.pow(2, (n/2d)) * gamma(n/2d);
         	
         	double y = numerator/denominator;
+        	
         	
         	chiSquaredCurve.getData().add(new Data<Number, Number>(x, y));		
         }

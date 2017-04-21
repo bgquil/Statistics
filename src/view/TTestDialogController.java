@@ -135,7 +135,7 @@ public class TTestDialogController {
 		TTest tSummary = new TTest(sMean,sNum,stdDev, popMean);
 		summaryTScore.setText(Double.toString(tSummary.getTStatistic()));
 		
-		setupTTest(tSummary, selection);
+		setupTTest(tSummary, selection, "summary");
 	}
 	
 	//From Sample
@@ -147,7 +147,7 @@ public class TTestDialogController {
 			String selection = alternativeChoiceBox.getSelectionModel().getSelectedItem();
 			TTest tTest = new TTest(s, popMean);
 			resultTScore.setText(Double.toString(tTest.getTStatistic()));
-			setupTTest(tTest, selection);
+			setupTTest(tTest, selection, "data");
 
 		} catch (Exception e) {
 			e.getMessage();
@@ -160,26 +160,45 @@ public class TTestDialogController {
 	
 
 	
-	private void setupTTest(TTest t, String selection){
+	private void setupTTest(TTest t, String selection, String mode){
 		
 		
+		if (mode.equals("data")){
 			
 		switch (selection){
-		case "Not Equal":
-			showTTestGraph(t,LEFT,t.getTStatistic(), selection);
-			resultPValue.setText(Double.toString(t.getPValue()*2d));
-			break;
-		case "Less Than":
-			showTTestGraph(t,LEFT,t.getTStatistic(), selection);
-			resultPValue.setText(Double.toString(t.getPValue()));
-			break;
-		case "Greater Than":
-			showTTestGraph(t,t.getTStatistic(),RIGHT, selection);
-			resultPValue.setText(Double.toString(1d-t.getPValue()));
-			summaryPValue.setText(Double.toString(1d-t.getPValue()));
-			break;
+			case "Not Equal":
+				showTTestGraph(t,LEFT,t.getTStatistic(), selection);
+				resultPValue.setText(Double.toString(t.getPValue()*2d));
+				break;
+			case "Less Than":
+				showTTestGraph(t,LEFT,t.getTStatistic(), selection);
+				resultPValue.setText(Double.toString(t.getPValue()));
+				break;
+			case "Greater Than":
+				showTTestGraph(t,t.getTStatistic(),RIGHT, selection);
+				resultPValue.setText(Double.toString(1d-t.getPValue()));
+				break;
+				}
 		}
-		
+		else if (mode.equals("summary")){
+			System.out.println(mode);
+			
+			switch (selection){
+			case "Not Equal":
+				summaryPValue.setText(Double.toString(t.getPValue()*2d));
+				showTTestGraph(t,LEFT,t.getTStatistic(), selection);
+				
+				break;
+			case "Less Than":
+				summaryPValue.setText(Double.toString(t.getPValue()));
+				showTTestGraph(t,LEFT,t.getTStatistic(), selection);
+				break;
+			case "Greater Than":
+				summaryPValue.setText(Double.toString(1d-t.getPValue()));
+				showTTestGraph(t,t.getTStatistic(),RIGHT, selection);
+				break;
+			}
+		}	
 	}
 	
 	
@@ -197,6 +216,12 @@ public class TTestDialogController {
 	        final NumberAxis yAxis = new NumberAxis();
 	        xAxis.setLabel("x");
 	        yAxis.setLabel("P(x)");
+	        
+	        xAxis.setAutoRanging(false);
+	        xAxis.setUpperBound(5);
+	        xAxis.setLowerBound(-5);
+	        xAxis.setTickUnit(1);
+	        
 
 	        final AreaChart<Number,Number> areaChart = 
 	                new AreaChart<Number,Number>(xAxis,yAxis);   

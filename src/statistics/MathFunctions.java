@@ -160,12 +160,10 @@ public MathFunctions() {
 		Requires gamma, student_c functions
 		Part of Bryan's Java math classes (c) 1997
 	*/
-		
 		return student_c(v)*Math.pow( 1 + (t*t)/v, -0.5*(v+1) );
 	}
 	
 	public static double stDist(double v, double t) {
-		
 		/* 	Student's t distribution with v degrees of freedom
 		Requires gamma, student_c functions
 		Part of Bryan's Java math classes (c) 1997
@@ -175,7 +173,6 @@ public MathFunctions() {
 		sum used for integration, the accuracy is only about 5 decimal places.
 		Values below 0.00001 are returned as zero.
 	*/
-	
 		double sm = 0.5;
 		double u = 0;
 		double sign = 1;
@@ -200,6 +197,4 @@ public MathFunctions() {
 			}
 			return  sm ;
 	}
-
-
 }
