@@ -32,6 +32,16 @@
                   <Font size="15.0" />
                </font>
             </CheckBox>
+            <CheckBox fx:id="s5Box" mnemonicParsing="false" text="Column 5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="s6Box" mnemonicParsing="false" text="Column 6">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
          </children>
       </VBox>
       <Label layoutX="241.0" layoutY="43.0" text="Choose the Samples below." />

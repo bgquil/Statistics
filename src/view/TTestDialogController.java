@@ -117,6 +117,12 @@ public class TTestDialogController {
 		case 3:
 			setupTTest(Context.getInstance().getS4());
 			break;
+		case 4:
+			setupTTest(Context.getInstance().getS5());
+			break;
+		case 5:
+			setupTTest(Context.getInstance().getS6());
+			break;
 		
 			
 		}

@@ -53,10 +53,13 @@ public class RegressionDialogController {
 	 */
 	@FXML
 	private void initialize() {
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1",
+		ObservableList<String> samples = FXCollections.observableArrayList(
+				"Data Set 1",
 				"Data Set 2",
 				"Data Set 3",
-				"Data Set 4"
+				"Data Set 4",
+				"Data Set 5",
+				"Data Set 6"
 				);
 	indSampleChoiceBox.setItems(samples);
 	depSampleChoiceBox.setItems(samples);
@@ -93,8 +96,12 @@ public class RegressionDialogController {
 		case 3:
 			ind = Context.getInstance().getS4();
 			break;
-		
-			
+		case 4:
+			ind = Context.getInstance().getS5();
+			break;
+		case 5:
+			ind = Context.getInstance().getS6();
+			break;	
 		}
 		
 		switch (selectionDep) {
@@ -110,6 +117,12 @@ public class RegressionDialogController {
 			break;
 		case 3:
 			dep = Context.getInstance().getS4();
+			break;
+		case 4:
+			dep = Context.getInstance().getS5();
+			break;
+		case 5:
+			dep = Context.getInstance().getS6();
 			break;
 		
 			
@@ -136,10 +149,6 @@ public class RegressionDialogController {
 			graphStage.initModality(Modality.NONE);
 			graphStage.initOwner(dialogStage);
 			
-
-			
-			
-			
 	        final NumberAxis xAxis = new NumberAxis();
 	        final NumberAxis yAxis = new NumberAxis();
 	        xAxis.setLabel(ind.getName());
@@ -149,7 +158,7 @@ public class RegressionDialogController {
 	        
 	        final LineChart<Number,Number> regressionGraph = 
 	                new LineChart<Number,Number>(xAxis,yAxis);   
-	        regressionGraph.setTitle("Linear Regression");
+	        
 
 	        XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
 	               
@@ -167,7 +176,6 @@ public class RegressionDialogController {
 	        double lr_b1 = lr.getB1();
 	        double min = ind.getSampleMin();
 	        
-	        System.out.println(min);
 	        for ( double x = xAxis.getLowerBound(); x < ind.getSampleMax(); x = x + .5){
 	        	
 	        	double y = lr_b0 + lr_b1*x ;
@@ -180,7 +188,9 @@ public class RegressionDialogController {
 	        line.setVisible(true);
 	        r.setVisible(true);
 	        r2.setVisible(true);
-
+	        
+	        regressionGraph.setTitle("Line: "+lr.toString()+"\tr: "+lr.getR()+" R-squared: "+lr.getR2());
+	        
 	        regressionGraph.setAnimated(true);
 	        regressionGraph.setCreateSymbols(true);
 	        regressionGraph.getData().addAll(series,lineSeries);

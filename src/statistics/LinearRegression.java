@@ -1,5 +1,8 @@
 package statistics;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class LinearRegression {
 	
 	/* 
@@ -26,6 +29,11 @@ public class LinearRegression {
 		else{
 			
 			calculateLinearFit();
+			//formatting
+			b0 = formatDouble(b0, 4);
+			b1 = formatDouble(b1, 4);
+			r = formatDouble(r,4);
+			r2 = formatDouble(r2,4);
 			
 		}
 	}
@@ -123,6 +131,13 @@ public class LinearRegression {
 		
 		return "y = "+this.getB0()+" + "+this.getB1()+"x";
 		
+	}
+	
+	public double formatDouble(double val, int places){
+		
+		BigDecimal d = new BigDecimal(val);
+		d = d.setScale(places, RoundingMode.HALF_UP);
+		return d.doubleValue();
 	}
 
 }

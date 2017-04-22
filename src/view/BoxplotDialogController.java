@@ -33,8 +33,12 @@ public class BoxplotDialogController {
 	private CheckBox s3Box;
 	@FXML
 	private CheckBox s4Box;
+	@FXML
+	private CheckBox s5Box;
+	@FXML
+	private CheckBox s6Box;
 	
-	private CheckBox[] boxes = {s1Box, s2Box,s3Box,s4Box};
+	private CheckBox[] boxes = {s1Box, s2Box,s3Box,s4Box,s5Box,s6Box};
 	
 	private Stage dialogStage;
 	
@@ -52,6 +56,11 @@ public void handleShowBoxPlots(){
 		bpToShow.add(Context.getInstance().getS3());
 	if (s4Box.isSelected())
 		bpToShow.add(Context.getInstance().getS4());
+	if (s5Box.isSelected())
+		bpToShow.add(Context.getInstance().getS5());
+	if (s6Box.isSelected())
+		bpToShow.add(Context.getInstance().getS6());
+	
 	
 	
 	if (bpToShow.isEmpty()){
@@ -122,6 +131,10 @@ public void showBoxplot(LinkedList<Sample> samples, int num){
 				xAxis.setUpperBound(8);
 			if (num == 4)
 				xAxis.setUpperBound(10);
+			if (num == 5)
+				xAxis.setUpperBound(12);
+			if (num == 6)
+				xAxis.setUpperBound(14);
 			
 
 	        

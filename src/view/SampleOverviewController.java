@@ -11,6 +11,7 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -80,6 +81,9 @@ public class SampleOverviewController{
 	private Label numLabel5;
 	@FXML
 	private Label numLabel6;
+	
+	@FXML
+	private CheckBox title;
 	
 	@FXML
 	private void initialize() {
@@ -264,8 +268,7 @@ public class SampleOverviewController{
 	
 	@FXML
 	private void handleClear1(){
-		sampleList1.getItems().clear();
-		
+		sampleList1.getItems().clear();	
 		sampleList1.getItems().add("");
 	}
 	@FXML
@@ -304,6 +307,8 @@ public class SampleOverviewController{
 	
 	@FXML
 	private void handleImport(){
+		
+		handleClearAll();
 		FileChooser f = new FileChooser();
 		f.setTitle("Open File");
 		
@@ -318,14 +323,26 @@ public class SampleOverviewController{
 
 	private void readFile(String filePath){
 		boolean done = false;
+		
+		
         String line = "";
         String cvsSplitBy = ",";
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
         	int index = 0;
         	while ((line = br.readLine()) != null) {
-        		
         		String[] splitEntry = line.split(cvsSplitBy);
+        		if(title.isSelected() && !done) {
+        			sampleLabel1.setText(splitEntry[0]);
+        			sampleLabel2.setText(splitEntry[1]);
+        			sampleLabel3.setText(splitEntry[2]);
+        			sampleLabel4.setText(splitEntry[3]);
+        			sampleLabel5.setText(splitEntry[4]);
+        			sampleLabel6.setText(splitEntry[5]);
+        			done = true;
+        			continue;
+        		}
+        		
         		sampleList1.getItems().add(index, splitEntry[0]);
         		sampleList2.getItems().add(index, splitEntry[1]);
         		sampleList3.getItems().add(index, splitEntry[2]);

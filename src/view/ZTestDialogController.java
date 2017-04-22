@@ -109,6 +109,12 @@ public class ZTestDialogController {
 		case 3:
 			setupZTest(Context.getInstance().getS4());
 			break;
+		case 4:
+			setupZTest(Context.getInstance().getS5());
+			break;
+		case 5:
+			setupZTest(Context.getInstance().getS6());
+			break;
 		
 			
 		}

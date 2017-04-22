@@ -101,8 +101,12 @@ public class DescriptiveStatisticsController {
 		case 3:
 			showStats(Context.getInstance().getS4());
 			break;
-		
-			
+		case 4:
+			showStats(Context.getInstance().getS5());
+			break;
+		case 5:
+			showStats(Context.getInstance().getS6());
+			break;
 		}
 		
 		
