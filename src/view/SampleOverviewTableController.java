@@ -180,6 +180,7 @@ public class SampleOverviewTableController {
               		c12.setText(entry[11]);
               		c13.setText(entry[12]);
               		done = true;
+              		continue;	
              	}
             
             	

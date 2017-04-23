@@ -178,7 +178,7 @@ public class RegressionDialogController {
 	        double lr_b1 = lr.getB1();
 	        double min = ind.getSampleMin();
 	        
-	        for ( double x = xAxis.getLowerBound(); x < ind.getSampleMax(); x = x + .5){
+	        for ( double x = xAxis.getLowerBound(); x < ind.getSampleMax()+ind.getSampleStdDev(); x = x + .5){
 	        	
 	        	double y = lr_b0 + lr_b1*x ;
 	        	lineSeries.getData().add(new XYChart.Data<>(x, y));
@@ -196,6 +196,7 @@ public class RegressionDialogController {
 	        regressionGraph.setAnimated(true);
 	        regressionGraph.setCreateSymbols(true);
 	        regressionGraph.getData().addAll(series,lineSeries);
+	        regressionGraph.setLegendVisible(false);
 	        
 //	        xAxis.setLowerBound(ind.getSampleMin()-ind.getSampleStdDev());
 //	        xAxis.setUpperBound(ind.getSampleMax()+ind.getSampleStdDev());
