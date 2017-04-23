@@ -51,7 +51,7 @@ public class ZTest {
 	 * For a a provided Sample
 	 */
 	private double calculateZScore(Sample s){
-		return(s.getSampleMean() - popMean)/popStdDev; 
+		return(s.getSampleMean() - popMean)/(popStdDev/Math.sqrt(s.getSampleSize())); 
 		
 	}
 	
