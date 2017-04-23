@@ -13,11 +13,11 @@ public class testCalc {
 	public static void main(String[] args) {
 		
 		
-		double act[] = {2.5,2.6, 2.2, 2.3, 2.0, 2.2, 2.5, 2.0};
-		double gpa[] = {3.5,3.6, 2.5, 2.8, 3.0, 3.2, 3.5, 4.0}; //GPA
-		
-		Sample sAct = new Sample(act);
-		Sample sGPA = new Sample(gpa);
+//		double act[] = {2.5,2.6, 2.2, 2.3, 2.0, 2.2, 2.5, 2.0};
+//		double gpa[] = {3.5,3.6, 2.5, 2.8, 3.0, 3.2, 3.5, 4.0}; //GPA
+//		
+//		Sample sAct = new Sample(act);
+//		Sample sGPA = new Sample(gpa);
 		
 //		System.out.println(sAct);
 	
@@ -84,18 +84,18 @@ public class testCalc {
 				44.1
 		};
 		
-		Sample s11 = new Sample(a1);
-		Sample s22 = new Sample(a2);
-		
-		System.out.println(s11.getSampleMean());
-		System.out.println(s22.getSampleMean());
-		System.out.println(s11.getSampleVariance());
-		System.out.println(s22.getSampleVariance());
-		
-	TwoSampleTTest t = new TwoSampleTTest(s11, s22);
-	System.out.println(t.getTStatistic());
+//		Sample s11 = new Sample(a1);
+//		Sample s22 = new Sample(a2);
+//		
+//		System.out.println(s11.getSampleMean());
+//		System.out.println(s22.getSampleMean());
+//		System.out.println(s11.getSampleStdDev());
+//		System.out.println(s22.getSampleStdDev());
+//		
+//	TwoSampleTTest t = new TwoSampleTTest(s11, s22);
+//	System.out.println(t.getTStatistic());
 	
-	
+		System.out.println(MathFunctions.stDist(18, 3.40));
 	
 		
 //		double[] a = {170,300,430,470,600};

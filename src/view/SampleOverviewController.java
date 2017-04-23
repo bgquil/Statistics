@@ -197,7 +197,7 @@ public class SampleOverviewController{
 			Context.getInstance().setS5(s);
 			break;
 		case 6:
-			Context.getInstance().setS5(s);
+			Context.getInstance().setS6(s);
 			break;
 		}
 		

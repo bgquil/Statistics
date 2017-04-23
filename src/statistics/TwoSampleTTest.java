@@ -14,25 +14,33 @@ public class TwoSampleTTest {
 		this.s1 = s1;
 		this.s2 = s2;
 		calcTStatistic();
-		//this.DOF = s1.getSampleSize() + s2.getSampleSize() - 2;
+		this.DOF = s1.getSampleSize() + s2.getSampleSize() - 2;
 		//this.q = calculateQ();
-		//this.pValue = 1-q;
+//		if (tStatistic < 0){
+//			tStatistic = tStatistic*-1;
+//			this.q = calculateQ();
+//			System.out.println(q);
+//		}
+//		else{
+//			this.q = calculateQ();
+//			this.pValue = 1-q;
+//		}
+
 	}
 	
 	
 	private void calcTStatistic(){
-		
-		double s1Var = s1.getSampleVariance();
-		double s2Var = s2.getSampleVariance();
+		double s1Var = Math.pow(s1.getSampleStdDev(), 2);
+		double s2Var = Math.pow(s2.getSampleStdDev(), 2);
 		
 		double numerator = s1.getSampleMean() - s2.getSampleMean();
-		double denominator = Math.sqrt(
-				(Math.pow(s1Var, 2)/s1.getSampleSize()) + (Math.pow(s2Var, 2)/s2.getSampleSize())
-				);
-//		double sp = ((s1.getSampleSize()-1)*s1.getSampleVariance() + (s2.getSampleSize()-1)*s2.getSampleVariance())
-//				/
-//				(s1.getSampleSize()+s2.getSampleSize()-2) ;
-//		double denominator = Math.sqrt( (1/s1.getSampleSize())*(1/s2.getSampleSize()) );
+	
+
+		double sp = Math.sqrt(((s1.getSampleSize()-1)*s1Var + (s2.getSampleSize()-1)*s2Var)
+				/
+				(s1.getSampleSize()+s2.getSampleSize()-2)) ;
+		
+		double denominator = sp*Math.sqrt( (1d/s1.getSampleSize())+(1d/s2.getSampleSize()) );
 		this.tStatistic = numerator/(denominator);
 	}
 	

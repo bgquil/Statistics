@@ -82,6 +82,8 @@ public class RegressionDialogController {
 		Sample ind = null;
 		Sample dep = null;
 		
+		System.out.println(selectionInd);
+		System.out.println(selectionDep);
 		switch (selectionInd) {
 		
 		case 0:

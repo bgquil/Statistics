@@ -1,5 +1,8 @@
 package view;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,7 +59,7 @@ public class TwoTTestDialogController {
 		
 		sample1ChoiceBox.setItems(samples);
 		sample2ChoiceBox.setItems(samples);
-		alternativeChoiceBox.setItems(alternativeList);
+		//alternativeChoiceBox.setItems(alternativeList);
 
 	}
 	
@@ -139,25 +142,33 @@ public class TwoTTestDialogController {
 			break;
 		}
 		
+	
 		setupTTest(s1,s2);
 		
 	}
-	
+	public double formatDouble(double val, int places){
+		
+		BigDecimal d = new BigDecimal(val);
+		d = d.setScale(places, RoundingMode.HALF_UP);
+		return d.doubleValue();
+	}
 	
 	//From Sample
 	private void setupTTest(Sample s1, Sample s2){
-	
-		try {
-			String selection = alternativeChoiceBox.getSelectionModel().getSelectedItem();
-			TwoSampleTTest tTest = new TwoSampleTTest(s1, s2);
-			resultTScore.setText(Double.toString(tTest.getTStatistic()));
-			
-			//setupTTest(tTest, selection, "data");
-
-		} catch (Exception e) {
-			e.getMessage();
-			message.setText("Error");
-		}
+		
+		TwoSampleTTest tTest = new TwoSampleTTest(s1, s2);
+		resultTScore.setText((Double.toString(formatDouble(tTest.getTStatistic(), 4))));
+//		try {
+//			String selection = alternativeChoiceBox.getSelectionModel().getSelectedItem();
+//			
+//			
+//			
+//			//setupTTest(tTest, selection, "data");
+//
+//		} catch (Exception e) {
+//			e.getMessage();
+//			message.setText("Error");
+//		}
 	}
 	
 

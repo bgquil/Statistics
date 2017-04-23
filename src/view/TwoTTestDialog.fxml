@@ -7,36 +7,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TwoTTestDialogController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Button layoutX="452.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleStartTestSample" text="Calculate" />
+            <Button layoutX="389.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleStartTestSample" text="Calculate" />
             <ChoiceBox fx:id="sample1ChoiceBox" layoutX="114.0" layoutY="78.0" prefWidth="150.0" />
             <Label layoutX="31.0" layoutY="21.0" text="Select Samples">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="alternativeChoiceBox" layoutX="408.0" layoutY="78.0" prefWidth="150.0" />
-            <Label layoutX="408.0" layoutY="47.0" text="Alternative Hypothesis">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="287.0" text="T-Statistic">
+            <Label layoutX="114.0" layoutY="249.0" text="T-Statistic">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="41.0" layoutY="320.0" text="P Value">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="resultTScore" editable="false" layoutX="126.0" layoutY="288.0" prefHeight="25.0" prefWidth="105.0" />
-            <TextField fx:id="resultPValue" editable="false" layoutX="126.0" layoutY="321.0" prefHeight="25.0" prefWidth="105.0" />
+            <TextField fx:id="resultTScore" editable="false" layoutX="200.0" layoutY="250.0" prefHeight="25.0" prefWidth="105.0" />
             <Label layoutX="31.0" layoutY="249.0" text="Results">
                <font>
                   <Font size="18.0" />
