@@ -242,11 +242,11 @@ private Stage dialogStage;
 	        	
 	        }
 	        
-
+	       
 	        final AreaChart<Number,Number> areaChart = 
 	                new AreaChart<Number,Number>(xAxis,yAxis);   
 	        areaChart.setTitle("Chi-Squared Distribution with DOF = "+(int)DOF);
-	             
+	        areaChart.setLegendVisible(false);
 	        //areaChart.getData().addAll(generateChiSquaredDistribution(3.0), generateAreaUnderCurve(-4.0d, z.getZScore()));
 	        areaChart.getData().add(generateChiSquaredDistribution(DOF));
 	        areaChart.getData().add(generateAreaUnderCurve(x2,DOF));
