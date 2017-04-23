@@ -60,14 +60,49 @@ public class testCalc {
 //	System.out.println(t.getTStatistic());
 //	System.out.println(1-t.getPValue());
 		
-	TwoSampleTTest t = new TwoSampleTTest(sAct, sGPA);
-	System.out.println(t.getTStatistic());
+		double[] a1 = {42.1,				
+				41.3,					
+				42.4,
+				43.2,
+				41.8,
+				41.0,				
+				41.8,				
+				42.8,
+				42.3,
+				42.7,		
+		};
 		
-		double[] a = {170,300,430,470,600};
-		Sample as = new Sample(a);
-
-		System.out.println(as.getSampleVariance());
-		System.out.println(Math.pow(as.getSampleVariance(), .5));
+		double[] a2 = {42.7,
+				43.8,			
+				42.5,	
+				43.1,	
+				44.0,
+				43.6,
+				43.3,			
+				43.5,			
+				41.7,			
+				44.1
+		};
+		
+		Sample s11 = new Sample(a1);
+		Sample s22 = new Sample(a2);
+		
+		System.out.println(s11.getSampleMean());
+		System.out.println(s22.getSampleMean());
+		System.out.println(s11.getSampleVariance());
+		System.out.println(s22.getSampleVariance());
+		
+	TwoSampleTTest t = new TwoSampleTTest(s11, s22);
+	System.out.println(t.getTStatistic());
+	
+	
+	
+		
+//		double[] a = {170,300,430,470,600};
+//		Sample as = new Sample(a);
+//
+//		System.out.println(as.getSampleVariance());
+//		System.out.println(Math.pow(as.getSampleVariance(), .5));
 		
 	}
 	
