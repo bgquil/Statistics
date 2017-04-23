@@ -132,7 +132,7 @@ public class ZTestDialogController {
 		summaryZScore.setText(Double.toString(zSummary.getZScore()));
 		summaryPValue.setText(Double.toString(zSummary.getPValue()));
 		
-		setupZTest(zSummary, selection);
+		setupZTest(zSummary, selection, "summary");
 	}
 	
 	private void setupZTest(Sample s){
@@ -143,9 +143,9 @@ public class ZTestDialogController {
 			
 			ZTest zSample = new ZTest(s, popMean, stdDev);
 			resultZScore.setText(Double.toString(zSample.getZScore()));
-			resultPValue.setText(Double.toString(zSample.getPValue()));
+//			resultPValue.setText(Double.toString(zSample.getPValue()));
 			
-			setupZTest(zSample, selection);
+			setupZTest(zSample, selection, "data");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,23 +156,50 @@ public class ZTestDialogController {
 	
 
 	
-	private void setupZTest(ZTest z, String selection){
+	private void setupZTest(ZTest z, String selection, String mode){
+		System.out.println(z.getPValue());
 		
-		switch (selection){
-		case "Not Equal":
-			showZTestGraph(z,-4d,z.getZScore(), selection);
-			resultPValue.setText(Double.toString(z.getPValue()*2d));
-			break;
-		case "Less Than":
-			showZTestGraph(z,-4,z.getZScore(), selection);
-			resultPValue.setText(Double.toString(z.getPValue()));
-			break;
-		case "Greater Than":
-			showZTestGraph(z,z.getZScore(),4, selection);
-			resultPValue.setText(Double.toString(1-z.getPValue()));
-			break;
+		if (mode.equals("data")){
+		
+			switch (selection){
+			case "Not Equal":
+				if(z.getZScore() > 0)
+					resultPValue.setText(Double.toString((1-z.getPValue())*2d));
+				else
+					resultPValue.setText(Double.toString((z.getPValue())*2d));
+				showZTestGraph(z,-4d,z.getZScore(), selection);
+				break;
+			case "Less Than":
+				resultPValue.setText(Double.toString(z.getPValue()));
+				showZTestGraph(z,-4,z.getZScore(), selection);
+				break;
+			case "Greater Than":
+				resultPValue.setText(Double.toString(1-z.getPValue()));
+				showZTestGraph(z,z.getZScore(),4, selection);
+				break;
+			}
 		}
-		
+		else if (mode.equals("summary")){
+
+			
+			switch (selection){
+			case "Not Equal":
+				if(z.getZScore() > 0)
+					summaryPValue.setText(Double.toString((1-z.getPValue())*2d));
+				else
+					summaryPValue.setText(Double.toString((z.getPValue())*2d));
+				showZTestGraph(z,-4d,z.getZScore(), selection);
+				break;
+			case "Less Than":
+				summaryPValue.setText(Double.toString(z.getPValue()));
+				showZTestGraph(z,-4,z.getZScore(), selection);				
+				break;
+			case "Greater Than":
+				summaryPValue.setText(Double.toString(1-z.getPValue()));
+				showZTestGraph(z,z.getZScore(),4, selection);
+				break;
+			}
+		}
 	}
 	
 	
@@ -189,6 +216,11 @@ public class ZTestDialogController {
 	        final NumberAxis yAxis = new NumberAxis();
 	        xAxis.setLabel("x");
 	        yAxis.setLabel("P(x)");
+	        
+	        xAxis.setAutoRanging(false);
+	        xAxis.setUpperBound(4);
+	        xAxis.setLowerBound(-4);
+	        xAxis.setTickUnit(1);
 
 	        final AreaChart<Number,Number> areaChart = 
 	                new AreaChart<Number,Number>(xAxis,yAxis);   

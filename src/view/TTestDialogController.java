@@ -191,7 +191,10 @@ public class TTestDialogController {
 			
 			switch (selection){
 			case "Not Equal":
-				summaryPValue.setText(Double.toString(t.getPValue()*2d));
+				if(t.getTStatistic() > 0)
+					summaryPValue.setText(Double.toString(1-t.getPValue()*2d));
+				else
+					summaryPValue.setText(Double.toString(t.getPValue()*2d));
 				showTTestGraph(t,LEFT,t.getTStatistic(), selection);
 				
 				break;

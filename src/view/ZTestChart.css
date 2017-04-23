@@ -6,8 +6,8 @@
 .default-color0.chart-series-area-line { -fx-stroke: blue; }
 
 .default-color0.chart-series-area-fill { -fx-fill: transparent; }
-.default-color1.chart-series-area-fill { -fx-fill: blue; }
-.default-color2.chart-series-area-fill { -fx-fill: blue; }
+.default-color1.chart-series-area-fill { -fx-fill: rgba(0, 0, 255, .5); }
+.default-color2.chart-series-area-fill { -fx-fill: rgba(0, 0, 255, .5); }
 
  .axis-label {
  	
