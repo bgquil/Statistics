@@ -13,12 +13,12 @@ public class testCalc {
 	public static void main(String[] args) {
 		
 		
-//		double act[] = {15,23, 24, 30};
-//		double gpa[] = {2.5,2.6, 2.5, 2.8, 3.0, 3.2, 3.5, 4.0}; //GPA
-//		
-//		Sample sAct = new Sample(act);
-//		Sample sGPA = new Sample(gpa);
-//		
+		double act[] = {2.5,2.6, 2.2, 2.3, 2.0, 2.2, 2.5, 2.0};
+		double gpa[] = {3.5,3.6, 2.5, 2.8, 3.0, 3.2, 3.5, 4.0}; //GPA
+		
+		Sample sAct = new Sample(act);
+		Sample sGPA = new Sample(gpa);
+		
 //		System.out.println(sAct);
 	
 //		LinearRegression lr = new LinearRegression(sGPA,sAct);
@@ -55,12 +55,24 @@ public class testCalc {
 //		double t = MathFunctions.stDist(3, 2.1);
 //		System.out.println(t);
 	
-	TTest t = new TTest(110, 20, 16, 100);
-	
+//	TTest t = new TTest(110, 20, 16, 100);
+//	
+//	System.out.println(t.getTStatistic());
+//	System.out.println(1-t.getPValue());
+		
+	TwoSampleTTest t = new TwoSampleTTest(sAct, sGPA);
 	System.out.println(t.getTStatistic());
-	System.out.println(1-t.getPValue());
+		
+		double[] a = {170,300,430,470,600};
+		Sample as = new Sample(a);
+
+		System.out.println(as.getSampleVariance());
+		System.out.println(Math.pow(as.getSampleVariance(), .5));
+		
 	}
 	
+	
+
 	
 
 	

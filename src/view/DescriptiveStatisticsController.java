@@ -11,9 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import statistics.Context;
@@ -41,23 +42,25 @@ public class DescriptiveStatisticsController {
 	@FXML
 	private TableColumn<FrequencyTableEntry,Number> percentCol;
 	@FXML
-	private Label num;
+	private TextField num;
 	@FXML
-	private Label mean;
+	private TextField mean;
 	@FXML
-	private Label deviation;
+	private TextField sum;
 	@FXML
-	private Label min;
+	private TextField deviation;
 	@FXML
-	private Label q1;
+	private TextField min;
 	@FXML
-	private Label median;
+	private TextField q1;
 	@FXML
-	private Label q3;
+	private TextField median;
 	@FXML
-	private Label max;
+	private TextField q3;
 	@FXML
-	private Label range;
+	private TextField max;
+	@FXML
+	private TextField range;
 	
 	/*
 	 * 
@@ -120,16 +123,18 @@ public class DescriptiveStatisticsController {
 	}
 	
 	private void showStats(Sample s){
-		
+		final int places = 4;
 		num.setText(Integer.toString(s.getSampleSize()));
-		mean.setText(Double.toString(formatDouble(s.getSampleMean(),3)));
-		deviation.setText(Double.toString(formatDouble(s.getSampleStdDev(),3)));
-		min.setText(Double.toString(formatDouble(s.getSampleMin(),3)));
-		q1.setText(Double.toString(formatDouble(s.getSampleQ1(),3)));
-		median.setText(Double.toString(formatDouble(s.getSampleMedian(),3)));
-		q3.setText(Double.toString(formatDouble(s.getSampleQ3(),3)));
-		max.setText(Double.toString(formatDouble(s.getSampleMax(),3)));
-		range.setText(Double.toString(formatDouble(s.getSampleRange(),3)));
+		mean.setText(Double.toString(formatDouble(s.getSampleMean(),places)));
+		sum.setText(Double.toString(formatDouble(s.getSampleSum(),places)));
+		deviation.setText(Double.toString(formatDouble(s.getSampleStdDev(),places)));
+		min.setText(Double.toString(formatDouble(s.getSampleMin(),places)));
+		q1.setText(Double.toString(formatDouble(s.getSampleQ1(),places)));
+		median.setText(Double.toString(formatDouble(s.getSampleMedian(),places)));
+		q3.setText(Double.toString(formatDouble(s.getSampleQ3(),places)));
+		max.setText(Double.toString(formatDouble(s.getSampleMax(),places)));
+		range.setText(Double.toString(formatDouble(s.getSampleRange(),places)));
+		
 		
 		showFreqTable(s);
 		

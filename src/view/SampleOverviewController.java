@@ -268,32 +268,38 @@ public class SampleOverviewController{
 	
 	@FXML
 	private void handleClear1(){
+		sampleLabel1.setText("Data Set 1");
 		sampleList1.getItems().clear();	
 		sampleList1.getItems().add("");
 	}
 	@FXML
 	private void handleClear2(){
+		sampleLabel2.setText("Data Set 2");
 		sampleList2.getItems().clear();		
 		sampleList2.getItems().add("");
 
 	}
 	@FXML
 	private void handleClear3(){
+		sampleLabel3.setText("Data Set 3");
 		sampleList3.getItems().clear();
 		sampleList3.getItems().add("");
 	}
 	@FXML
 	private void handleClear4(){
+		sampleLabel4.setText("Data Set 4");
 		sampleList4.getItems().clear();
 		sampleList4.getItems().add("");	
 	}
 	@FXML
 	private void handleClear5(){
+		sampleLabel5.setText("Data Set 5");
 		sampleList5.getItems().clear();
 		sampleList5.getItems().add("");	
 	}
 	@FXML
 	private void handleClear6(){
+		sampleLabel6.setText("Data Set 6");
 		sampleList6.getItems().clear();
 		sampleList6.getItems().add("");
 
@@ -333,22 +339,33 @@ public class SampleOverviewController{
         	while ((line = br.readLine()) != null) {
         		String[] splitEntry = line.split(cvsSplitBy);
         		if(title.isSelected() && !done) {
-        			sampleLabel1.setText(splitEntry[0]);
-        			sampleLabel2.setText(splitEntry[1]);
-        			sampleLabel3.setText(splitEntry[2]);
-        			sampleLabel4.setText(splitEntry[3]);
-        			sampleLabel5.setText(splitEntry[4]);
-        			sampleLabel6.setText(splitEntry[5]);
+        			if(splitEntry.length > 0)
+	        			sampleLabel1.setText(splitEntry[0]);
+        			if(splitEntry.length > 1)
+	        			sampleLabel2.setText(splitEntry[1]);
+        			if(splitEntry.length > 2)
+	        			sampleLabel3.setText(splitEntry[2]);
+        			if(splitEntry.length > 3)	
+	        			sampleLabel4.setText(splitEntry[3]);
+        			if(splitEntry.length > 4)	
+	        			sampleLabel5.setText(splitEntry[4]);
+        			if(splitEntry.length > 5)	
+	        			sampleLabel6.setText(splitEntry[5]);
         			done = true;
         			continue;
         		}
-        		
-        		sampleList1.getItems().add(index, splitEntry[0]);
-        		sampleList2.getItems().add(index, splitEntry[1]);
-        		sampleList3.getItems().add(index, splitEntry[2]);
-        		sampleList4.getItems().add(index, splitEntry[3]);
-        		sampleList5.getItems().add(index, splitEntry[4]);
-        		sampleList6.getItems().add(index, splitEntry[5]);
+        		if(splitEntry.length > 0)
+        			sampleList1.getItems().add(index, splitEntry[0]);
+        		if(splitEntry.length > 1)
+        			sampleList2.getItems().add(index, splitEntry[1]);
+        		if(splitEntry.length > 2)
+        			sampleList3.getItems().add(index, splitEntry[2]);
+        		if(splitEntry.length > 3)
+        			sampleList4.getItems().add(index, splitEntry[3]);
+        		if(splitEntry.length > 4)
+        			sampleList5.getItems().add(index, splitEntry[4]);
+        		if(splitEntry.length > 5)
+        			sampleList6.getItems().add(index, splitEntry[5]);
         		
         		index++;
             }
@@ -394,6 +411,7 @@ public class SampleOverviewController{
 	 */
 	@FXML
 	private void handleShowZTestDialog() {
+		set();
 		mainApp.showZTestDialog();
 		
 	}
@@ -407,6 +425,14 @@ public class SampleOverviewController{
 		mainApp.showTTestDialog();
 		
 	}
+	
+	
+	@FXML
+	private void handleShow2TTestDialog(){
+		set();
+		mainApp.show2TTestDialog();
+	}
+	
 	
 	/*
 	 * 	Open the Regression Dialog.

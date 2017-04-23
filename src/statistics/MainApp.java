@@ -23,6 +23,7 @@ import view.SampleOverviewController;
 import view.SampleOverviewTableController;
 import view.ScatterplotDialogController;
 import view.TTestDialogController;
+import view.TwoTTestDialogController;
 import view.ZTestDialogController;
 
 public class MainApp extends Application {
@@ -212,6 +213,37 @@ public class MainApp extends Application {
 		
 			
 			TTestDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			
+			dialogStage.showAndWait();
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public void show2TTestDialog(){
+		
+		try {
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/view/TwoTTestDialog.fxml"));
+			AnchorPane twoTTestDialog = (AnchorPane) loader.load();
+			
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Two Sample T-Test");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(twoTTestDialog);
+			dialogStage.setScene(scene);
+			
+		
+			
+			TwoTTestDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			
 			dialogStage.showAndWait();

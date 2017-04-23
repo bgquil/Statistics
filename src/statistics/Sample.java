@@ -34,6 +34,8 @@ public class Sample {
 	private double sampleStdDeviation;
 	private double sampleStdError;
 	private double sampleRange;
+	private double sampleVariance;
+	private double sampleSum;
 
 	
 	public Sample(double[] data){
@@ -88,7 +90,7 @@ public class Sample {
 		for (double data : sampleData) {
 			tempSum += data;
 		}
-		
+		this.sampleSum = tempSum;
 		this.sampleMean = tempSum/sampleSize;
 	}
 	
@@ -200,9 +202,20 @@ public class Sample {
 		this.setSampleMedian();
 		this.setSampleStdDev();
 		this.setSampleRange();
+		this.calculateSampleVariance();
 		
 	}
 	
+
+	private void calculateSampleVariance() {
+		double var = 0;
+		for (double d : this.sampleData){
+			var += Math.pow(d - this.sampleMean, 2);
+		}
+		
+		this.sampleVariance = (1d/(this.sampleSize-1))*var;
+		
+	}
 
 	public String toString(){
 		
@@ -217,6 +230,34 @@ public class Sample {
 				"\nSample Data: "+Arrays.toString(sampleData)+
 				"\nSorted Sample Data: "+Arrays.toString(sortedSampleData);
 				
+	}
+
+	/**
+	 * @return the sampleVariance
+	 */
+	public double getSampleVariance() {
+		return sampleVariance;
+	}
+
+	/**
+	 * @param sampleVariance the sampleVariance to set
+	 */
+	public void setSampleVariance(double sampleVariance) {
+		this.sampleVariance = sampleVariance;
+	}
+
+	/**
+	 * @return the sampleSum
+	 */
+	public double getSampleSum() {
+		return sampleSum;
+	}
+
+	/**
+	 * @param sampleSum the sampleSum to set
+	 */
+	public void setSampleSum(double sampleSum) {
+		this.sampleSum = sampleSum;
 	}
 	
 	
