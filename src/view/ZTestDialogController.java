@@ -38,7 +38,12 @@ public class ZTestDialogController {
 	@FXML
 	private void initialize() {
 		
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1","Data Set 2","Data Set 3","Data Set 4");
+		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1",
+				"Data Set 2",
+				"Data Set 3",
+				"Data Set 4",
+				"Data Set 5",
+				"Data Set 6");
 		ObservableList<String> alternativeList = FXCollections.observableArrayList(
 				"Not Equal",
 				"Less Than",
