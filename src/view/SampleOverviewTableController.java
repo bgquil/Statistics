@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
@@ -62,7 +63,8 @@ public class SampleOverviewTableController {
 	private TableColumn<DataEntry,String> c12;
 	@FXML
 	private TableColumn<DataEntry,String> c13;
-
+	@FXML
+	private ListView<String> lv;
 	
 	@FXML
 	private void initialize(){
@@ -85,6 +87,16 @@ public class SampleOverviewTableController {
 		c3.setEditable(true);
 		c4.setEditable(true);
 		table.setEditable(true);
+		
+		ObservableList o = FXCollections.observableArrayList("1",
+				"2",
+				"3",
+				"4"
+				);
+		lv.setItems(o);
+		
+		lv.getItems().add("apple");
+		
 		
 		
 	}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SampleOverviewTableController">
+<AnchorPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SampleOverviewTableController">
    <children>
-      <TableView fx:id="table" layoutX="43.0" layoutY="57.0" prefHeight="599.0" prefWidth="1040.0">
+      <TableView fx:id="table" layoutX="505.0" layoutY="417.0" prefHeight="245.0" prefWidth="572.0">
         <columns>
           <TableColumn fx:id="c1" prefWidth="94.0" text="C1" />
           <TableColumn fx:id="c2" prefWidth="56.0" text="C2" />
@@ -28,5 +29,6 @@
       <Button layoutX="1157.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleImport" text="Import CSV" />
       <Button layoutX="1176.0" layoutY="177.0" mnemonicParsing="false" onAction="#handleTest" text="Button" />
       <CheckBox fx:id="titles" layoutX="1102.0" layoutY="95.0" mnemonicParsing="false" text="Use First Row as Header" />
+      <ListView fx:id="lv" layoutX="73.0" layoutY="90.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
