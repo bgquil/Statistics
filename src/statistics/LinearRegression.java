@@ -1,5 +1,7 @@
 package statistics;
 
+import core.Sample;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -39,11 +41,10 @@ public class LinearRegression {
 	}
 	 
 	
-	/*
+	/**
 	 * Calculate a linear regression using the least squares method.
-	 * Calculate r and r2
+	 * Calculates and sets the  r and r2 values.
 	 */
-	
 	private void calculateLinearFit(){
 		double[] xData = x.getSampleData();
 		double[] yData = y.getSampleData();
@@ -109,15 +110,15 @@ public class LinearRegression {
 		return b1;
 	}
 	
-	/*
-	 *  r -- correlation coefficient
+	/**
+	 *  @return Returns r -- the correlation coefficient.
 	 */
 	public double getR(){
 		return r;
 	}
 	
-	/*
-	 *  r2 -- coefficient of determination
+	/**
+	 * @return Returns r2 -- the coefficient of determination.
 	 */
 	public double getR2(){
 		return r2;

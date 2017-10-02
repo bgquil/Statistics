@@ -1,6 +1,6 @@
 package statistics;
 
-import view.SampleOverviewController;
+import core.Sample;
 
 public class Context {
 	private final static Context instance = new Context();

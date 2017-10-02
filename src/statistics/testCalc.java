@@ -95,7 +95,7 @@ public class testCalc {
 //	TwoSampleTTest t = new TwoSampleTTest(s11, s22);
 //	System.out.println(t.getTStatistic());
 	
-		System.out.println(MathFunctions.stDist(18, 3.40));
+		System.out.println(MathFunctions.stDist(18, -1));
 	
 		
 //		double[] a = {170,300,430,470,600};

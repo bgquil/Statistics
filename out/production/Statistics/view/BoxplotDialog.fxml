@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoxplotDialogController">
+   <children>
+      <Button layoutX="454.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleShowBoxPlots" prefHeight="40.0" prefWidth="80.0" text="Graph" />
+      <VBox layoutX="83.0" layoutY="107.0" prefHeight="200.0" prefWidth="113.0" spacing="10.0">
+         <children>
+            <CheckBox fx:id="s1Box" mnemonicParsing="false" text="Column 1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="s2Box" mnemonicParsing="false" text="Column 2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="s3Box" mnemonicParsing="false" text="Column 3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="s4Box" mnemonicParsing="false" text="Column 4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="s5Box" mnemonicParsing="false" text="Column 5">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="s6Box" mnemonicParsing="false" text="Column 6">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </VBox>
+      <Label layoutX="241.0" layoutY="43.0" text="Choose the Samples below." />
+      <Label fx:id="errLabel" layoutX="90.0" layoutY="331.0" textFill="RED" />
+   </children>
+</AnchorPane>

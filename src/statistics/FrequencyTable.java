@@ -3,8 +3,7 @@ package statistics;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import core.Sample;
 
 public class FrequencyTable {
 	

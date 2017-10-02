@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RootLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="View">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleShowSample" text="List View" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowSampleTable" text="Table View" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Statistics" visible="false">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" text="Descriptive Statistics" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowScatterplot" text="Scatterplot" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" visible="false" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tests" visible="false">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowZTestDialog" text="1-Sample Z-Test" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" text="Chi-Squared Test" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowRegressionDialog" text="Linear Regression" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowTTestDialog" text="1-Sample T-Test" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +16,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import statistics.DataEntry;
 import statistics.MainApp;
-import statistics.Sample;
+import core.Sample;
 
 public class SampleOverviewTableController {
 	

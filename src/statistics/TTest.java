@@ -1,5 +1,7 @@
 package statistics;
 
+import core.Sample;
+
 public class TTest {
 	
 	private double tStatistic;

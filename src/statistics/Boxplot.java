@@ -8,6 +8,7 @@
 
 package statistics;
 
+import core.Sample;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Data;

@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
@@ -21,7 +19,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import statistics.Context;
 import statistics.MainApp;
-import statistics.Sample;
+import core.Sample;
 
 public class SampleOverviewController{
 	
@@ -325,7 +323,6 @@ public class SampleOverviewController{
 		}
 		
 	}
-
 
 	private void readFile(String filePath){
 		boolean done = false;

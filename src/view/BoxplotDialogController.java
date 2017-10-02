@@ -1,25 +1,18 @@
 package view;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Data;
-import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import statistics.Boxplot;
 import statistics.Context;
-import statistics.MainApp;
-import statistics.Sample;
+import core.Sample;
 
 public class BoxplotDialogController {
 	

@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,12 +14,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import statistics.Context;
 import statistics.FrequencyTable;
 import statistics.FrequencyTableEntry;
-import statistics.Sample;
+import core.Sample;
 
 public class DescriptiveStatisticsController {
 	
@@ -75,6 +73,14 @@ public class DescriptiveStatisticsController {
 		numCol.setCellValueFactory(cellData -> cellData.getValue().numProperty());
 		countCol.setCellValueFactory(cellData -> cellData.getValue().countProperty());
 		percentCol.setCellValueFactory(cellData -> cellData.getValue().percentProperty());
+		
+		freqTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+		    if (newSelection != null) {
+		    	FrequencyTableEntry hold = freqTable.getSelectionModel().getSelectedItem();
+		    	System.out.println(freqTable.getSelectionModel().getSelectedIndex());
+		        
+		    }
+		});
 		
 		
 	}
