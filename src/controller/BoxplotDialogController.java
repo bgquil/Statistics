@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.util.LinkedList;
 
@@ -11,8 +11,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import statistics.Boxplot;
-import statistics.Context;
-import core.Sample;
+import core.Context;
+import statistics.Sample;
 
 public class BoxplotDialogController {
 	

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BoxplotDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BoxplotDialogController">
    <children>
       <Button layoutX="454.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleShowBoxPlots" prefHeight="40.0" prefWidth="80.0" text="Graph" />
       <VBox layoutX="83.0" layoutY="107.0" prefHeight="200.0" prefWidth="113.0" spacing="10.0">

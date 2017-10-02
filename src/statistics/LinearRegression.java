@@ -1,7 +1,5 @@
 package statistics;
 
-import core.Sample;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

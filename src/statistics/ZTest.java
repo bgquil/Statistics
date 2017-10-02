@@ -1,7 +1,5 @@
 package statistics;
 
-import core.Sample;
-
 public class ZTest {
 	
 	private final double Z_MAX = 6;

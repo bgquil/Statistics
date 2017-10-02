@@ -3,8 +3,6 @@ package statistics;
 import java.util.HashMap;
 import java.util.Map;
 
-import core.Sample;
-
 public class FrequencyTable {
 	
 	

@@ -1,15 +1,11 @@
-package core;
+package statistics;
 /**
  * Sample.java
  * 
  *  Contains the sample data used for more specific calculations
  *  
  *  Methods for 5 number summary and basic statistics for a sample.
- *  
- *  
- * 
- * 
- * 
+ *
  * @author: Benjamin Quilliams
  */
 
@@ -18,7 +14,7 @@ import java.util.Arrays;
 
 import javafx.beans.property.DoubleProperty;
 
-public class Sample {
+public class Sample<Double> {
 	private String name;
 	private double[] sampleData;
 	private double[] sortedSampleData;

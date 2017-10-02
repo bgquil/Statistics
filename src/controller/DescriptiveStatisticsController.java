@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,10 +15,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import statistics.Context;
+import core.Context;
 import statistics.FrequencyTable;
 import statistics.FrequencyTableEntry;
-import core.Sample;
+import statistics.Sample;
 
 public class DescriptiveStatisticsController {
 	
