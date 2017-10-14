@@ -42,7 +42,6 @@ public class Sample<Double> {
 	}
 	
 	public Sample() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void setData(double[] data){
@@ -53,6 +52,16 @@ public class Sample<Double> {
 		Arrays.sort(this.sortedSampleData);
 		this.calculate();
 		
+	}
+
+	public void calculate(){
+		this.setSampleMean();
+		this.setMinQ1Q3Max();
+		this.setSampleMedian();
+		this.setSampleStdDev();
+		this.setSampleRange();
+		this.calculateSampleVariance();
+
 	}
 
 	public String getName(){
@@ -69,6 +78,34 @@ public class Sample<Double> {
 	
 	public double[] getSortedSampleData(){
 		return this.sortedSampleData;
+	}
+
+	/**
+	 * @return the sample Variance
+	 */
+	public double getSampleVariance() {
+		return sampleVariance;
+	}
+
+	/**
+	 * @param sampleVariance the sample Variance to set
+	 */
+	public void setSampleVariance(double sampleVariance) {
+		this.sampleVariance = sampleVariance;
+	}
+
+	/**
+	 * @return the sampleSum
+	 */
+	public double getSampleSum() {
+		return sampleSum;
+	}
+
+	/**
+	 * @param sampleSum the sampleSum to set
+	 */
+	public void setSampleSum(double sampleSum) {
+		this.sampleSum = sampleSum;
 	}
 	
 	public int getSampleSize(){
@@ -92,7 +129,6 @@ public class Sample<Double> {
 		return this.sampleMean;
 		
 	}
-
 	
 	/*
 	 * Test cases for small sets N <= 6
@@ -153,8 +189,7 @@ public class Sample<Double> {
 	public double getSampleMedian() {
 		return sampleMedian;
 	}
-	
-	
+
 	private void setSampleStdDev() {
 		
 		double tempSum = 0;
@@ -186,19 +221,6 @@ public class Sample<Double> {
 	public double getSampleRange(){
 		return this.sampleRange;
 	}
-	
-
-	
-	public void calculate(){
-		this.setSampleMean();
-		this.setMinQ1Q3Max();
-		this.setSampleMedian();
-		this.setSampleStdDev();
-		this.setSampleRange();
-		this.calculateSampleVariance();
-		
-	}
-	
 
 	private void calculateSampleVariance() {
 		double var = 0;
@@ -210,6 +232,7 @@ public class Sample<Double> {
 		
 	}
 
+	@Override
 	public String toString(){
 
 		StringBuilder sb = new StringBuilder();
@@ -227,33 +250,4 @@ public class Sample<Double> {
 				
 	}
 
-	/**
-	 * @return the sampleVariance
-	 */
-	public double getSampleVariance() {
-		return sampleVariance;
-	}
-
-	/**
-	 * @param sampleVariance the sampleVariance to set
-	 */
-	public void setSampleVariance(double sampleVariance) {
-		this.sampleVariance = sampleVariance;
-	}
-
-	/**
-	 * @return the sampleSum
-	 */
-	public double getSampleSum() {
-		return sampleSum;
-	}
-
-	/**
-	 * @param sampleSum the sampleSum to set
-	 */
-	public void setSampleSum(double sampleSum) {
-		this.sampleSum = sampleSum;
-	}
-	
-	
 }

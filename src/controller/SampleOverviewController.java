@@ -399,17 +399,7 @@ public class SampleOverviewController{
 		mainApp.showSamples();
 		
 	}
-	
-	/*
-	 * 	Open the Samples table page.
-	 */
-	@FXML
-	private void handleShowSampleTable() {
-		mainApp.showSamplesTable();
-		
-	}
-	
-	
+
 	/*
 	 * 	Open the ZTestDialog.
 	 */

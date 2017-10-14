@@ -20,7 +20,6 @@ import controller.DescriptiveStatisticsController;
 import controller.RegressionDialogController;
 import controller.RootLayoutController;
 import controller.SampleOverviewController;
-import controller.SampleOverviewTableController;
 import controller.ScatterplotDialogController;
 import controller.TTestDialogController;
 import controller.TwoTTestDialogController;
@@ -138,26 +137,6 @@ public class MainApp extends Application {
 			rootLayout.setCenter(samplesOverview);
 			
 			SampleOverviewController controller = loader.getController();
-			controller.setMainApp(this);
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void showSamplesTable(){
-        final String viewLocation  = "/view/SampleOverviewTable.fxml";
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource(viewLocation));
-			AnchorPane samplesTableOverview = (AnchorPane) loader.load();
-			
-			rootLayout.setCenter(samplesTableOverview);
-			
-			SampleOverviewTableController controller = loader.getController();
 			controller.setMainApp(this);
 			
 			

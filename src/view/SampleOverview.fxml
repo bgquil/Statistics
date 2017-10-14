@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleOverviewController">
+<ScrollPane prefHeight="695.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleOverviewController">
    <content>
-      <AnchorPane prefHeight="695.0" prefWidth="1280.0">
+      <AnchorPane prefHeight="693.0" prefWidth="1275.0">
          <children>
             <Label fx:id="sampleLabel1" layoutX="82.0" layoutY="26.0" text="Data Set 1" />
             <Label fx:id="sampleLabel2" layoutX="238.0" layoutY="26.0" text="Data Set 2" />
@@ -92,7 +98,7 @@
                   <Button mnemonicParsing="false" onAction="#handleShow2TTestDialog" prefHeight="25.0" prefWidth="167.0" text="2-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button layoutX="1074.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All" />
+            <Button layoutX="1074.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All Data Sets" />
             <Button layoutX="1188.0" layoutY="104.0" mnemonicParsing="false" onAction="#handleExport" text="Export" visible="false" />
             <CheckBox fx:id="title" layoutX="1071.0" layoutY="64.0" mnemonicParsing="false" text="First Row as Title" />
          </children>
