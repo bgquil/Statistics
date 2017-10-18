@@ -2,13 +2,10 @@ package statistics;
 
 /*
  * MathFunctions.java
- * BQ: The following methods are used in graphing curves for the chi-squared
- * distribution and are used in finding the areas under curves of the chi-squared
- * and t-distributions.  I have left the original comments made by the author,
- * Bryan Lewis, below.
+ * A static library used in the calculation and graphing of various statistical tests.
+ * All code in this class is adapted from Byran Lewis.
+ *
  */
-
-
 		/*	specialFunctions.java
 		20-July-1997
 		Bryan Lewis
@@ -20,25 +17,6 @@ package statistics;
 		
 		(*) Press, Flannery, Teukolsky, Vetterling, Numerical Recipes,
 			Cambridge University Press, 1986
-		
-		****** Contents ******
-		logGamma(double x)	Returns ln(gamma(x)) (*)
-		gamma(double x)		Returns gamma(x)
-		fDist(double v1, double v2, double f) 
-		Returns F distribution with v1, v2 deg. freedom
-		i.e., P(x>f)
-		stDist(double v, double t) 
-		Returned value is P( x > t) for a r.v. x with v deg. freedom.
-		****** End Contents ******
-		
-		****** Dependencies ******
-		Java.lang.Math
-		****** End Dependencies ******
-		
-		****** Revision History******
-		21.December, 1997: Added betai, betcf, new F-distribution from (*)
-		****** End Revisions ******
-		
 		*/
 
 import java.lang.Math.*;

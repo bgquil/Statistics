@@ -31,7 +31,10 @@ public class Sample<Double> {
 	private double sampleVariance;
 	private double sampleSum;
 
-	
+    /**
+     * Creates a sample object and calculates statistical information from the provided data array.
+     * @param data The sample data to be analyzed.
+     */
 	public Sample(double[] data){
 		this.name = "DEFAULT";
 		this.sampleData = data;
@@ -54,6 +57,7 @@ public class Sample<Double> {
 		
 	}
 
+
 	public void calculate(){
 		this.setSampleMean();
 		this.setMinQ1Q3Max();
@@ -61,7 +65,6 @@ public class Sample<Double> {
 		this.setSampleStdDev();
 		this.setSampleRange();
 		this.calculateSampleVariance();
-
 	}
 
 	public String getName(){

@@ -247,24 +247,7 @@ public class ZTestDialogController {
 	        scene.getStylesheets().add(getClass().getResource("/view/ZTestChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
-			
-			
-	        //FXML file scene
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(MainApp.class.getResource("/view/ZTestGraph.fxml"));
-//			AnchorPane zTestGraph = (AnchorPane) loader.load();
-//			Scene scene = new Scene(zTestGraph);
-//			graphStage.setScene(scene);
-//			
-//		
-//			
-//			ZTestDialogController controller = loader.getController();
-//			controller.setDialogStage(graphStage);
-//			
-//			graphStage.showAndWait();
-			
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
