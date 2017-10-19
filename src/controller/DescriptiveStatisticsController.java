@@ -59,33 +59,25 @@ public class DescriptiveStatisticsController {
 	private TextField max;
 	@FXML
 	private TextField range;
-	
-	/*
-	 * 
-	 */
+
 	@FXML
 	private void initialize() {
 		
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1","Data Set 2","Data Set 3","Data Set 4");
+		ObservableList<String> samples = FXCollections.observableArrayList(
+				"Data Set 1",
+				"Data Set 2",
+				"Data Set 3",
+				"Data Set 4",
+				"Data Set 5",
+				"Data Set 6");
+
 		sampleChoiceBox.setItems(samples);
-		
+
 		//numCol.setCellValueFactory(new PropertyValueFactory<>("Number"));
 		numCol.setCellValueFactory(cellData -> cellData.getValue().numProperty());
 		countCol.setCellValueFactory(cellData -> cellData.getValue().countProperty());
 		percentCol.setCellValueFactory(cellData -> cellData.getValue().percentProperty());
-		
-		freqTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-		    if (newSelection != null) {
-		    	FrequencyTableEntry hold = freqTable.getSelectionModel().getSelectedItem();
-		    	System.out.println(freqTable.getSelectionModel().getSelectedIndex());
-		        
-		    }
-		});
-		
-		
 	}
-	
-	
 	
 	/*
 	 * 	Handle selection of sample from the choicebox.
@@ -117,8 +109,6 @@ public class DescriptiveStatisticsController {
 			showStats(Context.getInstance().getS6());
 			break;
 		}
-		
-		
 	}
 	
 	public double formatDouble(double val, int places){
@@ -140,16 +130,12 @@ public class DescriptiveStatisticsController {
 		q3.setText(Double.toString(formatDouble(s.getSampleQ3(),places)));
 		max.setText(Double.toString(formatDouble(s.getSampleMax(),places)));
 		range.setText(Double.toString(formatDouble(s.getSampleRange(),places)));
-		
-		
 		showFreqTable(s);
-		
-		
 	}
+
 	
 	private void showFreqTable(Sample s){
 		FrequencyTable ft = new FrequencyTable(s);
-		
 		ObservableList<FrequencyTableEntry> data = FXCollections.observableArrayList();
 		Map<Double, Integer> m = ft.getMap();
 		double n = (double) s.getSampleSize();
@@ -161,15 +147,5 @@ public class DescriptiveStatisticsController {
 		}
 
 		freqTable.setItems(data);
-
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

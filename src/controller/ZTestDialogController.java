@@ -115,14 +115,11 @@ public class ZTestDialogController {
 		case 5:
 			setupZTest(Context.getInstance().getS6());
 			break;
-		
-			
 		}
 	}
 	
 	@FXML
 	private void handleStartTestSummary(){
-		
 		double popMean = (double) Double.parseDouble(nullHypMean.getText());
 		double stdDev = (double) Double.parseDouble(popStdDev.getText());
 		double sMean = (double) Double.parseDouble(sampleMeanTextField.getText());
@@ -181,7 +178,6 @@ public class ZTestDialogController {
 		}
 		else if (mode.equals("summary")){
 
-			
 			switch (selection){
 			case "Not Equal":
 				if(z.getZScore() > 0)
@@ -296,7 +292,4 @@ public class ZTestDialogController {
         return area;
 		
 	}
-	
-	
-	
 }

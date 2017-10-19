@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DescriptiveStatisticsController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DescriptiveStatisticsController">
    <children>
-      <TableView fx:id="freqTable" layoutX="465.0" layoutY="41.0" prefHeight="537.0" prefWidth="284.0">
+      <TableView fx:id="freqTable" layoutX="431.0" layoutY="41.0" prefHeight="537.0" prefWidth="351.0">
         <columns>
           <TableColumn fx:id="numCol" prefWidth="90.0" text="Number" />
           <TableColumn fx:id="countCol" prefWidth="90.0" text="Count" />
             <TableColumn fx:id="percentCol" prefWidth="103.0" text="Percent" />
         </columns>
       </TableView>
-      <ChoiceBox fx:id="sampleChoiceBox" layoutX="65.0" layoutY="41.0" prefHeight="37.0" prefWidth="152.0" />
+      <ChoiceBox fx:id="sampleChoiceBox" layoutX="60.0" layoutY="43.0" prefHeight="37.0" prefWidth="152.0" />
       <Button layoutX="247.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleSelectSample" onKeyTyped="#handleSelectSample" text="View Statistics">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <GridPane hgap="10.0" layoutX="39.0" layoutY="132.0" prefHeight="421.0" prefWidth="351.0">
+      <GridPane hgap="10.0" layoutX="14.0" layoutY="130.0" prefHeight="421.0" prefWidth="351.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="163.0" minWidth="10.0" prefWidth="163.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="169.0" />
@@ -40,7 +46,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="RIGHT" text="n" GridPane.halignment="RIGHT">
+            <Label alignment="CENTER" contentDisplay="RIGHT" text="N" GridPane.halignment="RIGHT">
                <font>
                   <Font size="19.0" />
                </font>

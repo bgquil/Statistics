@@ -96,10 +96,10 @@
                   </VBox>
                </children>
             </HBox>
-            <GridPane layoutX="1071.0" layoutY="149.0" prefHeight="230.0" prefWidth="200.0" AnchorPane.bottomAnchor="314.0" AnchorPane.leftAnchor="1071.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="149.0">
+            <GridPane layoutX="1026.0" layoutY="180.0" prefHeight="230.0" prefWidth="200.0" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="1026.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="180.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="116.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="196.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="34.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="166.0" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -120,9 +120,9 @@
             </GridPane>
             <Button layoutX="1074.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All Data Sets" />
             <Button layoutX="1188.0" layoutY="104.0" mnemonicParsing="false" onAction="#handleExport" text="Export" visible="false" />
-            <HBox layoutX="1052.0" layoutY="58.0" prefHeight="24.0" prefWidth="200.0">
+            <HBox alignment="CENTER" layoutX="1052.0" layoutY="58.0" prefHeight="24.0" prefWidth="200.0">
                <children>
-                  <CheckBox fx:id="title" alignment="TOP_LEFT" mnemonicParsing="false" text="First Row as Title">
+                  <CheckBox fx:id="title" alignment="CENTER" mnemonicParsing="false" text="First Row as Title">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>

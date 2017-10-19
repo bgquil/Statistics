@@ -5,20 +5,14 @@ package controller;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import statistics.ChiSquared;
 import statistics.MathFunctions;
@@ -38,12 +32,6 @@ public class ChiSquaredDialogController {
     @FXML
     private Label errorMessage;
     @FXML
-    private NumberAxis xAxis;
-    @FXML
-    private NumberAxis yAxis;
-    @FXML
-    private AreaChart<Number, Number> chiSquaredChart;
-    @FXML
     private ChoiceBox<Number> row;
     @FXML
     private ChoiceBox<Number> col;
@@ -54,11 +42,11 @@ public class ChiSquaredDialogController {
     @FXML
     private TextField DOFTextField;
     @FXML
-    private TextField ChiStatisticTextField;
+    private TextField chiStatisticTextField;
     @FXML
     private TextField pValueTexField;
     @FXML
-    private AnchorPane tablePane;
+    private VBox chartBox;
 
     int rSize;
     int cSize;
@@ -71,7 +59,7 @@ public class ChiSquaredDialogController {
         row.getItems().addAll(1, 2, 3, 4);
         col.getItems().addAll(1, 2, 3, 4);
         DOFTextField.setEditable(false);
-        ChiStatisticTextField.setEditable(false);
+        chiStatisticTextField.setEditable(false);
         pValueTexField.setEditable(false);
 
     }
@@ -98,8 +86,13 @@ public class ChiSquaredDialogController {
     }
 
     @FXML
-    private void clearGP() {
-
+    private void handleReset() {
+        chartBox.getChildren().clear();
+        gp.getChildren().clear();
+        gpHypothesis.getChildren().clear();
+        DOFTextField.clear();
+        chiStatisticTextField.clear();
+        pValueTexField.clear();
     }
 
     public double formatDouble(double val, int places) {
@@ -132,7 +125,6 @@ public class ChiSquaredDialogController {
 
 
     }
-
 
     @FXML
     private void handleCalculateChiSquared(double[][] matrixData) {
@@ -199,7 +191,7 @@ public class ChiSquaredDialogController {
 
         double DOF = c.getDOF();
         DOFTextField.setText(Integer.toString((int) DOF));
-        ChiStatisticTextField.setText(Double.toString(formatDouble(c.getChiStatistic(), 5)));
+        chiStatisticTextField.setText(Double.toString(formatDouble(c.getChiStatistic(), 5)));
         pValueTexField.setText(Double.toString(formatDouble(c.getpValue(), 5)));
 
         showChiSquaredGraph(DOF, c.getChiStatistic());
@@ -208,89 +200,40 @@ public class ChiSquaredDialogController {
 
 	private void showChiSquaredGraph(double DOF, double x2){
 
-		try{
+        // Setup axes
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("x");
+        yAxis.setLabel("P(x)");
+        yAxis.setAutoRanging(false);
+        yAxis.setUpperBound(.5);
+        yAxis.setLowerBound(0);
+        yAxis.setTickUnit(.1);
+        xAxis.setAutoRanging(false);
+        xAxis.setLowerBound(0);
+        if (DOF < 3){
 
-	        final NumberAxis xAxis = new NumberAxis();
-	        final NumberAxis yAxis = new NumberAxis();
-	        xAxis.setLabel("x");
-	        yAxis.setLabel("P(x)");
+            xAxis.setUpperBound(8);
+            xAxis.setTickUnit(1);
+        }
+        else{
+            xAxis.setUpperBound(12);
+            xAxis.setTickUnit(1);
+        }
 
-	        yAxis.setAutoRanging(false);
+        // Setup AreaChart.
+        final AreaChart<Number,Number> areaChart =
+                new AreaChart<Number,Number>(xAxis,yAxis);
+        areaChart.setTitle("Chi-Squared Distribution with DOF = "+(int)DOF);
+        areaChart.setLegendVisible(false);
+        //areaChart.getData().addAll(generateChiSquaredDistribution(3.0), generateAreaUnderCurve(-4.0d, z.getZScore()));
+        areaChart.getData().add(generateChiSquaredDistribution(DOF));
+        areaChart.getData().add(generateAreaUnderCurve(x2,DOF));
 
-	        yAxis.setUpperBound(.5);
-	        yAxis.setLowerBound(0);
-	        yAxis.setTickUnit(.1);
-
-	        xAxis.setAutoRanging(false);
-	        xAxis.setLowerBound(0);
-	        if (DOF < 3){
-
-		        xAxis.setUpperBound(8);
-		        xAxis.setTickUnit(1);
-	        }
-	        else{
-	        	xAxis.setUpperBound(12);
-		        xAxis.setTickUnit(1);
-
-	        }
-
-
-	        final AreaChart<Number,Number> areaChart =
-	                new AreaChart<Number,Number>(xAxis,yAxis);
-	        areaChart.setTitle("Chi-Squared Distribution with DOF = "+(int)DOF);
-	        areaChart.setLegendVisible(false);
-	        //areaChart.getData().addAll(generateChiSquaredDistribution(3.0), generateAreaUnderCurve(-4.0d, z.getZScore()));
-	        areaChart.getData().add(generateChiSquaredDistribution(DOF));
-	        areaChart.getData().add(generateAreaUnderCurve(x2,DOF));
-            tablePane.getChildren().add(areaChart);
-
-
-		}
-		catch (Exception e) {
-			// TODO: handle exception
-		}
-
+        // Insert areaChart into pane.
+        chartBox.getChildren().add(areaChart);
 
 	}
-
-//    @FXML
-//    private void showChiSquaredGraph(double DOF, double x2) {
-//        try {
-//
-//            xAxis.setLabel("x");
-//            yAxis.setLabel("P(x)");
-//
-//            yAxis.setAutoRanging(false);
-//
-//            yAxis.setUpperBound(.5);
-//            yAxis.setLowerBound(0);
-//            yAxis.setTickUnit(.1);
-//
-//            xAxis.setAutoRanging(false);
-//            xAxis.setLowerBound(0);
-//            if (DOF < 3) {
-//
-//                xAxis.setUpperBound(8);
-//                xAxis.setTickUnit(1);
-//            } else {
-//                xAxis.setUpperBound(12);
-//                xAxis.setTickUnit(1);
-//
-//            }
-//
-//            chiSquaredChart.setTitle("Chi-Squared Distribution with DOF = " + (int) DOF);
-//            chiSquaredChart.setLegendVisible(false);
-////            areaChart.getData().addAll(generateChiSquaredDistribution(3.0), generateAreaUnderCurve(-4.0d, z.getZScore()));
-//            chiSquaredChart.getData().add(generateChiSquaredDistribution(DOF));
-//            chiSquaredChart.getData().add(generateAreaUnderCurve(x2, DOF));
-//
-//            //tablePane.getChildren().add(chiSquaredChart);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//    }
 
     /**
      * Generates the coordinates for a Chi-Squared distribution with a given degrees of freedom.
