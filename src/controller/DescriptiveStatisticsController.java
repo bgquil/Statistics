@@ -9,11 +9,8 @@ import java.util.Map.Entry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import core.Context;
 import statistics.FrequencyTable;
@@ -119,18 +116,24 @@ public class DescriptiveStatisticsController {
 	}
 	
 	private void showStats(Sample s){
-		final int places = 4;
-		num.setText(Integer.toString(s.getSampleSize()));
-		mean.setText(Double.toString(formatDouble(s.getSampleMean(),places)));
-		sum.setText(Double.toString(formatDouble(s.getSampleSum(),places)));
-		deviation.setText(Double.toString(formatDouble(s.getSampleStdDev(),places)));
-		min.setText(Double.toString(formatDouble(s.getSampleMin(),places)));
-		q1.setText(Double.toString(formatDouble(s.getSampleQ1(),places)));
-		median.setText(Double.toString(formatDouble(s.getSampleMedian(),places)));
-		q3.setText(Double.toString(formatDouble(s.getSampleQ3(),places)));
-		max.setText(Double.toString(formatDouble(s.getSampleMax(),places)));
-		range.setText(Double.toString(formatDouble(s.getSampleRange(),places)));
-		showFreqTable(s);
+		final int PRECISION = 4;
+
+		if (s != null) {
+            num.setText(Integer.toString(s.getSampleSize()));
+            mean.setText(Double.toString(formatDouble(s.getSampleMean(), PRECISION)));
+            sum.setText(Double.toString(formatDouble(s.getSampleSum(), PRECISION)));
+            deviation.setText(Double.toString(formatDouble(s.getSampleStdDev(), PRECISION)));
+            min.setText(Double.toString(formatDouble(s.getSampleMin(), PRECISION)));
+            q1.setText(Double.toString(formatDouble(s.getSampleQ1(), PRECISION)));
+            median.setText(Double.toString(formatDouble(s.getSampleMedian(), PRECISION)));
+            q3.setText(Double.toString(formatDouble(s.getSampleQ3(), PRECISION)));
+            max.setText(Double.toString(formatDouble(s.getSampleMax(), PRECISION)));
+            range.setText(Double.toString(formatDouble(s.getSampleRange(), PRECISION)));
+            showFreqTable(s);
+        }
+        else {
+            showNullSampleError();
+        }
 	}
 
 	
@@ -142,10 +145,24 @@ public class DescriptiveStatisticsController {
 		Iterator<Entry<Double, Integer>> it = m.entrySet().iterator();
 		while (it.hasNext()){
 			Map.Entry<Double, Integer> pair = (Map.Entry<Double, Integer>) it.next();
-			FrequencyTableEntry entry = new FrequencyTableEntry(pair.getKey(), pair.getValue(), (pair.getValue()/(n))*100d);
+			FrequencyTableEntry entry = new FrequencyTableEntry(
+					pair.getKey(),
+					pair.getValue(),
+					(pair.getValue()/(n)) * 100d);
 			data.add(entry);
 		}
-
 		freqTable.setItems(data);
 	}
+
+    /*
+     *  Error Dialogs
+     */
+    @FXML
+    private void showNullSampleError() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Sample Error");
+        alert.setHeaderText("Cannot display statistics");
+        alert.setContentText("The selected sample contains no data.");
+        alert.showAndWait();
+    }
 }
