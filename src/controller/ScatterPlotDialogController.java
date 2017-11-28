@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import core.Context;
 import statistics.Sample;
 
-public class ScatterplotDialogController {
+public class ScatterPlotDialogController {
 
 	private Stage dialogStage;
 

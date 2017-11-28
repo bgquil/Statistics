@@ -472,9 +472,9 @@ public class SampleOverviewController{
 	 * 	Open the Sample Statistics Dialog.
 	 */
 	@FXML
-	private void handleShowScatterplot() {
+	private void handleShowScatterPlot() {
 		set();
-		mainApp.showScatterplot();
+		mainApp.showScatterPlot();
 	}
 	
 	

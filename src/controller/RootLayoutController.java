@@ -96,8 +96,8 @@ public class RootLayoutController {
 	 * 	Open the Sample Statistics Dialog.
 	 */
 	@FXML
-	private void handleShowScatterplot() {
-		mainApp.showScatterplot();
+	private void handleShowScatterPlot() {
+		mainApp.showScatterPlot();
 	}
 	
 	

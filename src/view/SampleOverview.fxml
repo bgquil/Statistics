@@ -108,14 +108,16 @@
                 <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleShowZTestDialog" prefHeight="25.0" prefWidth="170.0" text="1-Sample Z Test" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#handleShowTTestDialog" prefHeight="25.0" prefWidth="167.0" text="1-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#handleShowRegressionDialog" prefHeight="25.0" prefWidth="165.0" text="Simple Linear Regression" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" prefHeight="25.0" prefWidth="172.0" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" onAction="#handleShowZTestDialog" prefHeight="25.0" prefWidth="170.0" text="1-Sample Z Test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#handleShowTTestDialog" prefHeight="25.0" prefWidth="167.0" text="1-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#handleShowRegressionDialog" prefHeight="25.0" prefWidth="165.0" text="Simple Linear Regression" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" prefHeight="25.0" prefWidth="172.0" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Button mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" prefHeight="25.0" prefWidth="174.0" text="Descriptive Statistics" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#handleShow2TTestDialog" prefHeight="25.0" prefWidth="167.0" text="2-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#handleShow2TTestDialog" prefHeight="25.0" prefWidth="167.0" text="2-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button mnemonicParsing="false" onAction="#handleShowScatterPlot" prefHeight="25.0" prefWidth="172.0" text="Scatter Plot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button layoutX="1074.0" layoutY="656.0" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All Data Sets" />

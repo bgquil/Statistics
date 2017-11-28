@@ -5,6 +5,7 @@ package core;
 
 import java.io.IOException;
 
+import controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,16 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import controller.BoxplotDialogController;
-import controller.ChiSquaredDialogController;
-import controller.DescriptiveStatisticsController;
-import controller.RegressionDialogController;
-import controller.RootLayoutController;
-import controller.SampleOverviewController;
-import controller.ScatterplotDialogController;
-import controller.TTestDialogController;
-import controller.TwoTTestDialogController;
-import controller.ZTestDialogController;
+import controller.ScatterPlotDialogController;
 
 public class MainApp extends Application {
 	
@@ -94,24 +86,24 @@ public class MainApp extends Application {
 	}
 	
 	
-	public void showScatterplot(){
-		final String viewLocation  = "/view/ScatterplotDialog.fxml";
+	public void showScatterPlot(){
+		final String viewLocation  = "/view/ScatterPlotDialog.fxml";
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource(viewLocation));
-			AnchorPane Scatterplot = (AnchorPane) loader.load();
+			AnchorPane ScatterPlot = (AnchorPane) loader.load();
 			
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Scatterplot");
+			dialogStage.setTitle("Scatter Plot");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(Scatterplot);
+			Scene scene = new Scene(ScatterPlot);
 			dialogStage.setScene(scene);
 			
 		
 			
-			ScatterplotDialogController controller = loader.getController();
+			ScatterPlotDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			
 			dialogStage.showAndWait();
