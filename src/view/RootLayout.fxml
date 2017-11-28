@@ -22,7 +22,7 @@
             <Menu mnemonicParsing="false" text="Statistics" visible="false">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" text="Descriptive Statistics" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowScatterplot" text="Scatterplot" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleShowScatterPlot" text="Scatterplot" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" visible="false" />
               </items>
             </Menu>

@@ -151,16 +151,12 @@ public class SampleOverviewController{
 					}
 			});
 	}
-	
-
-
 
 
 	private void generateSample(ListView<String> view, int sampleNum){
-		
 		Sample s = null;
 		ObservableList<String> list = view.getItems();
-		if (list.size() > 5){
+		if (list.size() - 1 > 0){ // list.size() - 1 to account for 'current' editing cell
 		
 			double d[] = new double[list.size()-1];
 			for (int i = 0; i < list.size(); i++){
@@ -170,7 +166,7 @@ public class SampleOverviewController{
 					}
 					
 					 //System.out.println(d[i]);
-				} catch (Exception e) {
+				} catch (NumberFormatException e) {
 					
 					// TODO: handle exception
 				}
@@ -178,10 +174,9 @@ public class SampleOverviewController{
 			
 			s = new Sample(d);
 		}
-		else{
-			double d[] = {1,2,3,4,5};
-			s = new Sample(d);
-			s.setName("DEFAULT SAMPLE");
+		else{ // generate default empty sample object
+			double d[] = {};
+			s = new Sample(d, "NO SAMPLE DATA");
 		}
 			
 		switch (sampleNum) {

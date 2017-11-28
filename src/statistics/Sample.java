@@ -36,15 +36,21 @@ public class Sample<Double> {
      * @param data The sample data to be analyzed.
      */
 	public Sample(double[] data){
-		this.name = "DEFAULT";
-		this.sampleData = data;
-		this.sampleSize = data.length;
-		sortedSampleData = Arrays.copyOf(data, data.length);
-		Arrays.sort(this.sortedSampleData);
-		this.calculate();
+	        this( data, "DEFAULT SAMPLE NAME");
 	}
+
+	public Sample(double[] data, String name) {
+        this.name = name;
+        this.sampleData = data;
+        this.sampleSize = data.length;
+        sortedSampleData = Arrays.copyOf(data, data.length);
+        Arrays.sort(this.sortedSampleData);
+        this.calculate();
+
+    }
 	
 	public Sample() {
+
 	}
 	
 	public void setData(double[] data){
@@ -56,6 +62,10 @@ public class Sample<Double> {
 		this.calculate();
 		
 	}
+
+	public boolean hasData() {
+	    return this.sampleSize > 0;
+    }
 
 
 	public void calculate(){
