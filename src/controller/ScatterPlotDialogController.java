@@ -12,7 +12,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import core.Context;
 import statistics.Sample;
 
 public class ScatterPlotDialogController {
@@ -23,9 +22,9 @@ public class ScatterPlotDialogController {
 		this.dialogStage = dialogStage;
 	}
 	@FXML
-	private ChoiceBox<String> xData;
+	private ChoiceBox<Sample> xData;
 	@FXML
-	private ChoiceBox<String> yData;
+	private ChoiceBox<Sample> yData;
 	
 	@FXML
 	private TextField xLabel;
@@ -34,15 +33,10 @@ public class ScatterPlotDialogController {
 
 	@FXML
 	private void initialize() {
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1",
-				"Data Set 2",
-				"Data Set 3",
-				"Data Set 4"
-				);
-	xData.setItems(samples);
-	yData.setItems(samples);
-
-
+	    // Setup Sample ChoiceBox
+        ObservableList<Sample> samples = FXCollections.observableArrayList();
+        xData.setItems(samples);
+        yData.setItems(samples);
 	}
 	
 	/*
@@ -50,42 +44,9 @@ public class ScatterPlotDialogController {
 	 */
 	@FXML
 	private void handleSelectSample() {
-		int xChoice = xData.getSelectionModel().getSelectedIndex();
-		int yChoice = yData.getSelectionModel().getSelectedIndex();
+		Sample x = xData.getSelectionModel().getSelectedItem();
+		Sample y = yData.getSelectionModel().getSelectedItem();
 
-		Sample x = null;
-		Sample y = null;
-
-		switch (xChoice) {
-		
-		case 0:
-			x = Context.getInstance().getS1();
-			break;
-		case 1:
-			x = Context.getInstance().getS2();
-			break;
-		case 2:
-			x = Context.getInstance().getS3();
-			break;
-		case 3:
-			x = Context.getInstance().getS4();
-			break;
-		}
-		
-		switch (yChoice) {
-		case 0:
-			y = Context.getInstance().getS1();
-			break;
-		case 1:
-			y = Context.getInstance().getS2();
-			break;
-		case 2:
-			y = Context.getInstance().getS3();
-			break;
-		case 3:
-			y = Context.getInstance().getS4();
-			break;
-		}
 		if (xLabel.getText().equals(""))
 			x.setName("X-Axis");
 		else
@@ -96,12 +57,12 @@ public class ScatterPlotDialogController {
 		else
 			y.setName(yLabel.getText());
 		
-		showScatterplot(x, y);
+		showScatterPlot(x, y);
 	}
 	
 	
 	
-    public void showScatterplot(Sample x, Sample y){
+    public void showScatterPlot(Sample x, Sample y){
 
             try {
 
@@ -139,10 +100,6 @@ public class ScatterPlotDialogController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-	
-	
-	
 
 }

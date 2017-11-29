@@ -61,15 +61,10 @@ public class DescriptiveStatisticsController {
 	@FXML
 	private void initialize() {
 
-		ObservableList<Sample> samples = FXCollections.observableArrayList();
-
-		for (Sample s : Context.getInstance().getSamples()) {
-		    if (!s.isDefaultSample()) {
-		        samples.add(s);
-            }
-        }
-        System.out.println(Context.getInstance().getSamples());
-
+	    // Setup Sample ChoiceBox
+		ObservableList<Sample> samples = FXCollections.observableArrayList(
+				Context.getInstance().getNonDefaultSamples()
+		);
 		sampleChoiceBox.setItems(samples);
 
 		//numCol.setCellValueFactory(new PropertyValueFactory<>("Number"));
@@ -83,31 +78,7 @@ public class DescriptiveStatisticsController {
 	 */
 	@FXML
 	private void handleSelectSample() {
-		
-		int selection = sampleChoiceBox.getSelectionModel().getSelectedIndex();
-		System.out.println(selection);
-		
-		switch (selection) {
-		
-		case 0:
-			showStats(Context.getInstance().getS1());
-			break;
-		case 1:
-			showStats(Context.getInstance().getS2());
-			break;
-		case 2:
-			showStats(Context.getInstance().getS3());
-			break;
-		case 3:
-			showStats(Context.getInstance().getS4());
-			break;
-		case 4:
-			showStats(Context.getInstance().getS5());
-			break;
-		case 5:
-			showStats(Context.getInstance().getS6());
-			break;
-		}
+		showStats(sampleChoiceBox.getSelectionModel().getSelectedItem());
 	}
 	
 	public double formatDouble(double val, int places){

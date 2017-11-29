@@ -25,32 +25,7 @@ public class ZTestDialogController {
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
-	
-	
-	/*
-	 * 
-	 */
-	@FXML
-	private void initialize() {
-		
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1",
-				"Data Set 2",
-				"Data Set 3",
-				"Data Set 4",
-				"Data Set 5",
-				"Data Set 6");
-		ObservableList<String> alternativeList = FXCollections.observableArrayList(
-				"Not Equal",
-				"Less Than",
-				"Greater Than"
-				);
-		
-		sampleChoiceBox.setItems(samples);
-		alternativeChoiceBox.setItems(alternativeList);
-		summaryAlternativeChoiceBox.setItems(alternativeList);
-	}
-	
-	
+
 	//Tab Data
 	@FXML
 	private Label message;
@@ -61,7 +36,7 @@ public class ZTestDialogController {
 	@FXML
 	private TextField popStdDeviationTextBox;
 	@FXML
-	private ChoiceBox<String> sampleChoiceBox;
+	private ChoiceBox<Sample> sampleChoiceBox;
 	@FXML
 	private ChoiceBox<String> alternativeChoiceBox;
 	@FXML
@@ -86,6 +61,24 @@ public class ZTestDialogController {
 	private TextField summaryZScore;
 	@FXML
 	private TextField summaryPValue;
+
+
+    @FXML
+    private void initialize() {
+
+        ObservableList<Sample> samples = FXCollections.observableArrayList(
+                Context.getInstance().getNonDefaultSamples()
+        );
+        ObservableList<String> alternativeList = FXCollections.observableArrayList(
+                "Not Equal",
+                "Less Than",
+                "Greater Than"
+        );
+
+        sampleChoiceBox.setItems(samples);
+        alternativeChoiceBox.setItems(alternativeList);
+        summaryAlternativeChoiceBox.setItems(alternativeList);
+    }
 	
 
 	/*
@@ -93,30 +86,8 @@ public class ZTestDialogController {
 	 */
 	@FXML
 	private void handleStartTestSample() {
-
-		int selection = sampleChoiceBox.getSelectionModel().getSelectedIndex();
-		switch (selection) {
-		
-		case 0:
-			setupZTest(Context.getInstance().getS1());
-			break;
-		case 1:
-			setupZTest(Context.getInstance().getS2());
-			break;
-		case 2:
-			setupZTest(Context.getInstance().getS3());
-			break;
-		case 3:
-			setupZTest(Context.getInstance().getS4());
-			break;
-		case 4:
-			setupZTest(Context.getInstance().getS5());
-			break;
-		case 5:
-			setupZTest(Context.getInstance().getS6());
-			break;
-		}
-	}
+        setupZTest(sampleChoiceBox.getSelectionModel().getSelectedItem());
+    }
 	
 	@FXML
 	private void handleStartTestSummary(){

@@ -31,116 +31,57 @@ public class TwoTTestDialogController {
 		this.dialogStage = dialogStage;
 	}
 	
-	
-	/*
-	 * 
-	 */
-	@FXML
-	private void initialize() {
-		
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1",
-				"Data Set 2",
-				"Data Set 3",
-				"Data Set 4",
-				"Data Set 5",
-				"Data Set 6"
-				);
-		ObservableList<String> alternativeList = FXCollections.observableArrayList(
-				"Not Equal",
-				"Less Than",
-				"Greater Than"
-				);
-		
-		sample1ChoiceBox.setItems(samples);
-		sample2ChoiceBox.setItems(samples);
-		//alternativeChoiceBox.setItems(alternativeList);
-
-	}
-	
-	
 	//Tab Data
 	@FXML
 	private Label message;
 	@FXML
 	private Button startTest;
 	@FXML
-	private ChoiceBox<String> sample1ChoiceBox;
+	private ChoiceBox<Sample> sample1ChoiceBox;
 	@FXML
-	private ChoiceBox<String> sample2ChoiceBox;
+	private ChoiceBox<Sample> sample2ChoiceBox;
 	@FXML
 	private ChoiceBox<String> alternativeChoiceBox;
 	@FXML
 	private TextField resultTScore;
 	@FXML
 	private TextField resultPValue;
-	
-	
 
 	final double LEFT = -8d;
 	final double RIGHT = 8d;
 
-	
-	
+
+    @FXML
+    private void initialize() {
+
+        ObservableList<Sample> samples = FXCollections.observableArrayList(
+                Context.getInstance().getNonDefaultSamples()
+        );
+        ObservableList<String> alternativeList = FXCollections.observableArrayList(
+                "Not Equal",
+                "Less Than",
+                "Greater Than"
+        );
+
+        sample1ChoiceBox.setItems(samples);
+        sample2ChoiceBox.setItems(samples);
+        //alternativeChoiceBox.setItems(alternativeList);
+
+    }
+
 
 	/*
 	 * 	Calculate and show the TTest Graph.
 	 */
 	@FXML
 	private void handleStartTestSample() {
-		Sample s1 = null;
-		Sample s2 = null
-				;
-		int selection = sample1ChoiceBox.getSelectionModel().getSelectedIndex();
-		switch (selection) {
-		
-		case 0:
-			s1 = Context.getInstance().getS1();
-			break;
-		case 1:
-			s1 = Context.getInstance().getS2();
-			break;
-		case 2:
-			s1 = Context.getInstance().getS3();
-			break;
-		case 3:
-			s1 = Context.getInstance().getS4();
-			break;
-		case 4:
-			s1 = Context.getInstance().getS5();
-			break;
-		case 5:
-			s1 = Context.getInstance().getS6();
-			break;
-		}
-		
-		int selection2 = sample2ChoiceBox.getSelectionModel().getSelectedIndex();
-		switch (selection2) {
-		
-		case 0:
-			s2 = Context.getInstance().getS1();
-			break;
-		case 1:
-			s2 = Context.getInstance().getS2();
-			break;
-		case 2:
-			s2 = Context.getInstance().getS3();
-			break;
-		case 3:
-			s2 = Context.getInstance().getS4();
-			break;
-		case 4:
-			s2 = Context.getInstance().getS5();
-			break;
-		case 5:
-			s2 = Context.getInstance().getS6();
-			break;
-		}
-		
-	
-		setupTTest(s1,s2);
-		
+		Sample sample1 = sample1ChoiceBox.getSelectionModel().getSelectedItem();
+		Sample sample2= sample2ChoiceBox.getSelectionModel().getSelectedItem();
+		setupTTest(sample1, sample2);
 	}
-	public double formatDouble(double val, int places){
+
+
+	private double formatDouble(double val, int places){
 		
 		BigDecimal d = new BigDecimal(val);
 		d = d.setScale(places, RoundingMode.HALF_UP);

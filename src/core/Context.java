@@ -20,7 +20,12 @@ public class Context {
 		return instance;
 	}
 
-	public List<Sample> getSamples() {
+    /**
+     * Returns a list containing all Sample objects.  Default Sample objects
+     * also included.
+     * @return List with Sample objects.
+     */
+	public List<Sample> getAllSamples() {
 	    List<Sample> samples = new ArrayList<>();
 	    samples.add(this.s1);
 	    samples.add(this.s2);
@@ -29,6 +34,21 @@ public class Context {
 	    samples.add(this.s5);
 	    samples.add(this.s6);
 	    return samples;
+    }
+
+    /**
+     * Returns a List of Samples that are not default and contain
+     * user-provided data.
+     * @return List with Sample Objects.
+     */
+    public List<Sample> getNonDefaultSamples() {
+        List<Sample> userSamples = new ArrayList<>();
+        for (Sample s : getAllSamples()) {
+            if (!s.isDefaultSample()) {
+                userSamples.add(s);
+            }
+        }
+        return userSamples;
     }
 	
 	public Sample getS1() {

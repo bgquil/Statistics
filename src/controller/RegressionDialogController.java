@@ -20,18 +20,15 @@ import statistics.Sample;
 public class RegressionDialogController {
 	
 	private Stage dialogStage;
-	
-	
-	
-	
+
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
 	
 	@FXML
-	private ChoiceBox<String> indSampleChoiceBox;
+	private ChoiceBox<Sample> indSampleChoiceBox;
 	@FXML
-	private ChoiceBox<String> depSampleChoiceBox;
+	private ChoiceBox<Sample> depSampleChoiceBox;
 	@FXML
 	private TextField xLabel;
 	@FXML 
@@ -49,19 +46,19 @@ public class RegressionDialogController {
 	 */
 	@FXML
 	private void initialize() {
-		ObservableList<String> samples = FXCollections.observableArrayList(
-				"Data Set 1",
-				"Data Set 2",
-				"Data Set 3",
-				"Data Set 4",
-				"Data Set 5",
-				"Data Set 6"
-				);
-	indSampleChoiceBox.setItems(samples);
-	depSampleChoiceBox.setItems(samples);
-	line.setVisible(false);
-	r.setVisible(false);
-	r2.setVisible(false);
+        // Setup Sample selection ChoiceBoxes
+	    ObservableList<Sample> samples = FXCollections.observableArrayList(
+	            Context.getInstance().getNonDefaultSamples()
+        );
+
+        indSampleChoiceBox.setItems(samples);
+        depSampleChoiceBox.setItems(samples);
+
+        line.setVisible(false);
+        r.setVisible(false);
+        r2.setVisible(false);
+
+
 
 	}
 	
@@ -70,61 +67,9 @@ public class RegressionDialogController {
 	 */
 	@FXML
 	private void handleSelectSample() {
-		
-		int selectionInd = indSampleChoiceBox.getSelectionModel().getSelectedIndex();
-		int selectionDep = depSampleChoiceBox.getSelectionModel().getSelectedIndex();
+        Sample ind = indSampleChoiceBox.getSelectionModel().getSelectedItem();
+		Sample dep = depSampleChoiceBox.getSelectionModel().getSelectedItem();
 
-		
-		Sample ind = null;
-		Sample dep = null;
-		
-		System.out.println(selectionInd);
-		System.out.println(selectionDep);
-		switch (selectionInd) {
-		
-		case 0:
-			ind = Context.getInstance().getS1();
-			break;
-		case 1:
-			ind = Context.getInstance().getS2();
-			break;
-		case 2:
-			ind = Context.getInstance().getS3();
-			break;
-		case 3:
-			ind = Context.getInstance().getS4();
-			break;
-		case 4:
-			ind = Context.getInstance().getS5();
-			break;
-		case 5:
-			ind = Context.getInstance().getS6();
-			break;	
-		}
-		
-		switch (selectionDep) {
-		
-		case 0:
-			dep = Context.getInstance().getS1();
-			break;
-		case 1:
-			dep = Context.getInstance().getS2();
-			break;
-		case 2:
-			dep = Context.getInstance().getS3();
-			break;
-		case 3:
-			dep = Context.getInstance().getS4();
-			break;
-		case 4:
-			dep = Context.getInstance().getS5();
-			break;
-		case 5:
-			dep = Context.getInstance().getS6();
-			break;
-		
-			
-		}
 		if (xLabel.getText().equals(""))
 			ind.setName("Independent Variable");
 		else
@@ -134,7 +79,6 @@ public class RegressionDialogController {
 			dep.setName("Dependent Variable");
 		else
 			dep.setName(yLabel.getText());
-		
 		showRegressionGraph(ind, dep);
 	}
 

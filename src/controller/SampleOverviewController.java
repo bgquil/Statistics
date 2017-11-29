@@ -308,7 +308,7 @@ public class SampleOverviewController{
 	 * Imports
 	 */
 
-	
+	// Works with excel DOS line endings
 	@FXML
 	private void handleImport(){
 		

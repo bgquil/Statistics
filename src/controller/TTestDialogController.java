@@ -26,27 +26,7 @@ public class TTestDialogController {
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
-	
-	
-	/*
-	 * 
-	 */
-	@FXML
-	private void initialize() {
-		
-		ObservableList<String> samples = FXCollections.observableArrayList("Data Set 1","Data Set 2","Data Set 3","Data Set 4");
-		ObservableList<String> alternativeList = FXCollections.observableArrayList(
-				"Not Equal",
-				"Less Than",
-				"Greater Than"
-				);
-		
-		sampleChoiceBox.setItems(samples);
-		alternativeChoiceBox.setItems(alternativeList);
-		summaryAlternativeChoiceBox.setItems(alternativeList);
-	}
-	
-	
+
 	//Tab Data
 	@FXML
 	private Label message;
@@ -57,7 +37,7 @@ public class TTestDialogController {
 	@FXML
 	private TextField popStdDeviationTextBox;
 	@FXML
-	private ChoiceBox<String> sampleChoiceBox;
+	private ChoiceBox<Sample> sampleChoiceBox;
 	@FXML
 	private ChoiceBox<String> alternativeChoiceBox;
 	@FXML
@@ -82,6 +62,29 @@ public class TTestDialogController {
 	private TextField summaryTScore;
 	@FXML
 	private TextField summaryPValue;
+
+
+    /*
+ *
+ */
+    @FXML
+    private void initialize() {
+
+        // Setup Sample selection ChoiceBoxes
+        ObservableList<Sample> samples = FXCollections.observableArrayList(
+                Context.getInstance().getNonDefaultSamples()
+        );
+
+        ObservableList<String> alternativeList = FXCollections.observableArrayList(
+                "Not Equal",
+                "Less Than",
+                "Greater Than"
+        );
+
+        sampleChoiceBox.setItems(samples);
+        alternativeChoiceBox.setItems(alternativeList);
+        summaryAlternativeChoiceBox.setItems(alternativeList);
+    }
 	
 
 	final double LEFT = -8d;
@@ -95,33 +98,8 @@ public class TTestDialogController {
 	 */
 	@FXML
 	private void handleStartTestSample() {
-
-		int selection = sampleChoiceBox.getSelectionModel().getSelectedIndex();
-		switch (selection) {
-		
-		case 0:
-			setupTTest(Context.getInstance().getS1());
-			break;
-		case 1:
-			setupTTest(Context.getInstance().getS2());
-			break;
-		case 2:
-			setupTTest(Context.getInstance().getS3());
-			break;
-		case 3:
-			setupTTest(Context.getInstance().getS4());
-			break;
-		case 4:
-			setupTTest(Context.getInstance().getS5());
-			break;
-		case 5:
-			setupTTest(Context.getInstance().getS6());
-			break;
-		
-			
-		}
-		
-		
+		Sample selection = sampleChoiceBox.getSelectionModel().getSelectedItem();
+		setupTTest(selection);
 	}
 	//From Summary
 	@FXML
