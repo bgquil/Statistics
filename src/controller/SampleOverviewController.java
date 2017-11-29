@@ -4,11 +4,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -82,6 +85,7 @@ public class SampleOverviewController{
 	
 	@FXML
 	private CheckBox title;
+
 	
 	@FXML
 	private void initialize() {
@@ -254,6 +258,14 @@ public class SampleOverviewController{
 	}
 
 
+    /**
+     * Remove all items from all ListViews.
+     */
+	private void clearAllListViews(ListView<String>[] listViews) {
+	    for (ListView<String> lv : listViews)
+	        lv.getItems().clear();
+    }
+
 	@FXML
 	private void handleClearAll(){
 		handleClear1();
@@ -301,9 +313,10 @@ public class SampleOverviewController{
 		sampleList6.getItems().clear();
 		sampleList6.getItems().add("");
 
-	}
+    }
 
-	
+
+
 	/*
 	 * Imports
 	 */
@@ -324,56 +337,103 @@ public class SampleOverviewController{
 		
 	}
 
-	private void readFile(String filePath){
-		boolean done = false;
+//	private void readFile(String filePath){
+//		boolean done = false;
+//
+//
+//        String line = "";
+//        String cvsSplitBy = ",";
+//
+//        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+//        	int index = 0;
+//        	while ((line = br.readLine()) != null) {
+//        		String[] splitEntry = line.split(cvsSplitBy);
+//        		if(title.isSelected() && !done) {
+//        			if(splitEntry.length > 0)
+//	        			sampleLabel1.setText(splitEntry[0]);
+//        			if(splitEntry.length > 1)
+//	        			sampleLabel2.setText(splitEntry[1]);
+//        			if(splitEntry.length > 2)
+//	        			sampleLabel3.setText(splitEntry[2]);
+//        			if(splitEntry.length > 3)
+//	        			sampleLabel4.setText(splitEntry[3]);
+//        			if(splitEntry.length > 4)
+//	        			sampleLabel5.setText(splitEntry[4]);
+//        			if(splitEntry.length > 5)
+//	        			sampleLabel6.setText(splitEntry[5]);
+//        			done = true;
+//        			continue;
+//        		}
+//        		if(splitEntry.length > 0)
+//        			sampleList1.getItems().add(index, splitEntry[0]);
+//        		if(splitEntry.length > 1)
+//        			sampleList2.getItems().add(index, splitEntry[1]);
+//        		if(splitEntry.length > 2)
+//        			sampleList3.getItems().add(index, splitEntry[2]);
+//        		if(splitEntry.length > 3)
+//        			sampleList4.getItems().add(index, splitEntry[3]);
+//        		if(splitEntry.length > 4)
+//        			sampleList5.getItems().add(index, splitEntry[4]);
+//        		if(splitEntry.length > 5)
+//        			sampleList6.getItems().add(index, splitEntry[5]);
+//
+//        		index++;
+//            }
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//	}
 
 
+    private void readFile(String filePath){
+
+        ListView[] listViews = {
+                this.sampleList1,
+                this.sampleList2,
+                this.sampleList3,
+                this.sampleList4,
+                this.sampleList5,
+                this.sampleList6
+        };
+
+        Label[] labels = {
+                this.sampleLabel1,
+                this.sampleLabel2,
+                this.sampleLabel3,
+                this.sampleLabel4,
+                this.sampleLabel5,
+                this.sampleLabel6
+        };
+
+	    clearAllListViews(listViews);
+        boolean firstLine = true;
         String line = "";
         String cvsSplitBy = ",";
-        
+
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        	int index = 0;
-        	while ((line = br.readLine()) != null) {
-        		String[] splitEntry = line.split(cvsSplitBy);
-        		if(title.isSelected() && !done) {
-        			if(splitEntry.length > 0)
-	        			sampleLabel1.setText(splitEntry[0]);
-        			if(splitEntry.length > 1)
-	        			sampleLabel2.setText(splitEntry[1]);
-        			if(splitEntry.length > 2)
-	        			sampleLabel3.setText(splitEntry[2]);
-        			if(splitEntry.length > 3)	
-	        			sampleLabel4.setText(splitEntry[3]);
-        			if(splitEntry.length > 4)	
-	        			sampleLabel5.setText(splitEntry[4]);
-        			if(splitEntry.length > 5)	
-	        			sampleLabel6.setText(splitEntry[5]);
-        			done = true;
-        			continue;
-        		}
-        		if(splitEntry.length > 0)
-        			sampleList1.getItems().add(index, splitEntry[0]);
-        		if(splitEntry.length > 1)
-        			sampleList2.getItems().add(index, splitEntry[1]);
-        		if(splitEntry.length > 2)
-        			sampleList3.getItems().add(index, splitEntry[2]);
-        		if(splitEntry.length > 3)
-        			sampleList4.getItems().add(index, splitEntry[3]);
-        		if(splitEntry.length > 4)
-        			sampleList5.getItems().add(index, splitEntry[4]);
-        		if(splitEntry.length > 5)
-        			sampleList6.getItems().add(index, splitEntry[5]);
-        		
-        		index++;
+            while ( (line = br.readLine()) != null) {
+                String[] splitEntry = line.split(cvsSplitBy);
+                if (firstLine && title.isSelected()) {
+                    for (int i = 0; i < splitEntry.length; i++) {
+                        labels[i].setText(splitEntry[i]);
+                    }
+
+                }
+                else {
+                    for (int i = 0; i < splitEntry.length; i++) {
+                        listViews[i].getItems().add(splitEntry[i]);
+                    }
+                }
+                firstLine = false;
             }
-
+        br.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            showImportError();
+            handleClearAll();
         }
+    }
 
-		
-	}
-	
 	@FXML
 	private void handleExport(){
 		
@@ -469,6 +529,18 @@ public class SampleOverviewController{
 		set();
 		mainApp.showScatterPlot();
 	}
+
+	/*
+	Error Alerts
+	 */
+
+	@FXML
+    private void showImportError() {
+	    Alert alert = new Alert(Alert.AlertType.ERROR);
+	    alert.setHeaderText("Import Error");
+	    alert.setContentText("There was a problem importing a file.");
+	    alert.showAndWait();
+    }
 	
 	
 	
