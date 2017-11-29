@@ -2,6 +2,7 @@ package controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -27,7 +28,7 @@ public class DescriptiveStatisticsController {
 	}
 	
 	@FXML
-	private ChoiceBox<String> sampleChoiceBox;
+	private ChoiceBox<Sample> sampleChoiceBox;
 	@FXML
 	private TableView<FrequencyTableEntry> freqTable;
 	@FXML
@@ -59,14 +60,15 @@ public class DescriptiveStatisticsController {
 
 	@FXML
 	private void initialize() {
-		
-		ObservableList<String> samples = FXCollections.observableArrayList(
-				"Data Set 1",
-				"Data Set 2",
-				"Data Set 3",
-				"Data Set 4",
-				"Data Set 5",
-				"Data Set 6");
+
+		ObservableList<Sample> samples = FXCollections.observableArrayList();
+
+		for (Sample s : Context.getInstance().getSamples()) {
+		    if (!s.isDefaultSample()) {
+		        samples.add(s);
+            }
+        }
+        System.out.println(Context.getInstance().getSamples());
 
 		sampleChoiceBox.setItems(samples);
 

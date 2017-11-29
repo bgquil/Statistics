@@ -2,6 +2,9 @@ package core;
 
 import statistics.Sample;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Context {
 	private final static Context instance = new Context();
 	
@@ -11,10 +14,22 @@ public class Context {
 	private Sample s4 = new Sample();
 	private Sample s5 = new Sample();
 	private Sample s6 = new Sample();
+
 	
 	public static Context getInstance(){
 		return instance;
 	}
+
+	public List<Sample> getSamples() {
+	    List<Sample> samples = new ArrayList<>();
+	    samples.add(this.s1);
+	    samples.add(this.s2);
+	    samples.add(this.s3);
+	    samples.add(this.s4);
+	    samples.add(this.s5);
+	    samples.add(this.s6);
+	    return samples;
+    }
 	
 	public Sample getS1() {
 		return s1;
@@ -40,32 +55,16 @@ public class Context {
 	public void setS4(Sample s4) {
 		this.s4 = s4;
 	}
-
-	/**
-	 * @return the s5
-	 */
 	public Sample getS5() {
 		return s5;
 	}
-
-	/**
-	 * @param s5 the s5 to set
-	 */
 	public void setS5(Sample s5) {
 		this.s5 = s5;
 	}
-
-	/**
-	 * @return the s6
-	 */
 	public Sample getS6() {
-		return s6;
-	}
-
-	/**
-	 * @param s6 the s6 to set
-	 */
-	public void setS6(Sample s6) {
+        return s6;
+    }
+    public void setS6(Sample s6) {
 		this.s6 = s6;
 	}
 

@@ -30,6 +30,7 @@ public class Sample<Double> {
 	private double sampleRange;
 	private double sampleVariance;
 	private double sampleSum;
+	private boolean isDefaultSample;
 
     /**
      * Creates a sample object and calculates statistical information from the provided data array.
@@ -40,6 +41,7 @@ public class Sample<Double> {
 	}
 
 	public Sample(double[] data, String name) {
+	    this.isDefaultSample = false;
         this.name = name;
         this.sampleData = data;
         this.sampleSize = data.length;
@@ -51,10 +53,11 @@ public class Sample<Double> {
 	
 	public Sample() {
 
+	    this.isDefaultSample = true;
+
 	}
 	
 	public void setData(double[] data){
-		this.name = "DEFAULT";
 		this.sampleData = data;
 		this.sampleSize = data.length;
 		sortedSampleData = Arrays.copyOf(data, data.length);
@@ -65,6 +68,10 @@ public class Sample<Double> {
 
 	public boolean hasData() {
 	    return this.sampleSize > 0;
+    }
+
+    public boolean isDefaultSample() {
+	    return this.isDefaultSample;
     }
 
 
@@ -101,26 +108,12 @@ public class Sample<Double> {
 	}
 
 	/**
-	 * @param sampleVariance the sample Variance to set
-	 */
-	public void setSampleVariance(double sampleVariance) {
-		this.sampleVariance = sampleVariance;
-	}
-
-	/**
 	 * @return the sampleSum
 	 */
 	public double getSampleSum() {
 		return sampleSum;
 	}
 
-	/**
-	 * @param sampleSum the sampleSum to set
-	 */
-	public void setSampleSum(double sampleSum) {
-		this.sampleSum = sampleSum;
-	}
-	
 	public int getSampleSize(){
 		return sampleData.length;
 	}
@@ -147,29 +140,30 @@ public class Sample<Double> {
 	 * Test cases for small sets N <= 6
 	 */
 	public void setMinQ1Q3Max(){
-			
-			sampleMin = sortedSampleData[0];
-			sampleMax = sortedSampleData[sampleSize-1];
-			
-			// even sample size
-			if (sampleSize % 2 == 0){
-				int mid = (int) sampleSize / 2;
-				sampleQ1 = sortedSampleData[(mid-1)/2];
-				sampleQ3 = sortedSampleData[(mid+mid/2)];
-				//int Q2 = ;
-				
-				
-			}
-			//odd sample size
-			else {
-				int mid = (int) sampleSize / 2;
-				int midLower = mid/2;
-				sampleQ1 = (sortedSampleData[midLower] + sortedSampleData[midLower-1])/2.0d;
-				// need 6 7
-				int midUpper = mid+mid/2;
-				sampleQ3 = (sortedSampleData[midUpper] + sortedSampleData[midUpper+1])/2;
+        if (sampleSize  > 1) {
+            sampleMin = sortedSampleData[0];
+            sampleMax = sortedSampleData[sampleSize - 1];
 
-			}
+            // even sample size
+            if (sampleSize % 2 == 0) {
+                int mid = (int) sampleSize / 2;
+                sampleQ1 = sortedSampleData[(mid - 1) / 2];
+                sampleQ3 = sortedSampleData[(mid + mid / 2)];
+                //int Q2 = ;
+
+
+            }
+            //odd sample size
+            else {
+                int mid = (int) sampleSize / 2;
+                int midLower = mid / 2;
+                sampleQ1 = (sortedSampleData[midLower] + sortedSampleData[midLower - 1]) / 2.0d;
+                // need 6 7
+                int midUpper = mid + mid / 2;
+                sampleQ3 = (sortedSampleData[midUpper] + sortedSampleData[midUpper + 1]) / 2;
+
+            }
+        }
 			
 		}
 	
@@ -204,15 +198,14 @@ public class Sample<Double> {
 	}
 
 	private void setSampleStdDev() {
-		
-		double tempSum = 0;
-		double mean = this.getSampleMean();
-		for (double data : sampleData) {
-			
-			tempSum += Math.pow((data - mean), 2);
-			
-		}
-		this.sampleStdDeviation = Math.sqrt(tempSum/(sampleSize-1));
+		if (sampleSize > 1) {
+            double tempSum = 0;
+            double mean = this.getSampleMean();
+            for (double data : sampleData) {
+                tempSum += Math.pow((data - mean), 2);
+            }
+            this.sampleStdDeviation = Math.sqrt(tempSum / (sampleSize - 1));
+        }
 	}
 	
 	public double getSampleStdDev() {
@@ -245,8 +238,12 @@ public class Sample<Double> {
 		
 	}
 
-	@Override
-	public String toString(){
+	public String toString() {
+	    return this.name;
+    }
+
+
+	public String showSummary(){
 
 		StringBuilder sb = new StringBuilder();
 		

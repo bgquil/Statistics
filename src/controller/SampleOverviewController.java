@@ -164,19 +164,17 @@ public class SampleOverviewController{
 					if (parseHelper(list.get(i))){
 						d[i] = (double) Double.parseDouble(list.get(i));	
 					}
-					
-					 //System.out.println(d[i]);
 				} catch (NumberFormatException e) {
 					
 					// TODO: handle exception
 				}
 			}
 			
-			s = new Sample(d);
+			s = new Sample(d, "Sample " + sampleNum);
 		}
 		else{ // generate default empty sample object
-			double d[] = {};
-			s = new Sample(d, "NO SAMPLE DATA");
+
+			s = new Sample();
 		}
 			
 		switch (sampleNum) {
