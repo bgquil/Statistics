@@ -1,6 +1,4 @@
 
-
-
 package core;
 
 import java.io.IOException;
@@ -9,7 +7,6 @@ import controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -46,6 +43,7 @@ public class MainApp extends Application {
 			primaryStage.setScene(scene);
 			RootLayoutController controller = loader.getController();
 			controller.setMainApp(this);
+			primaryStage.setResizable(false);
 			primaryStage.show();
 			
 		} catch(IOException e) {
@@ -115,16 +113,14 @@ public class MainApp extends Application {
 		}
 		
 	}
-	
-	
-	
+
 	public void showSamples(){
         final String viewLocation  = "/view/SampleOverview.fxml";
 		try {
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource(viewLocation));
-			ScrollPane samplesOverview = (ScrollPane) loader.load();
+			AnchorPane samplesOverview = (AnchorPane) loader.load();
 			
 			rootLayout.setCenter(samplesOverview);
 			
@@ -228,37 +224,7 @@ public class MainApp extends Application {
 		}
 		
 	}
-	
-	public void showBoxplotDialog(){
-        final String viewLocation  = "/view/BoxplotDialog.fxml";
-		try {
-			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource(viewLocation));
-			AnchorPane boxplotDialog = (AnchorPane) loader.load();
-			
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Boxplot");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(boxplotDialog);
-			dialogStage.setScene(scene);
-			
-		
-			
-			BoxplotDialogController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-			
-			dialogStage.showAndWait();
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
+
 	public void showRegressionDialog(){
         final String viewLocation  = "/view/RegressionDialog.fxml";
 		try {

@@ -14,26 +14,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="View">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleShowSample" text="List View" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Statistics" visible="false">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" text="Descriptive Statistics" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowScatterPlot" text="Scatterplot" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowBoxplotDialog" text="Boxplot" visible="false" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Tests" visible="false">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowZTestDialog" text="1-Sample Z-Test" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" text="Chi-Squared Test" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowRegressionDialog" text="Linear Regression" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowTTestDialog" text="1-Sample T-Test" />
-               </items>
-            </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />

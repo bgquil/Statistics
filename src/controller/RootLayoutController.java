@@ -73,16 +73,7 @@ public class RootLayoutController {
 		mainApp.showChiSquaredDialog();
 		
 	}
-	
-	/*
-	 * 	Open the Boxplot Dialog.
-	 */
-	@FXML
-	private void handleShowBoxplotDialog() {
-		mainApp.showBoxplotDialog();
-		
-	}
-	
+
 	/*
 	 * 	Open the Sample Statistics Dialog.
 	 */
