@@ -34,11 +34,11 @@ public class RegressionDialogController {
 	@FXML 
 	private TextField yLabel;
 	@FXML
-	private Label line;
+	private TextField line;
 	@FXML
-	private Label r;
+	private TextField r;
 	@FXML
-	private Label r2;
+	private TextField r2;
 	
 	
 	/*
@@ -53,11 +53,6 @@ public class RegressionDialogController {
 
         indSampleChoiceBox.setItems(samples);
         depSampleChoiceBox.setItems(samples);
-
-        line.setVisible(false);
-        r.setVisible(false);
-        r2.setVisible(false);
-
 
 
 	}
@@ -82,7 +77,7 @@ public class RegressionDialogController {
 		showRegressionGraph(ind, dep);
 	}
 
-	public void showRegressionGraph(Sample ind, Sample dep){
+	private void showRegressionGraph(Sample ind, Sample dep){
 		
 		try {
 			
@@ -146,15 +141,11 @@ public class RegressionDialogController {
 	        
 	        xAxis.getUpperBound();
 
-
-
 	        Scene scene  = new Scene(regressionGraph,800,600);
 	        scene.getStylesheets().add(getClass().getResource("/view/style/RegressionChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
-			
-		
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

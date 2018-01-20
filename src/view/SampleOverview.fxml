@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1275.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleOverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1275.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleOverviewController">
    <children>
       <Button fx:id="showData" mnemonicParsing="false" onAction="#showData" text="Test" visible="false" />
       <Button mnemonicParsing="false" onAction="#set" text="set" visible="false" />
@@ -136,10 +136,10 @@
                   <Button mnemonicParsing="false" onAction="#handleShowZTestDialog" prefHeight="25.0" prefWidth="174.0" text="1-Sample Z Test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button mnemonicParsing="false" onAction="#handleShowTTestDialog" prefHeight="25.0" prefWidth="174.0" text="1-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Button mnemonicParsing="false" onAction="#handleShowRegressionDialog" prefHeight="25.0" prefWidth="174.0" text="Simple Linear Regression" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" prefHeight="25.0" prefWidth="174.0" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" prefHeight="25.0" prefWidth="174.0" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" prefHeight="25.0" prefWidth="174.0" text="Descriptive Statistics" GridPane.columnIndex="1" />
                   <Button mnemonicParsing="false" onAction="#handleShow2TTestDialog" prefHeight="25.0" prefWidth="174.0" text="2-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" onAction="#handleShowScatterPlot" prefHeight="25.0" prefWidth="174.0" text="Scatter Plot" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#handleShowScatterPlot" prefHeight="25.0" prefWidth="174.0" text="Scatter Plot" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </children>
