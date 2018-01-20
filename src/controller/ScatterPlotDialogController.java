@@ -1,5 +1,6 @@
 package controller;
 
+import core.Context;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,7 +35,9 @@ public class ScatterPlotDialogController {
 	@FXML
 	private void initialize() {
 	    // Setup Sample ChoiceBox
-        ObservableList<Sample> samples = FXCollections.observableArrayList();
+        ObservableList<Sample> samples = FXCollections.observableArrayList(
+				Context.getInstance().getNonDefaultSamples()
+		);
         xData.setItems(samples);
         yData.setItems(samples);
 	}
