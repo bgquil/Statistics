@@ -149,7 +149,7 @@ public class RegressionDialogController {
 
 
 	        Scene scene  = new Scene(regressionGraph,800,600);
-	        scene.getStylesheets().add(getClass().getResource("/view/RegressionChart.css").toExternalForm());
+	        scene.getStylesheets().add(getClass().getResource("/view/style/RegressionChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
 			

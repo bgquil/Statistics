@@ -227,7 +227,7 @@ public class TTestDialogController {
 	             
 	        
 	        Scene scene  = new Scene(areaChart,800,600);
-	        scene.getStylesheets().add(getClass().getResource("/view/TTestChart.css").toExternalForm());
+	        scene.getStylesheets().add(getClass().getResource("/view/style/TTestChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
 			

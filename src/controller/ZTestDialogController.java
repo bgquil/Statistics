@@ -211,7 +211,7 @@ public class ZTestDialogController {
 	        	areaChart.getData().addAll(generateNormalDistribution(), generateAreaUnderCurve(start,end));
 	        
 	        Scene scene  = new Scene(areaChart,800,600);
-	        scene.getStylesheets().add(getClass().getResource("/view/ZTestChart.css").toExternalForm());
+	        scene.getStylesheets().add(getClass().getResource("/view/style/ZTestChart.css").toExternalForm());
 	        graphStage.setScene(scene);
 	        graphStage.showAndWait();
 
