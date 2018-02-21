@@ -75,8 +75,22 @@ public class ZTest {
 
 
 
-	// start public domain code
+	// BQ - Start public domain code
+    // Adapted from https://www.fourmilab.ch/rpkp/experiments/analysis/zCalc.js written in javascript.
 
+        /*  The following JavaScript functions for calculating normal and
+            chi-square probabilities and critical values were adapted by
+            John Walker from C implementations
+            written by Gary Perlman of Wang Institute, Tyngsboro, MA
+            01879.  Both the original C code and this JavaScript edition
+            are in the public domain.  */
+
+        /*  POZ  --  probability of normal z value
+
+            Adapted from a polynomial approximation in:
+                    Ibbetson D, Algorithm 209
+                    Collected Algorithms of the CACM 1963 p. 616
+         */
 	public double calculateProbability(double z){
 		
 		double  y, x, w;

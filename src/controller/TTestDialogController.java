@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import core.Context;
-import statistics.MathFunctions;
+import statistics.SpecialMathFunctions;
 import statistics.Sample;
 import statistics.TTest;
 
@@ -250,8 +250,8 @@ public class TTestDialogController {
         double mu = 0; //mean = 0
         
         for (double x = LEFT; x < RIGHT; x = x +.1d){
-        	double A = Math.exp(Math.log(MathFunctions.gamma((DOF+1d)/2d)));
-        	double B = Math.exp(Math.log(MathFunctions.gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
+        	double A = Math.exp(Math.log(SpecialMathFunctions.gamma((DOF+1d)/2d)));
+        	double B = Math.exp(Math.log(SpecialMathFunctions.gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
         	double C = Math.pow((1+x*x/DOF),(-(DOF+1)/2d));
         	
         	double y = A*C/B;
@@ -273,8 +273,8 @@ public class TTestDialogController {
         double mu = 0; //mean = 0
         
         for (double x = start; x < end; x = x +.1d){
-        	double A = Math.exp(Math.log(MathFunctions.gamma((DOF+1d)/2d)));
-        	double B = Math.exp(Math.log(MathFunctions.gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
+        	double A = Math.exp(Math.log(SpecialMathFunctions.gamma((DOF+1d)/2d)));
+        	double B = Math.exp(Math.log(SpecialMathFunctions.gamma(DOF/2d))) * Math.sqrt(DOF*Math.PI);
         	double C = Math.pow((1+x*x/DOF),(-(DOF+1)/2d));
         	
         	double y = A*C/B;

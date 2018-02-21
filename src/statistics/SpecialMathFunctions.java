@@ -1,6 +1,6 @@
 package statistics;
 
-/*
+/* BQ
  * SpecialMathFunctions.java
  * A static library of math functions used in the calculation and graphing of various statistical tests.
  * All code in this class is adapted from Byran Lewis.

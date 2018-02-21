@@ -178,11 +178,27 @@ public class ChiSquared {
 
 
 	
-	/*
-	 * Start public domain code
-	 * Used to calculate area beneath a chi-squared curve
-	 *
-	 */
+	// BQ
+    // Start public domain code
+    // Used to calculate area chi-squared probability
+    // Adapted from  https://www.fourmilab.ch/rpkp/experiments/analysis/zCalc.js
+
+            /*  The following JavaScript functions for calculating normal and
+            chi-square probabilities and critical values were adapted by
+            John Walker from C implementations
+            written by Gary Perlman of Wang Institute, Tyngsboro, MA
+            01879.  Both the original C code and this JavaScript edition
+            are in the public domain.  */
+
+            /*  POZ  --  probability of normal z value
+
+            Adapted from a polynomial approximation in:
+                    Ibbetson D, Algorithm 209
+                    Collected Algorithms of the CACM 1963 p. 616
+            Note:
+                    This routine has six digit accuracy, so it is only useful for absolute
+                    z values <= 6.  For z values > to 6.0, poz() returns 0.0.
+            */
 	
 	private double poz(double z) {
         double y, x, w;
@@ -215,7 +231,15 @@ public class ChiSquared {
         }
         return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
     }
-	
+
+    /*FUNCTION pochisq: probability of chi sqaure value */
+    /*ALGORITHM Compute probability of chi square value.
+       Adapted from:
+               Hill, I. D. and Pike, M. C.  Algorithm 299
+               Collected Algorithms for the CACM 1967 p. 243
+       Updated for rounding errors based on remark in
+               ACM TOMS June 1985, page 185
+    */
 	private double pochisq(double x, int df) {
         double a, y = 0, s;
         double e, c, z;
@@ -268,11 +292,7 @@ public class ChiSquared {
         return (x < -BIGX) ? 0.0 : Math.exp(x);
     }  
 
-    /*
-     * end public domain
-     *
-     *
-     */
+    // End public domain code
 
 	private void copyDataMatrix(){
 		
@@ -324,8 +344,4 @@ public class ChiSquared {
 		}	
 		
 	}
-	
-	
-	
-
 }
