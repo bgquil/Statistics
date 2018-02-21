@@ -3,8 +3,6 @@ package statistics;
 public class TTest {
 	
 	private double tStatistic;
-	
-
 	private double q;
 	private double pValue;
 	private int DOF;
@@ -48,10 +46,9 @@ public class TTest {
 	}
 	
 	private double calculateQ(){
-		return MathFunctions.stDist(this.DOF, this.tStatistic);
+		return SpecialMathFunctions.stDist(this.DOF, this.tStatistic);
 	}
-	
-	
+
 	public double getTStatistic() {
 		return tStatistic;
 	}

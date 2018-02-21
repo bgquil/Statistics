@@ -1,7 +1,5 @@
 package controller;
 
-
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -15,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import statistics.ChiSquared;
-import statistics.MathFunctions;
+import statistics.SpecialMathFunctions;
 
 public class ChiSquaredDialogController {
 
@@ -26,8 +24,6 @@ public class ChiSquaredDialogController {
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
-
-
 
     @FXML
     private Label errorMessage;
@@ -51,9 +47,6 @@ public class ChiSquaredDialogController {
     int rSize;
     int cSize;
 
-    /*
-	 * 
-	 */
     @FXML
     private void initialize() {
         row.getItems().addAll(1, 2, 3, 4);
@@ -247,7 +240,7 @@ public class ChiSquaredDialogController {
         for (double x = .001d; x < 16d; x = x + .01d) {
 
             double numerator = Math.pow(x, ((DOF / 2d) - 1d)) * Math.exp(-x / 2d);
-            double denominator = Math.pow(2, (DOF / 2d)) * MathFunctions.gamma(DOF / 2d);
+            double denominator = Math.pow(2, (DOF / 2d)) * SpecialMathFunctions.gamma(DOF / 2d);
 
             double y = numerator / denominator;
             chiSquaredCurve.getData().add(new Data<Number, Number>(x, y));
@@ -273,7 +266,7 @@ public class ChiSquaredDialogController {
         for (double x = start; x < 16d; x = x + .01d) {
 
             double numerator = Math.pow(x, ((n / 2d) - 1d)) * Math.exp(-x / 2d);
-            double denominator = Math.pow(2, (n / 2d)) * MathFunctions.gamma(n / 2d);
+            double denominator = Math.pow(2, (n / 2d)) * SpecialMathFunctions.gamma(n / 2d);
 
             double y = numerator / denominator;
 
@@ -282,19 +275,8 @@ public class ChiSquaredDialogController {
         return area;
 
     }
-
 }
-	 
 
-//	private void addTextField(int row, int column){
-//		for (int i = 0; i < row; i++){
-//			
-//			TextField  = new TextField();
-//		}
-//		
-//		p.getChildren().add(newField);
-//		
-//	}
 	
 
 

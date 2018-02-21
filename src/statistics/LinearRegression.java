@@ -41,7 +41,7 @@ public class LinearRegression {
 	
 	/**
 	 * Calculate a linear regression using the least squares method.
-	 * Calculates and sets the  r and r2 values.
+	 * Calculates and sets the r and r2 values.
 	 */
 	private void calculateLinearFit(){
 		double[] xData = x.getSampleData();
@@ -65,13 +65,8 @@ public class LinearRegression {
 		}
 		
 		xSumYSum = xSum*ySum;
-		
-		
-		/*
-		 * Calculates b1 and b0 for the line of best fit
-		 */
-		
-		
+
+		//Calculates b1 and b0 for the line of best fit
 		b1 = ((xYSum - (xSumYSum/n)) / (xSquaredSum - (Math.pow(xSum, 2d))/n) );
 		b0 = ((ySum - (b1 * xSum)) / n);
 		
@@ -82,27 +77,22 @@ public class LinearRegression {
 		r = ((n*xYSum) - (xSum * ySum) ) 
 				/ 
 				(Math.sqrt( (n*xSquaredSum) - Math.pow(xSum, 2d)) * Math.sqrt( n*ySquaredSum - Math.pow(ySum, 2d) ) );
-		
-		/*
-		 * Calculates r2, coefficient of determination;
-		 * 
-		 */
+
+		//Calculates r2, coefficient of determination;
 		r2 = Math.pow(r, 2d);
-		
-		
 	}
 	
-	
-	
-	/*
-	 *  b0 -- y intercept
-	 */
+
+    /**
+     *
+     * @return  b0 - y intercept
+     */
 	public double getB0(){
 		return b0;
 	}
 
-	/*
-	 *  b1 -- slope of the line
+	/**
+	 * @return b1 - slope of the line
 	 */
 	public double getB1(){
 		return b1;

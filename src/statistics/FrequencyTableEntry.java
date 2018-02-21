@@ -10,15 +10,12 @@ public class FrequencyTableEntry {
 	private SimpleDoubleProperty num;
 	private SimpleIntegerProperty count;
 	private SimpleDoubleProperty percent;
-	
-	
-	
-	/**
-	 * @param n
-	 * @param c
-	 * @param p
-	 */
 
+	/**
+	 * @param n The number from the sample data
+	 * @param c The total occurrences of the number
+	 * @param p The percent share of the number relative to the total sample.
+	 */
 	public FrequencyTableEntry(double n, int c, double p){
 		this.num = new SimpleDoubleProperty(n);
 		this.count = new SimpleIntegerProperty(c);
@@ -26,9 +23,7 @@ public class FrequencyTableEntry {
 	}
 	
 	
-	/*
-	 * num
-	 */
+	// Number
 	public double getNum(){
 		return num.get();
 	}
@@ -41,9 +36,7 @@ public class FrequencyTableEntry {
 		return num;
 	}
 	
-	/*
-	 * count
-	 */
+	// Count
 	public int getCount(){
 		return count.get();
 	}
@@ -56,9 +49,7 @@ public class FrequencyTableEntry {
 		return count;
 	}
 	
-	/*
-	 * percent
-	 */
+	// Percent
 	public double getPercent(){
 		return percent.get();
 	}
@@ -70,8 +61,6 @@ public class FrequencyTableEntry {
 	public DoubleProperty percentProperty(){
 		return percent;
 	}
-	
-	
 	
 	public String toString(){
 		return "num: "+num+

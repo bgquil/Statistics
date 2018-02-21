@@ -45,7 +45,7 @@ public class TwoSampleTTest {
 	}
 	
 	private double calculateQ(){
-		return MathFunctions.stDist(this.DOF, this.tStatistic);
+		return SpecialMathFunctions.stDist(this.DOF, this.tStatistic);
 	}
 	
 	

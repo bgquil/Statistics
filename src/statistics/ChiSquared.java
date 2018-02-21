@@ -15,7 +15,6 @@ public class ChiSquared {
 	private double chiStatistic;
 	private int DOF;
 	private double pValue;
-	
 
 
 	public ChiSquared(double data[][], int rSize, int cSize){
@@ -149,15 +148,12 @@ public class ChiSquared {
 		}
 		//return gp;
 	}
-	
-	
-	
-	
+
 	private void calculateDOF(){
 		this.DOF = (this.rSize-1)*(this.cSize-1);
 	}
 	
-	/*
+	/**
 	 * Calculates the expected matrix and Chi-statistic.
 	 */
 	private void calculateExpected(){
@@ -179,9 +175,13 @@ public class ChiSquared {
 		}	
 		this.chiStatistic = tmpSum;
 	}
+
+
 	
 	/*
-	 * start public domain code
+	 * Start public domain code
+	 * Used to calculate area beneath a chi-squared curve
+	 *
 	 */
 	
 	private double poz(double z) {
@@ -267,11 +267,13 @@ public class ChiSquared {
     private double ex(double x) {
         return (x < -BIGX) ? 0.0 : Math.exp(x);
     }  
-	
+
     /*
-     * 
-     * end public domain code
+     * end public domain
+     *
+     *
      */
+
 	private void copyDataMatrix(){
 		
 		for (int rowIndex = 0; rowIndex < rSize; rowIndex++){

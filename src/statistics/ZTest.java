@@ -39,18 +39,23 @@ public class ZTest {
 		
 		
 	}
-	
-	/*
-	 * For a user-entered summary statistics
-	 */
+
+    /**
+     * Used to calculate a Z-score from a summary.
+     * @param sampleMean the user-provided mean
+     * @param sampleN the user-provided quantity
+     * @return z-score
+     */
 	private double calculateZScore(double sampleMean, double sampleN){
 		return ((sampleMean - popMean)/(popStdDev/Math.sqrt(sampleN))); 
 	}
-	
-	
-	/*
-	 * For a a provided Sample
-	 */
+
+
+    /**
+     * Used to calculate a Z-score of a Sample object.
+     * @param s the Sample to be used.
+     * @return z-score
+     */
 	private double calculateZScore(Sample s){
 		return(s.getSampleMean() - popMean)/(popStdDev/Math.sqrt((double)s.getSampleSize())); 
 		
@@ -63,21 +68,15 @@ public class ZTest {
 	public double getPValue(){
 		return pValue;
 	}
-	
-	
-	/*
-	 * Returns 1-pValue
-	 */
-	
+
 	public double getQ(){
 		return this.q;
 	}
 
-	
-	/*
-	 *  https://www.fourmilab.ch/rpkp/experiments/analysis/zCalc.js
-	 */
-	
+
+
+	// start public domain code
+
 	public double calculateProbability(double z){
 		
 		double  y, x, w;
@@ -108,12 +107,8 @@ public class ZTest {
 	            }
 	        }
 	        return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
-		
-		
-		
-	}
-	
-	
-	
 
+	}
+
+	// end public domain code
 }
