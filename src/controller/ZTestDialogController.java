@@ -123,7 +123,6 @@ public class ZTestDialogController {
 	}
 	
 
-	
 	private void setupZTest(ZTest z, String selection, String mode){
 		System.out.println(z.getPValue());
 		
@@ -168,7 +167,6 @@ public class ZTestDialogController {
 			}
 		}
 	}
-	
 	
 	private void showZTestGraph(ZTest z, double start, double end, String selection){
 		try {

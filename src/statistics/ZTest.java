@@ -74,7 +74,6 @@ public class ZTest {
 	}
 
 
-
 	// BQ - Start public domain code
     // Adapted from https://www.fourmilab.ch/rpkp/experiments/analysis/zCalc.js written in javascript.
 
@@ -123,6 +122,5 @@ public class ZTest {
 	        return z > 0.0 ? ((x + 1.0) * 0.5) : ((1.0 - x) * 0.5);
 
 	}
-
 	// end public domain code
 }

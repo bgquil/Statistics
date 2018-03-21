@@ -87,8 +87,4 @@ public class Context {
     public void setS6(Sample s6) {
 		this.s6 = s6;
 	}
-
-
-	
-
 }

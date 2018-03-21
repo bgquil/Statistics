@@ -292,7 +292,8 @@ public class ChiSquared {
         return (x < -BIGX) ? 0.0 : Math.exp(x);
     }  
 
-    // End public domain code
+    // BQ
+	// End public domain code
 
 	private void copyDataMatrix(){
 		

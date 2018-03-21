@@ -164,8 +164,8 @@ public class Sample<Double> {
 
             }
         }
-			
-		}
+
+	}
 	
 	public double getSampleMin(){
 		return this.sampleMin;
@@ -233,15 +233,13 @@ public class Sample<Double> {
 		for (double d : this.sampleData){
 			var += Math.pow(d - this.sampleMean, 2);
 		}
-		
 		this.sampleVariance = (1d/(this.sampleSize-1))*var;
-		
 	}
 
+	@Override
 	public String toString() {
 	    return this.name;
     }
-
 
 	public String showSummary(){
 

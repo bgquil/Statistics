@@ -37,8 +37,7 @@ public class LinearRegression {
 			
 		}
 	}
-	 
-	
+
 	/**
 	 * Calculate a linear regression using the least squares method.
 	 * Calculates and sets the r and r2 values.

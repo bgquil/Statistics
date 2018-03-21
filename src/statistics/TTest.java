@@ -7,7 +7,6 @@ public class TTest {
 	private double pValue;
 	private int DOF;
 
-	
 	/**
 	 * One Sample t-Test from a data set
 	 * @param s The sample 

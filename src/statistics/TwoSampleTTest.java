@@ -8,7 +8,6 @@ public class TwoSampleTTest {
 	private double q;
 	private double pValue;
 	private int DOF;
-	
 
 	public TwoSampleTTest(Sample s1, Sample s2){
 		this.s1 = s1;
@@ -25,10 +24,8 @@ public class TwoSampleTTest {
 //			this.q = calculateQ();
 //			this.pValue = 1-q;
 //		}
-
 	}
-	
-	
+
 	private void calcTStatistic(){
 		double s1Var = Math.pow(s1.getSampleStdDev(), 2);
 		double s2Var = Math.pow(s2.getSampleStdDev(), 2);
@@ -47,8 +44,7 @@ public class TwoSampleTTest {
 	private double calculateQ(){
 		return SpecialMathFunctions.stDist(this.DOF, this.tStatistic);
 	}
-	
-	
+
 	public double getTStatistic() {
 		return tStatistic;
 	}
