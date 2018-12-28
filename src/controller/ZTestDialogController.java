@@ -167,7 +167,7 @@ public class ZTestDialogController {
 			}
 		}
 	}
-	
+
 	private void showZTestGraph(ZTest z, double start, double end, String selection){
 		try {
 			
