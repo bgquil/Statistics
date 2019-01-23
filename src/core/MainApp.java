@@ -269,6 +269,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Chi-Squared Test");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			primaryStage.setResizable(false);
 			Scene scene = new Scene(chiSquaredDialog);
 			dialogStage.setScene(scene);
 			
