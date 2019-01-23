@@ -7,141 +7,192 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1275.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleOverviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="1275.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SampleOverviewController">
    <children>
       <Button fx:id="showData" mnemonicParsing="false" onAction="#showData" text="Test" visible="false" />
       <Button mnemonicParsing="false" onAction="#set" text="set" visible="false" />
-      <HBox prefHeight="670.0" prefWidth="900.0" AnchorPane.bottomAnchor="23.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="14.0" prefHeight="693.0" prefWidth="940.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="sampleLabel1" text="Data Set 1" />
+                  <Label fx:id="sampleLabel1" text="Data Set 1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label fx:id="numLabel1" text="N=">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <ListView fx:id="sampleList1" prefHeight="558.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" onAction="#handleClear1" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#handleClear1" prefHeight="30.0" prefWidth="60.0" text="Clear">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="sampleLabel2" text="Data Set 2" />
+                  <Label fx:id="sampleLabel2" text="Data Set 2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label fx:id="numLabel2" text="N=">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <ListView fx:id="sampleList2" prefHeight="558.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" onAction="#handleClear2" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#handleClear2" prefHeight="30.0" prefWidth="60.0" text="Clear">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="sampleLabel3" text="Data Set 3" />
+                  <Label fx:id="sampleLabel3" text="Data Set 3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label fx:id="numLabel3" text="N=">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <ListView fx:id="sampleList3" prefHeight="558.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" onAction="#handleClear3" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#handleClear3" prefHeight="30.0" prefWidth="60.0" text="Clear">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="sampleLabel4" text="Data Set 4" />
+                  <Label fx:id="sampleLabel4" text="Data Set 4">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label fx:id="numLabel4" text="N=">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <ListView fx:id="sampleList4" prefHeight="558.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" onAction="#handleClear4" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#handleClear4" prefHeight="30.0" prefWidth="60.0" text="Clear">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="sampleLabel5" text="Data Set 5" />
+                  <Label fx:id="sampleLabel5" text="Data Set 5">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label fx:id="numLabel5" text="N=">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <ListView fx:id="sampleList5" prefHeight="558.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" onAction="#handleClear5" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#handleClear5" prefHeight="30.0" prefWidth="60.0" text="Clear">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" HBox.hgrow="NEVER">
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="10.0" HBox.hgrow="NEVER">
                <children>
-                  <Label fx:id="sampleLabel6" text="Data Set 6" />
+                  <Label fx:id="sampleLabel6" text="Data Set 6">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label fx:id="numLabel6" text="N=">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                   <ListView fx:id="sampleList6" prefHeight="558.0" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" onAction="#handleClear6" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#handleClear6" prefHeight="30.0" prefWidth="60.0" text="Clear">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="963.0" layoutY="621.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All Data Sets" />
-      <HBox alignment="CENTER" layoutX="1003.0" layoutY="25.0" prefHeight="26.0" prefWidth="258.0" AnchorPane.bottomAnchor="642.0" AnchorPane.leftAnchor="1003.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="25.0">
+      <Button layoutX="1061.0" layoutY="642.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#handleClearAll" text="Clear All Data Sets">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Separator layoutX="979.0" layoutY="85.0" prefHeight="2.0" prefWidth="282.0" />
+      <VBox alignment="CENTER" layoutX="1003.0" layoutY="137.0" prefHeight="351.0" prefWidth="258.0" spacing="10.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="1003.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="137.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="151.0" text="Tools &amp; Tests">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#handleShowZTestDialog" prefHeight="35.0" prefWidth="200.0" text="1-Sample Z Test">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleShowTTestDialog" prefHeight="35.0" prefWidth="200.0" text="1-Sample T-Test">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleShowRegressionDialog" prefHeight="35.0" prefWidth="200.0" text="Simple Linear Regression">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" prefHeight="35.0" prefWidth="200.0" text="Chi-Squared Test">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" prefHeight="35.0" prefWidth="200.0" text="Descriptive Statistics">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleShow2TTestDialog" prefHeight="35.0" prefWidth="200.0" text="2-Sample T-Test">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleShowScatterPlot" prefHeight="35.0" prefWidth="200.0" text="Scatter Plot">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutX="997.0" layoutY="13.0" prefHeight="65.0" prefWidth="271.0" AnchorPane.bottomAnchor="615.0" AnchorPane.leftAnchor="997.0" AnchorPane.topAnchor="13.0">
          <children>
             <Label prefHeight="26.0" prefWidth="57.0" text="Import">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <CheckBox fx:id="title" alignment="CENTER" mnemonicParsing="false" text="First Row as Title">
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </CheckBox>
-            <Button mnemonicParsing="false" onAction="#handleImport" text="Select File" />
-         </children>
-      </HBox>
-      <Separator layoutX="1032.0" layoutY="70.0" prefWidth="200.0" />
-      <VBox alignment="CENTER" layoutX="1003.0" layoutY="128.0" prefHeight="273.0" prefWidth="258.0" AnchorPane.bottomAnchor="292.0" AnchorPane.leftAnchor="1003.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="128.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="26.0" prefWidth="110.0" text="Tools &amp; Tests">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Label>
-            <GridPane prefHeight="230.0" prefWidth="193.0" VBox.vgrow="NEVER">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="34.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="196.0" minWidth="10.0" prefWidth="166.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <HBox alignment="CENTER" prefHeight="26.0" prefWidth="258.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleShowZTestDialog" prefHeight="25.0" prefWidth="174.0" text="1-Sample Z Test" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#handleShowTTestDialog" prefHeight="25.0" prefWidth="174.0" text="1-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" onAction="#handleShowRegressionDialog" prefHeight="25.0" prefWidth="174.0" text="Simple Linear Regression" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button mnemonicParsing="false" onAction="#handleShowChiSquaredDialog" prefHeight="25.0" prefWidth="174.0" text="Chi-Squared Test" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#handleShowDescriptiveStatistics" prefHeight="25.0" prefWidth="174.0" text="Descriptive Statistics" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#handleShow2TTestDialog" prefHeight="25.0" prefWidth="174.0" text="2-Sample T-Test" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button mnemonicParsing="false" onAction="#handleShowScatterPlot" prefHeight="25.0" prefWidth="174.0" text="Scatter Plot" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <CheckBox fx:id="title" alignment="CENTER" mnemonicParsing="false" text="First Row as Title">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Button mnemonicParsing="false" onAction="#handleImport" text="Select File" />
                </children>
-            </GridPane>
+            </HBox>
          </children>
       </VBox>
    </children>

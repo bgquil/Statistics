@@ -65,6 +65,7 @@ public class MainApp extends Application {
 			dialogStage.setTitle("Descriptive Statistics");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(primaryStage);
+			dialogStage.setResizable(false);
 			Scene scene = new Scene(DescriptiveStatistics);
 			dialogStage.setScene(scene);
 			
@@ -123,6 +124,7 @@ public class MainApp extends Application {
 			AnchorPane samplesOverview = (AnchorPane) loader.load();
 			
 			rootLayout.setCenter(samplesOverview);
+			primaryStage.setResizable(false);
 			
 			SampleOverviewController controller = loader.getController();
 			controller.setMainApp(this);
